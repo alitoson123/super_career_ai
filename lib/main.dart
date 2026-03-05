@@ -13,11 +13,13 @@ class SuperCareerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp.router(
+          locale: Locale('en'),
             localizationsDelegates: [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,
@@ -27,6 +29,7 @@ class SuperCareerApp extends StatelessWidget {
             supportedLocales: S.delegate.supportedLocales,
           routerConfig: AppRoutes.route,
           debugShowCheckedModeBanner: false,
+
         );
       },
     );

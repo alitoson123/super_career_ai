@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:super_career_ai/Features/onboarding/presention/views/widgets/dots_navigator.dart';
 import 'package:super_career_ai/Features/onboarding/presention/views/widgets/onboarding_view_body.dart';
 
-class OnBoardingView extends StatelessWidget {
+class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
 
   @override
+  State<OnBoardingView> createState() => _OnBoardingViewState();
+}
+
+class _OnBoardingViewState extends State<OnBoardingView> {
+  final controller = PageController();
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(body: OnBoardingViewBody());
+    return Scaffold(
+      body: OnBoardingViewBody(controller: controller),
+      bottomNavigationBar: DotsNavigator(controller: controller),
+    );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }
+
