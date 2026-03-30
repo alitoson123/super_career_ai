@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
@@ -11,17 +13,20 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  Timer? _navTimer;
+
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
+    _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    animation = Tween<double>(begin: 0, end: 1).animate(controller);
-    Future.delayed(const Duration(seconds: 4), () {
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
+    _controller.forward();
+    _navTimer = Timer(const Duration(seconds: 4), () {
       if (mounted) {
         context.go(AppRoutes.onBoardingScreen);
       }
@@ -29,10 +34,16 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   @override
+  void dispose() {
+    _navTimer?.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    controller.forward();
     return FadeTransition(
-      opacity: animation,
+      opacity: _animation,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
