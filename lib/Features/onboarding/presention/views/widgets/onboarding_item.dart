@@ -110,6 +110,9 @@ class OnboardingItem extends StatelessWidget {
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeIn,
               );
+              if (isLastPage) {
+                GoRouter.of(context).go(AppRoutes.rootScreen);
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFF2563EB),
