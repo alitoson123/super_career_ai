@@ -44,7 +44,7 @@ class OnboardingItem extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    controller.jumpToPage(2);
+                    context.go(AppRoutes.welcomeScreen);
                   },
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   child: Text(
@@ -100,10 +100,14 @@ class OnboardingItem extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: 52.h,
-          child: ElevatedButton(
+            child: ElevatedButton(
             onPressed: () {
+              if (isLastPage) {
+                context.go(AppRoutes.welcomeScreen);
+                return;
+              }
               controller.nextPage(
-                duration: Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 300),
                 curve: Curves.easeIn,
               );
               if (isLastPage) {
