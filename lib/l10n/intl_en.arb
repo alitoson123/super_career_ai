@@ -1,1 +1,161 @@
-{}
+{
+  "@@locale": "en",
+  "superCareer": "Super Career",
+  "welcomeBack": "Welcome Back, {userName}!",
+  "@welcomeBack": {
+    "placeholders": {
+      "userName": {
+        "type": "String"
+      }
+    }
+  },
+  "newJobMatches": "You have {count} new job matches today.",
+  "@newJobMatches": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "matchesToday": "Matches Today",
+  "avgMatchScore": "Avg Match Score",
+  "activeProposals": "Active Proposals",
+  "profileViews": "Profile Views",
+  "recentJobMatches": "Recent Job Matches",
+  "recentProjectMatches": "Recent Project Matches",
+  "viewAll": "View all",
+  "applyNow": "Apply Now",
+  "viewMatchAndApply": "View Match & Apply",
+  "home": "Home",
+  "jops": "JOPS",
+  "projects": "Projects",
+  "cv": "CV",
+  "profile": "Profile",
+  "jopMatchesTitle": "Jop Matches",
+  "searchMatchedJobs": "Search matched jobs",
+  "allMatches": "All Matches",
+  "highScore": "High Score",
+  "remote": "Remote",
+  "topMatchesForYou": "Top Matches for You",
+  "foundCount": "{count} Found",
+  "@foundCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "matchBreakdown": "Match Breakdown",
+  "excellent": "Excellent",
+  "good": "Good",
+  "moderate": "Moderate",
+  "skillsMatched": "{matched}/{total} Skills matched",
+  "@skillsMatched": {
+    "placeholders": {
+      "matched": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "preferredTimezone": "Preferred timezone",
+  "budgetRangeMatch": "Budget range match",
+  "welcomeToSuperCareer": "Welcome to Super Career",
+  "personalDetails": "Personal Details",
+  "stepPersonalInformation": "Step 1: Personal Information",
+  "stepWorkExperience": "Step 2: Work Experience",
+  "stepEducation": "Step 3: Education",
+  "stepSkills": "Step 4: Skills",
+  "stepOf": "{current} of {total}",
+  "fullName": "Full Name",
+  "fullNameHint": "e.g. John Doe",
+  "professionalTitle": "Professional Title",
+  "professionalTitleHint": "e.g. Senior Product Designer",
+  "emailAddress": "Email Address",
+  "emailAddressHint": "john.doe@example.com",
+  "phoneNumber": "Phone Number",
+  "phoneNumberHint": "+1 (555) 000-0000",
+  "location": "Location",
+  "locationHint": "New York, USA",
+  "professionalSummary": "Professional Summary",
+  "aiSuggestion": "AI Suggestion",
+  "professionalSummaryHint": "Briefly describe your professional background and key achievements...",
+  "nextStep": "Next Step",
+  "workExperience": "Work Experience",
+  "addWorkHistory": "Add your work history",
+  "startWithMostRecent": "Start with your most recent position.",
+  "jobTitle": "Job Title",
+  "remove": "Remove",
+  "company": "Company",
+  "companyHint": "e.g. Google",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "currentlyWorkHere": "I currently work here",
+  "description": "Description",
+  "workDescriptionHint": "Describe your responsibilities and achievements...",
+  "addAnotherPosition": "+ Add Another Position",
+  "nextEducation": "Next: Education",
+  "education": "Education",
+  "addYourEducation": "Add your education",
+  "educationDetailsHint": "Details about your schooling and academic achievements.",
+  "schoolUniversity": "School / University",
+  "schoolHint": "e.g. Stanford University",
+  "degree": "Degree",
+  "degreeHint": "e.g. Bachelor of Science in Computer Science",
+  "graduationYear": "Graduation Year",
+  "graduationYearHint": "e.g. 2022",
+  "descriptionOptional": "Description (Optional)",
+  "educationDescriptionHint": "Relevant coursework, honors, or activities...",
+  "addEducation": "+ Add Education",
+  "back": "Back",
+  "saveAndContinue": "Save & Continue",
+  "skills": "Skills",
+  "whatAreYourTopSkills": "What are your top skills?",
+  "skillsInstruction": "Add skills to help employers find you. You can type to add your own or pick from our suggestions.",
+  "addASkill": "Add a skill",
+  "search": "search",
+  "add": "add",
+  "selectedSkills": "Selected skills ({count})",
+  "recommendedForYou": "Recommended for you",
+  "recommendedSkillsInstruction": "Based on your CV and experience, you might also have these skills:",
+  "continueBtn": "Continue",
+  "atsAnalysis": "ATS Analysis",
+  "yourCvIsReady": "Your CV is Ready!",
+  "perfectlyTailored": "Perfectly tailored for Freelance Hub opportunities.",
+  "atsMatch": "ATS MATCH",
+  "excellentAlignment": "Excellent alignment with Freelance Hub standards",
+  "keywordsFound": "Keywords Found",
+  "matchesOfTotal": "{found} of {total} matches",
+  "improvementTips": "Improvement Tips",
+  "quantifyAchievements": "Quantify Achievements",
+  "quantifyAchievementsDesc": "Add more metrics like 'Increased conversion by 20%' to strengthen impact.",
+  "missingCoreSkill": "Missing Core Skill",
+  "missingCoreSkillDesc": "The job description mentions 'Agile Methodology' frequently. Consider adding this to your skills.",
+  "exportCvPdf": "Export CV (PDF)",
+  "notifications": "Notifications",
+  "clearAll": "Clear All",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "minutesAgo": "{count} minutes ago",
+  "hoursAgo": "{count} hours ago",
+  "noNotifications": "No notifications yet",
+  "noNotificationsDesc": "You are all caught up! New matches and updates will appear here.",
+  "markAllRead": "Mark all as read",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userName": "Alex"
+}

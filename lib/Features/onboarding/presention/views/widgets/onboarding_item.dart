@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:super_career_ai/Core/navigator/app_routes.dart';
 
 class OnboardingItem extends StatelessWidget {
   const OnboardingItem({
@@ -104,6 +106,9 @@ class OnboardingItem extends StatelessWidget {
                 duration: Duration(milliseconds: 300),
                 curve: Curves.easeIn,
               );
+              if (isLastPage) {
+                GoRouter.of(context).go(AppRoutes.rootScreen);
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFF2563EB),

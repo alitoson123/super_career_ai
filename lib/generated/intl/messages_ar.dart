@@ -20,6 +20,221 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(count) => "تم العثور على ${count}";
+
+  static String m1(count) => "منذ ${count} ساعة";
+
+  static String m2(found, total) => "${found} من ${total} تطابقات";
+
+  static String m3(count) => "منذ ${count} دقيقة";
+
+  static String m4(count) => "لديك ${count} تطابقات وظائف جديدة اليوم.";
+
+  static String m5(count) => "المهارات المختارة (${count})";
+
+  static String m6(matched, total) => "${matched}/${total} مهارات مطابقة";
+
+  static String m7(current, total) => "${current} من ${total}";
+
+  static String m8(userName) => "مرحباً بعودتك، ${userName}!";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "activeProposals": MessageLookupByLibrary.simpleMessage("العروض النشطة"),
+    "add": MessageLookupByLibrary.simpleMessage("إضافة"),
+    "addASkill": MessageLookupByLibrary.simpleMessage("إضافة مهارة"),
+    "addAnotherPosition": MessageLookupByLibrary.simpleMessage(
+      "+ إضافة وظيفة أخرى",
+    ),
+    "addEducation": MessageLookupByLibrary.simpleMessage("+ إضافة تعليم"),
+    "addWorkHistory": MessageLookupByLibrary.simpleMessage("أضف تاريخ عملك"),
+    "addYourEducation": MessageLookupByLibrary.simpleMessage("أضف تعليمك"),
+    "aiSuggestion": MessageLookupByLibrary.simpleMessage(
+      "اقتراح الذكاء الاصطناعي",
+    ),
+    "allMatches": MessageLookupByLibrary.simpleMessage("كل التطابقات"),
+    "applyNow": MessageLookupByLibrary.simpleMessage("قدم الآن"),
+    "atsAnalysis": MessageLookupByLibrary.simpleMessage("تحليل ATS"),
+    "atsMatch": MessageLookupByLibrary.simpleMessage("تطابق ATS"),
+    "avgMatchScore": MessageLookupByLibrary.simpleMessage("متوسط درجة التطابق"),
+    "back": MessageLookupByLibrary.simpleMessage("رجوع"),
+    "budgetRangeMatch": MessageLookupByLibrary.simpleMessage(
+      "نطاق الميزانية مطابق",
+    ),
+    "clearAll": MessageLookupByLibrary.simpleMessage("مسح الكل"),
+    "company": MessageLookupByLibrary.simpleMessage("الشركة"),
+    "companyHint": MessageLookupByLibrary.simpleMessage("مثال: جوجل"),
+    "continueBtn": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "currentlyWorkHere": MessageLookupByLibrary.simpleMessage(
+      "أعمل هنا حالياً",
+    ),
+    "cv": MessageLookupByLibrary.simpleMessage("السيرة الذاتية"),
+    "degree": MessageLookupByLibrary.simpleMessage("الدرجة العلمية"),
+    "degreeHint": MessageLookupByLibrary.simpleMessage(
+      "مثال: بكالوريوس علوم الكمبيوتر",
+    ),
+    "description": MessageLookupByLibrary.simpleMessage("الوصف"),
+    "descriptionOptional": MessageLookupByLibrary.simpleMessage(
+      "الوصف (اختياري)",
+    ),
+    "education": MessageLookupByLibrary.simpleMessage("التعليم"),
+    "educationDescriptionHint": MessageLookupByLibrary.simpleMessage(
+      "المقررات ذات الصلة أو التكريمات أو الأنشطة...",
+    ),
+    "educationDetailsHint": MessageLookupByLibrary.simpleMessage(
+      "تفاصيل حول دراستك وإنجازاتك الأكاديمية.",
+    ),
+    "emailAddress": MessageLookupByLibrary.simpleMessage(
+      "عنوان البريد الإلكتروني",
+    ),
+    "emailAddressHint": MessageLookupByLibrary.simpleMessage(
+      "john.doe@example.com",
+    ),
+    "endDate": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
+    "excellent": MessageLookupByLibrary.simpleMessage("ممتاز"),
+    "excellentAlignment": MessageLookupByLibrary.simpleMessage(
+      "توافق ممتاز مع معايير Freelance Hub",
+    ),
+    "exportCvPdf": MessageLookupByLibrary.simpleMessage(
+      "تصدير السيرة الذاتية (PDF)",
+    ),
+    "foundCount": m0,
+    "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "fullNameHint": MessageLookupByLibrary.simpleMessage("مثال: جون دو"),
+    "good": MessageLookupByLibrary.simpleMessage("جيد"),
+    "graduationYear": MessageLookupByLibrary.simpleMessage("سنة التخرج"),
+    "graduationYearHint": MessageLookupByLibrary.simpleMessage("مثال: 2022"),
+    "highScore": MessageLookupByLibrary.simpleMessage("درجة عالية"),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "hoursAgo": m1,
+    "improvementTips": MessageLookupByLibrary.simpleMessage("نصائح التحسين"),
+    "jobTitle": MessageLookupByLibrary.simpleMessage("المسمى الوظيفي"),
+    "jopMatchesTitle": MessageLookupByLibrary.simpleMessage("تطابقات الوظائف"),
+    "jops": MessageLookupByLibrary.simpleMessage("وظائف"),
+    "keywordsFound": MessageLookupByLibrary.simpleMessage(
+      "الكلمات الرئيسية الموجودة",
+    ),
+    "location": MessageLookupByLibrary.simpleMessage("الموقع"),
+    "locationHint": MessageLookupByLibrary.simpleMessage(
+      "نيويورك، الولايات المتحدة",
+    ),
+    "markAllRead": MessageLookupByLibrary.simpleMessage(
+      "وضع علامة مقروء على الكل",
+    ),
+    "matchBreakdown": MessageLookupByLibrary.simpleMessage("تحليل التطابق"),
+    "matchesOfTotal": m2,
+    "matchesToday": MessageLookupByLibrary.simpleMessage("تطابقات اليوم"),
+    "minutesAgo": m3,
+    "missingCoreSkill": MessageLookupByLibrary.simpleMessage(
+      "مهارة أساسية مفقودة",
+    ),
+    "missingCoreSkillDesc": MessageLookupByLibrary.simpleMessage(
+      "يذكر الوصف الوظيفي Agile Methodology بكثرة. فكر في إضافة هذا إلى مهاراتك.",
+    ),
+    "moderate": MessageLookupByLibrary.simpleMessage("متوسط"),
+    "newJobMatches": m4,
+    "nextEducation": MessageLookupByLibrary.simpleMessage("التالي: التعليم"),
+    "nextStep": MessageLookupByLibrary.simpleMessage("الخطوة التالية"),
+    "noNotifications": MessageLookupByLibrary.simpleMessage(
+      "لا توجد إشعارات بعد",
+    ),
+    "noNotificationsDesc": MessageLookupByLibrary.simpleMessage(
+      "أنت محدث! ستظهر هنا مطابقات وتحديثات جديدة.",
+    ),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "perfectlyTailored": MessageLookupByLibrary.simpleMessage(
+      "مصممة بشكل مثالي لفرص Freelance Hub.",
+    ),
+    "personalDetails": MessageLookupByLibrary.simpleMessage("التفاصيل الشخصية"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneNumberHint": MessageLookupByLibrary.simpleMessage(
+      "+1 (555) 000-0000",
+    ),
+    "preferredTimezone": MessageLookupByLibrary.simpleMessage(
+      "المنطقة الزمنية المفضلة",
+    ),
+    "professionalSummary": MessageLookupByLibrary.simpleMessage(
+      "الملخص المهني",
+    ),
+    "professionalSummaryHint": MessageLookupByLibrary.simpleMessage(
+      "لخص بإيجاز خلفيتك المهنية وإنجازاتك الرئيسية...",
+    ),
+    "professionalTitle": MessageLookupByLibrary.simpleMessage("المسمى الوظيفي"),
+    "professionalTitleHint": MessageLookupByLibrary.simpleMessage(
+      "مثال: مصمم منتجات أول",
+    ),
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "profileViews": MessageLookupByLibrary.simpleMessage(
+      "مشاهدات الملف الشخصي",
+    ),
+    "projects": MessageLookupByLibrary.simpleMessage("مشاريع"),
+    "quantifyAchievements": MessageLookupByLibrary.simpleMessage(
+      "تحديد الإنجازات",
+    ),
+    "quantifyAchievementsDesc": MessageLookupByLibrary.simpleMessage(
+      "أضف المزيد من المقاييس مثل زيادة التحويل بنسبة 20% لتعزيز التأثير.",
+    ),
+    "recentJobMatches": MessageLookupByLibrary.simpleMessage(
+      "أحدث تطابقات الوظائف",
+    ),
+    "recentProjectMatches": MessageLookupByLibrary.simpleMessage(
+      "أحدث تطابقات المشاريع",
+    ),
+    "recommendedForYou": MessageLookupByLibrary.simpleMessage("موصى به لك"),
+    "recommendedSkillsInstruction": MessageLookupByLibrary.simpleMessage(
+      "بناءً على سيرتك الذاتية وخبرتك، قد يكون لديك أيضًا هذه المهارات:",
+    ),
+    "remote": MessageLookupByLibrary.simpleMessage("عن بعد"),
+    "remove": MessageLookupByLibrary.simpleMessage("إزالة"),
+    "saveAndContinue": MessageLookupByLibrary.simpleMessage("حفظ ومتابعة"),
+    "schoolHint": MessageLookupByLibrary.simpleMessage("مثال: جامعة ستانفورد"),
+    "schoolUniversity": MessageLookupByLibrary.simpleMessage(
+      "المدرسة / الجامعة",
+    ),
+    "search": MessageLookupByLibrary.simpleMessage("بحث"),
+    "searchMatchedJobs": MessageLookupByLibrary.simpleMessage(
+      "البحث في الوظائف المطابقة...",
+    ),
+    "selectedSkills": m5,
+    "skills": MessageLookupByLibrary.simpleMessage("المهارات"),
+    "skillsInstruction": MessageLookupByLibrary.simpleMessage(
+      "أضف مهارات لمساعدة أصحاب العمل في العثور عليك. يمكنك الكتابة لإضافة مهاراتك الخاصة أو الاختيار من اقتراحاتنا.",
+    ),
+    "skillsMatched": m6,
+    "startDate": MessageLookupByLibrary.simpleMessage("تاريخ البدء"),
+    "startWithMostRecent": MessageLookupByLibrary.simpleMessage(
+      "ابدأ بأحدث منصب.",
+    ),
+    "stepEducation": MessageLookupByLibrary.simpleMessage("الخطوة 3: التعليم"),
+    "stepOf": m7,
+    "stepPersonalInformation": MessageLookupByLibrary.simpleMessage(
+      "الخطوة 1: المعلومات الشخصية",
+    ),
+    "stepSkills": MessageLookupByLibrary.simpleMessage("الخطوة 4: المهارات"),
+    "stepWorkExperience": MessageLookupByLibrary.simpleMessage(
+      "الخطوة 2: خبرة العمل",
+    ),
+    "superCareer": MessageLookupByLibrary.simpleMessage("سوبر كارير"),
+    "today": MessageLookupByLibrary.simpleMessage("اليوم"),
+    "topMatchesForYou": MessageLookupByLibrary.simpleMessage(
+      "أفضل التطابقات لك",
+    ),
+    "userName": MessageLookupByLibrary.simpleMessage("أليكس"),
+    "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+    "viewMatchAndApply": MessageLookupByLibrary.simpleMessage(
+      "عرض التطابق والتقديم",
+    ),
+    "welcomeBack": m8,
+    "whatAreYourTopSkills": MessageLookupByLibrary.simpleMessage(
+      "ما هي أفضل مهاراتك؟",
+    ),
+    "workDescriptionHint": MessageLookupByLibrary.simpleMessage(
+      "صف مسؤولياتك وإنجازاتك...",
+    ),
+    "workExperience": MessageLookupByLibrary.simpleMessage("خبرة العمل"),
+    "yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
+    "yourCvIsReady": MessageLookupByLibrary.simpleMessage(
+      "سيرتك الذاتية جاهزة!",
+    ),
+  };
 }
