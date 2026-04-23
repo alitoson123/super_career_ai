@@ -90,7 +90,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 SizedBox(height: 8.h),
                 PrimaryButton(
                   label: 'Login',
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push(AppRoutes.rootScreen);
+                  },
                 ),
                 SizedBox(height: 28.h),
                 const OrContinueDivider(),
