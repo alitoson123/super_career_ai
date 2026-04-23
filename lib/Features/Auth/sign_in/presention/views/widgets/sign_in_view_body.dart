@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
+import 'package:super_career_ai/Core/services/auth_service/auth_service.dart';
+import 'package:super_career_ai/Core/services/auth_service/google_auth_service.dart';
 import 'package:super_career_ai/Core/theme/app_colors.dart';
 import 'package:super_career_ai/Core/widgets/auth/auth_scaffold_bar.dart';
 import 'package:super_career_ai/Core/widgets/auth/labeled_text_field.dart';
@@ -21,11 +23,75 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   final _email = TextEditingController();
   final _password = TextEditingController();
 
+  final _authService = AuthService();
+  final _googleAuthService = GoogleAuthService();
+  bool _isSubmitting = false;
+
   @override
   void dispose() {
     _email.dispose();
     _password.dispose();
     super.dispose();
+  }
+
+  Future<void> _onLoginPressed() async {
+    if (_isSubmitting) return;
+
+    final email = _email.text.trim();
+    final password = _password.text;
+
+    if (email.isEmpty || password.isEmpty) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter email and password.')),
+      );
+      return;
+    }
+
+    setState(() => _isSubmitting = true);
+    try {
+      await _authService.loginUser(email: email, password: password);
+      if (!mounted) return;
+      context.go(AppRoutes.rootScreen);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login failed: $e')),
+      );
+    } finally {
+      if (mounted) setState(() => _isSubmitting = false);
+    }
+  }
+
+  Future<void> _onGoogleRegisterPressed() async {
+    if (!_googleAuthService.isSupported) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Google sign-in is not supported here.')),
+      );
+      return;
+    }
+
+    try {
+      final idToken = await _googleAuthService.getIdToken();
+      if (idToken == null || idToken.isEmpty) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Google sign-in was cancelled.')),
+        );
+        return;
+      }
+
+      await _authService.googleLogin(idToken: idToken, role: 'job_seeker');
+
+      if (!mounted) return;
+      context.go(AppRoutes.rootScreen);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Google sign-in failed: $e')),
+      );
+    }
   }
 
   @override
@@ -90,15 +156,13 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 SizedBox(height: 8.h),
                 PrimaryButton(
                   label: 'Login',
-                  onPressed: () {
-                    context.push(AppRoutes.rootScreen);
-                  },
+                  onPressed: _isSubmitting ? null : _onLoginPressed,
                 ),
                 SizedBox(height: 28.h),
                 const OrContinueDivider(),
                 SizedBox(height: 22.h),
                 SocialAuthRow(
-                  onGoogle: () {},
+                  onGoogle: _onGoogleRegisterPressed,
                   onLinkedIn: () {},
                 ),
                 SizedBox(height: 28.h),

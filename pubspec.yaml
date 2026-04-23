@@ -41,6 +41,7 @@ dependencies:
   dartz: ^0.10.1
   shared_preferences: ^2.5.4
   flutter_screenutil: ^5.9.3
+  google_sign_in: ^7.1.1
   flutter_localizations:
         sdk: flutter
   smooth_page_indicator: ^2.0.1
