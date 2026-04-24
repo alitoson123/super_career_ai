@@ -10,4 +10,6 @@ class AppColors {
   static const Color cardBackground = Colors.white;
   static const Color border = Color(0xFFE5E7EB);
   static const Color unselectedIcon = Color(0xFF9CA3AF);
+  static const Color yellow = Color(0xFFF59E0B);
+  static const Color secondaryGreen = Color(0xFF10B981);
 }

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
+import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
+import 'package:super_career_ai/Features/Projects/Data/repo_impl/project_repo_impl.dart';
+import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit.dart';
+import 'package:super_career_ai/Features/Projects/presentation/views/project_matches_view.dart';
+import 'package:super_career_ai/Features/jobs/Data/repo_impl/job_repo_impl.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import 'package:super_career_ai/Features/home/presentation/views/home_view.dart';
-import 'package:super_career_ai/Features/jops/presentation/views/jops_matches_view.dart';
+import 'package:super_career_ai/Features/jobs/presentation/views/jops_matches_view.dart';
 import 'package:super_career_ai/Features/cv/presentation/views/cv_view.dart';
 
 class RootView extends StatefulWidget {
@@ -19,20 +26,26 @@ class _RootViewState extends State<RootView> {
   final List<Widget> _pages = const [
     HomeView(),
     JopsMatchesView(),
-    JopsMatchesView(),
+    ProjectMatchesView(),
     CvView(),
     Scaffold(body: Center(child: Text("Profile"))),
   ];
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => JobCubit(jobRepo: getIt<JobRepoImpl>()),
+        ),
+        BlocProvider(
+          create: (context) => ProjectCubit(projectRepo: getIt<ProjectRepoImpl>()),
+        ),
+      ],
+      child: Scaffold(
+        body: IndexedStack(index: _currentIndex, children: _pages),
+        bottomNavigationBar: _buildBottomNavigationBar(),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -40,9 +53,7 @@ class _RootViewState extends State<RootView> {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        border: Border(
-           top: BorderSide(color: AppColors.border, width: 1),
-        ),
+        border: Border(top: BorderSide(color: AppColors.border, width: 1)),
       ),
       child: BottomNavigationBar(
         currentIndex: _currentIndex,

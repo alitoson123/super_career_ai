@@ -67,7 +67,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         return;
       }
 
-      await _authService.googleRegister(idToken: idToken, role: role);
+     // await _authService.googleRegister(idToken: idToken, role: role);
 
       if (!mounted) return;
       context.push(AppRoutes.accountCreatedScreen);

@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
-  GoogleAuthService({GoogleSignIn? googleSignIn})
-      : _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
+ // GoogleAuthService({GoogleSignIn? googleSignIn})
+ //     : _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
 
-  final GoogleSignIn _googleSignIn;
+ // final GoogleSignIn _googleSignIn;
   static const MethodChannel _channel =
       MethodChannel('super_career_ai/google_sign_in_config');
 
@@ -41,27 +41,27 @@ class GoogleAuthService {
       }
     }
 
-    await _googleSignIn.initialize(
+  /*  await _googleSignIn.initialize(
       serverClientId: trimmedServerClientId.isEmpty ? null : trimmedServerClientId,
       clientId: kIsWeb ? const String.fromEnvironment('GOOGLE_WEB_CLIENT_ID') : null,
-    );
+    );*/
 
     // Force fresh auth to avoid cached sessions returning null tokens.
     try {
-      await _googleSignIn.signOut();
+      //await _googleSignIn.signOut();
     } catch (_) {}
 
-    if (!_googleSignIn.supportsAuthenticate()) {
+ /*   if (!_googleSignIn.supportsAuthenticate()) {
       throw UnsupportedError('Google authenticate() is not supported here.');
-    }
+    }*/
 
-    final account = await _googleSignIn.authenticate(
+    /*inal account = await _googleSignIn.authenticate(
       scopeHint: const ['email', 'profile', 'openid'],
-    );
+    );*/
 
-    final auth = account.authentication;
-    final idToken = auth.idToken;
-    if (idToken == null || idToken.isEmpty) {
+    //final auth = account.authentication;
+   // final idToken = auth.idToken;
+    /*if (idToken == null || idToken.isEmpty) {
       // On Android/iOS, an ID token often requires a *server* client id (Web client id).
       // We don't hard-fail before showing the Google UI; instead we surface a clear fix.
       final platform = kIsWeb ? 'web' : defaultTargetPlatform.name;
@@ -71,7 +71,7 @@ class GoogleAuthService {
         '--dart-define=GOOGLE_SERVER_CLIENT_ID=... then rebuild.',
       );
     }
-    return idToken;
+    return idToken;*/
   }
 }
 

@@ -82,7 +82,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
         return;
       }
 
-      await _authService.googleLogin(idToken: idToken, role: 'job_seeker');
+     // await _authService.googleLogin(idToken: idToken, role: 'job_seeker');
 
       if (!mounted) return;
       context.go(AppRoutes.rootScreen);

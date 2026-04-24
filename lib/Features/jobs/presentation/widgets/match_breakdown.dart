@@ -8,26 +8,27 @@ class MatchBreakdown extends StatelessWidget {
     super.key,
     required this.matchBreakdownState,
     required this.progressValue,
-    required this.skillsMatchedText,
-    required this.extraTagText,
   });
 
   final String matchBreakdownState;
   final double progressValue;
-  final String skillsMatchedText;
-  final String extraTagText;
 
   @override
   Widget build(BuildContext context) {
     Color getBreakdownColor() {
       if (matchBreakdownState == S.of(context).excellent ||
           matchBreakdownState == 'Excellent')
+        return AppColors.secondaryGreen;
+
+      if (matchBreakdownState == S.of(context).good ||
+          matchBreakdownState == 'Good')
         return AppColors.primaryBlue;
+
       if (matchBreakdownState == S.of(context).moderate ||
           matchBreakdownState == 'Moderate')
-        return AppColors.primaryBlue;
-      return AppColors
-          .primaryBlue; // Based on UI all are blue, but percentage is different
+        return AppColors.yellow;
+
+      return AppColors.primaryBlue;
     }
 
     return Container(
@@ -72,45 +73,6 @@ class MatchBreakdown extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12.h),
-          // skills matched text and extra tag
-          Row(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                decoration: BoxDecoration(
-                  color: AppColors.cardBackground,
-                  borderRadius: BorderRadius.circular(4.r),
-                  border: Border.all(color: AppColors.border),
-                ),
-                // skills matched text
-                child: Text(
-                  skillsMatchedText,
-                  style: TextStyle(
-                    color: AppColors.textSecondary,
-                    fontSize: 10.sp,
-                  ),
-                ),
-              ),
-              SizedBox(width: 8.w),
-              // extra tag
-              if (extraTagText.isNotEmpty)
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.cardBackground,
-                    borderRadius: BorderRadius.circular(4.r),
-                    border: Border.all(color: AppColors.border),
-                  ),
-                  child: Text(
-                    extraTagText,
-                    style: TextStyle(
-                      color: AppColors.textSecondary,
-                      fontSize: 10.sp,
-                    ),
-                  ),
-                ),
-            ],
-          ),
         ],
       ),
     );

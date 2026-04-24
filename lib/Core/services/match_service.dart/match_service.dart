@@ -1,0 +1,27 @@
+import 'package:super_career_ai/Core/network/backend_urls.dart';
+import 'package:super_career_ai/Core/services/dio_service.dart/dio_service.dart';
+import 'package:super_career_ai/Features/Projects/Data/models/project_model/project_model.dart';
+import 'package:super_career_ai/Features/jobs/Data/models/jobs_model/jobs_model.dart';
+import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
+
+class MatchService {
+  final DioService dioService;
+
+  MatchService({required this.dioService});
+
+  Future<List<JobEntity>> jobMatches() async {
+    final result = await dioService.getMethod(url: BackendUrls.jobMatches);
+
+    final jobList = result.map((e) => JobsModel.fromJson(e)).toList();
+
+    return jobList;
+  }
+
+  Future<List<ProjectModel>> projectMatches() async {
+    final result = await dioService.getMethod(url: BackendUrls.projectMatches);
+
+    final projectList = result.map((e) => ProjectModel.fromJson(e)).toList();
+
+    return projectList;
+  }
+}

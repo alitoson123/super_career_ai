@@ -154,11 +154,31 @@ class S {
     return Intl.message('Apply Now', name: 'applyNow', desc: '', args: []);
   }
 
-  /// `View Match & Apply`
-  String get viewMatchAndApply {
+  /// `View the Job`
+  String get viewTheJob {
+    return Intl.message('View the Job', name: 'viewTheJob', desc: '', args: []);
+  }
+
+  /// `Custom CV`
+  String get customCV {
+    return Intl.message('Custom CV', name: 'customCV', desc: '', args: []);
+  }
+
+  /// `View the Project`
+  String get viewTheProject {
     return Intl.message(
-      'View Match & Apply',
-      name: 'viewMatchAndApply',
+      'View the Project',
+      name: 'viewTheProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom Proposal`
+  String get customProposal {
+    return Intl.message(
+      'Custom Proposal',
+      name: 'customProposal',
       desc: '',
       args: [],
     );
@@ -189,14 +209,149 @@ class S {
     return Intl.message('Profile', name: 'profile', desc: '', args: []);
   }
 
-  /// `Jop Matches`
+  /// `Job Details`
+  String get jobDetails {
+    return Intl.message('Job Details', name: 'jobDetails', desc: '', args: []);
+  }
+
+  /// `Project Details`
+  String get projectDetails {
+    return Intl.message(
+      'Project Details',
+      name: 'projectDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Role`
+  String get theRole {
+    return Intl.message('The Role', name: 'theRole', desc: '', args: []);
+  }
+
+  /// `The Project`
+  String get theProject {
+    return Intl.message('The Project', name: 'theProject', desc: '', args: []);
+  }
+
+  /// `Requirements`
+  String get requirements {
+    return Intl.message(
+      'Requirements',
+      name: 'requirements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Technical Stack`
+  String get technicalStack {
+    return Intl.message(
+      'Technical Stack',
+      name: 'technicalStack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Custom CV`
+  String get createCustomCV {
+    return Intl.message(
+      'Create Custom CV',
+      name: 'createCustomCV',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Now`
+  String get viewNow {
+    return Intl.message('View Now', name: 'viewNow', desc: '', args: []);
+  }
+
+  /// `{score}% Match`
+  String matchScore(int score) {
+    return Intl.message(
+      '$score% Match',
+      name: 'matchScore',
+      desc: '',
+      args: [score],
+    );
+  }
+
+  /// `CV History`
+  String get cvHistory {
+    return Intl.message('CV History', name: 'cvHistory', desc: '', args: []);
+  }
+
+  /// `Proposal History`
+  String get proposalHistory {
+    return Intl.message(
+      'Proposal History',
+      name: 'proposalHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download`
+  String get download {
+    return Intl.message('Download', name: 'download', desc: '', args: []);
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message('Copy', name: 'copy', desc: '', args: []);
+  }
+
+  /// `No history yet`
+  String get noHistory {
+    return Intl.message(
+      'No history yet',
+      name: 'noHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Job Matches`
   String get jopMatchesTitle {
     return Intl.message(
-      'Jop Matches',
+      'Job Matches',
       name: 'jopMatchesTitle',
       desc: '',
       args: [],
     );
+  }
+
+  /// `Project Matches`
+  String get projectMatchesTitle {
+    return Intl.message(
+      'Project Matches',
+      name: 'projectMatchesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Job matches`
+  String get jobMatches {
+    return Intl.message('Job matches', name: 'jobMatches', desc: '', args: []);
+  }
+
+  /// `Project matches`
+  String get projectMatches {
+    return Intl.message(
+      'Project matches',
+      name: 'projectMatches',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History`
+  String get history {
+    return Intl.message('History', name: 'history', desc: '', args: []);
   }
 
   /// `Search matched jobs`

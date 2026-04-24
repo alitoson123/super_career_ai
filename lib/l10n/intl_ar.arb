@@ -17,7 +17,32 @@
   "projects": "مشاريع",
   "cv": "السيرة الذاتية",
   "profile": "الملف الشخصي",
+  "jobDetails": "تفاصيل الوظيفة",
+  "projectDetails": "تفاصيل المشروع",
+  "theRole": "الدور الوظيفي",
+  "theProject": "المشروع",
+  "requirements": "المتطلبات",
+  "technicalStack": "المتطلبات التقنية",
+  "createCustomCV": "إنشاء سيرة ذاتية مخصصة",
+  "viewNow": "عرض الآن",
+  "matchScore": "تطابق بنسبة {score}%",
+  "@matchScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "cvHistory": "سجل السير الذاتية",
+  "proposalHistory": "سجل العروض",
+  "download": "تحميل",
+  "copy": "نسخ",
+  "noHistory": "لا يوجد سجل بعد",
   "jopMatchesTitle": "تطابقات الوظائف",
+  "projectMatchesTitle": "تطابقات المشاريع",
+  "jobMatches": "تطابقات الوظائف",
+  "projectMatches": "تطابقات المشاريع",
+  "history": "السجل",
   "searchMatchedJobs": "البحث في الوظائف المطابقة...",
   "allMatches": "كل التطابقات",
   "highScore": "درجة عالية",
@@ -126,4 +151,5 @@
     }
   },
   "userName": "أليكس"
+   
 }

@@ -88,6 +88,7 @@ class AuthService {
     }
   }
 
+/*
   Future<dynamic> googleRegister({
     required String idToken,
     required String role,
@@ -123,4 +124,5 @@ class AuthService {
       _rethrowAsReadable(e);
     }
   }
+  */
 }

@@ -31,7 +31,7 @@ class WelcomeViewBody extends StatelessWidget {
         return;
       }
 
-      await authService.googleRegister(idToken: idToken, role: 'job_seeker');
+    //  await authService.googleRegister(idToken: idToken, role: 'job_seeker');
       if (!context.mounted) return;
       context.push(AppRoutes.accountCreatedScreen);
     } catch (e) {

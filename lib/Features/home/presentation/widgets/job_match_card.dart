@@ -94,7 +94,7 @@ class JobMatchCard extends StatelessWidget {
                 ),
               ),
               child: Text(
-                S.of(context).viewMatchAndApply,
+                S.of(context).viewTheJob,
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp),
               ),
             ),

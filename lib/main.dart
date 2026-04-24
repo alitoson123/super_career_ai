@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:super_career_ai/Core/services/Bloc_observes_service/my_Bloc_observe.dart';
+import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
 import 'generated/l10n.dart';
 import 'package:super_career_ai/Core/theme/app_theme.dart';
 
 void main() {
+  setup();
+  Bloc.observer = MyBlocObserver(); // bloc observer
+
   runApp(const SuperCareerApp());
 }
 
@@ -23,7 +29,7 @@ class SuperCareerApp extends StatelessWidget {
           locale: Locale('en'),
           localizationsDelegates: [
             S.delegate,
-            GlobalMaterialLocalizations.delegate, 
+            GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],

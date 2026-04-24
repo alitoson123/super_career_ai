@@ -24,19 +24,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count) => "${count} hours ago";
 
-  static String m2(found, total) => "${found} of ${total} matches";
+  static String m2(score) => "${score}% Match";
 
-  static String m3(count) => "${count} minutes ago";
+  static String m3(found, total) => "${found} of ${total} matches";
 
-  static String m4(count) => "You have ${count} new job matches today.";
+  static String m4(count) => "${count} minutes ago";
 
-  static String m5(count) => "Selected skills (${count})";
+  static String m5(count) => "You have ${count} new job matches today.";
 
-  static String m6(matched, total) => "${matched}/${total} Skills matched";
+  static String m6(count) => "Selected skills (${count})";
 
-  static String m7(current, total) => "${current} of ${total}";
+  static String m7(matched, total) => "${matched}/${total} Skills matched";
 
-  static String m8(userName) => "Welcome Back, ${userName}!";
+  static String m8(current, total) => "${current} of ${total}";
+
+  static String m9(userName) => "Welcome Back, ${userName}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -67,10 +69,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "company": MessageLookupByLibrary.simpleMessage("Company"),
     "companyHint": MessageLookupByLibrary.simpleMessage("e.g. Google"),
     "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
+    "copy": MessageLookupByLibrary.simpleMessage("Copy"),
+    "createCustomCV": MessageLookupByLibrary.simpleMessage("Create Custom CV"),
     "currentlyWorkHere": MessageLookupByLibrary.simpleMessage(
       "I currently work here",
     ),
+    "customCV": MessageLookupByLibrary.simpleMessage("Custom CV"),
+    "customProposal": MessageLookupByLibrary.simpleMessage("Custom Proposal"),
     "cv": MessageLookupByLibrary.simpleMessage("CV"),
+    "cvHistory": MessageLookupByLibrary.simpleMessage("CV History"),
     "degree": MessageLookupByLibrary.simpleMessage("Degree"),
     "degreeHint": MessageLookupByLibrary.simpleMessage(
       "e.g. Bachelor of Science in Computer Science",
@@ -79,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "descriptionOptional": MessageLookupByLibrary.simpleMessage(
       "Description (Optional)",
     ),
+    "download": MessageLookupByLibrary.simpleMessage("Download"),
     "education": MessageLookupByLibrary.simpleMessage("Education"),
     "educationDescriptionHint": MessageLookupByLibrary.simpleMessage(
       "Relevant coursework, honors, or activities...",
@@ -103,20 +111,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "graduationYear": MessageLookupByLibrary.simpleMessage("Graduation Year"),
     "graduationYearHint": MessageLookupByLibrary.simpleMessage("e.g. 2022"),
     "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
+    "history": MessageLookupByLibrary.simpleMessage("History"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "hoursAgo": m1,
     "improvementTips": MessageLookupByLibrary.simpleMessage("Improvement Tips"),
+    "jobDetails": MessageLookupByLibrary.simpleMessage("Job Details"),
+    "jobMatches": MessageLookupByLibrary.simpleMessage("Job matches"),
     "jobTitle": MessageLookupByLibrary.simpleMessage("Job Title"),
-    "jopMatchesTitle": MessageLookupByLibrary.simpleMessage("Jop Matches"),
+    "jopMatchesTitle": MessageLookupByLibrary.simpleMessage("Job Matches"),
     "jops": MessageLookupByLibrary.simpleMessage("JOPS"),
     "keywordsFound": MessageLookupByLibrary.simpleMessage("Keywords Found"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "locationHint": MessageLookupByLibrary.simpleMessage("New York, USA"),
     "markAllRead": MessageLookupByLibrary.simpleMessage("Mark all as read"),
     "matchBreakdown": MessageLookupByLibrary.simpleMessage("Match Breakdown"),
-    "matchesOfTotal": m2,
+    "matchScore": m2,
+    "matchesOfTotal": m3,
     "matchesToday": MessageLookupByLibrary.simpleMessage("Matches Today"),
-    "minutesAgo": m3,
+    "minutesAgo": m4,
     "missingCoreSkill": MessageLookupByLibrary.simpleMessage(
       "Missing Core Skill",
     ),
@@ -124,9 +136,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "The job description mentions \'Agile Methodology\' frequently. Consider adding this to your skills.",
     ),
     "moderate": MessageLookupByLibrary.simpleMessage("Moderate"),
-    "newJobMatches": m4,
+    "newJobMatches": m5,
     "nextEducation": MessageLookupByLibrary.simpleMessage("Next: Education"),
     "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
+    "noHistory": MessageLookupByLibrary.simpleMessage("No history yet"),
     "noNotifications": MessageLookupByLibrary.simpleMessage(
       "No notifications yet",
     ),
@@ -159,7 +172,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileViews": MessageLookupByLibrary.simpleMessage("Profile Views"),
+    "projectDetails": MessageLookupByLibrary.simpleMessage("Project Details"),
+    "projectMatches": MessageLookupByLibrary.simpleMessage("Project matches"),
+    "projectMatchesTitle": MessageLookupByLibrary.simpleMessage(
+      "Project Matches",
+    ),
     "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+    "proposalHistory": MessageLookupByLibrary.simpleMessage("Proposal History"),
     "quantifyAchievements": MessageLookupByLibrary.simpleMessage(
       "Quantify Achievements",
     ),
@@ -180,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "remote": MessageLookupByLibrary.simpleMessage("Remote"),
     "remove": MessageLookupByLibrary.simpleMessage("Remove"),
+    "requirements": MessageLookupByLibrary.simpleMessage("Requirements"),
     "saveAndContinue": MessageLookupByLibrary.simpleMessage("Save & Continue"),
     "schoolHint": MessageLookupByLibrary.simpleMessage(
       "e.g. Stanford University",
@@ -191,18 +211,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchMatchedJobs": MessageLookupByLibrary.simpleMessage(
       "Search matched jobs",
     ),
-    "selectedSkills": m5,
+    "selectedSkills": m6,
     "skills": MessageLookupByLibrary.simpleMessage("Skills"),
     "skillsInstruction": MessageLookupByLibrary.simpleMessage(
       "Add skills to help employers find you. You can type to add your own or pick from our suggestions.",
     ),
-    "skillsMatched": m6,
+    "skillsMatched": m7,
     "startDate": MessageLookupByLibrary.simpleMessage("Start Date"),
     "startWithMostRecent": MessageLookupByLibrary.simpleMessage(
       "Start with your most recent position.",
     ),
     "stepEducation": MessageLookupByLibrary.simpleMessage("Step 3: Education"),
-    "stepOf": m7,
+    "stepOf": m8,
     "stepPersonalInformation": MessageLookupByLibrary.simpleMessage(
       "Step 1: Personal Information",
     ),
@@ -211,16 +231,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Step 2: Work Experience",
     ),
     "superCareer": MessageLookupByLibrary.simpleMessage("Super Career"),
+    "technicalStack": MessageLookupByLibrary.simpleMessage("Technical Stack"),
+    "theProject": MessageLookupByLibrary.simpleMessage("The Project"),
+    "theRole": MessageLookupByLibrary.simpleMessage("The Role"),
     "today": MessageLookupByLibrary.simpleMessage("Today"),
     "topMatchesForYou": MessageLookupByLibrary.simpleMessage(
       "Top Matches for You",
     ),
     "userName": MessageLookupByLibrary.simpleMessage("Alex"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
-    "viewMatchAndApply": MessageLookupByLibrary.simpleMessage(
-      "View Match & Apply",
-    ),
-    "welcomeBack": m8,
+    "viewNow": MessageLookupByLibrary.simpleMessage("View Now"),
+    "viewTheJob": MessageLookupByLibrary.simpleMessage("View the Job"),
+    "viewTheProject": MessageLookupByLibrary.simpleMessage("View the Project"),
+    "welcomeBack": m9,
     "welcomeToSuperCareer": MessageLookupByLibrary.simpleMessage(
       "Welcome to Super Career",
     ),

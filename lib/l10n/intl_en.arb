@@ -25,13 +25,41 @@
   "recentProjectMatches": "Recent Project Matches",
   "viewAll": "View all",
   "applyNow": "Apply Now",
-  "viewMatchAndApply": "View Match & Apply",
+  "viewTheJob": "View the Job",
+  "customCV": "Custom CV",
+  "viewTheProject": "View the Project",
+  "customProposal": "Custom Proposal",
   "home": "Home",
   "jops": "JOPS",
   "projects": "Projects",
   "cv": "CV",
   "profile": "Profile",
-  "jopMatchesTitle": "Jop Matches",
+  "jobDetails": "Job Details",
+  "projectDetails": "Project Details",
+  "theRole": "The Role",
+  "theProject": "The Project",
+  "requirements": "Requirements",
+  "technicalStack": "Technical Stack",
+  "createCustomCV": "Create Custom CV",
+  "viewNow": "View Now",
+  "matchScore": "{score}% Match",
+  "@matchScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "cvHistory": "CV History",
+  "proposalHistory": "Proposal History",
+  "download": "Download",
+  "copy": "Copy",
+  "noHistory": "No history yet",
+  "jopMatchesTitle": "Job Matches",
+  "projectMatchesTitle": "Project Matches",
+  "jobMatches": "Job matches",
+  "projectMatches": "Project matches",
+  "history": "History",
   "searchMatchedJobs": "Search matched jobs",
   "allMatches": "All Matches",
   "highScore": "High Score",
@@ -158,4 +186,5 @@
     }
   },
   "userName": "Alex"
+  
 }
