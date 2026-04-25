@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity.dart';
 import 'package:super_career_ai/generated/l10n.dart';
-import 'top_match_card.dart';
+import 'project_top_match_card.dart';
 
 class ProjectMatchesViewBody extends StatefulWidget {
   final List<ProjectEntity> projects;
@@ -117,7 +117,7 @@ class _ProjectMatchesViewBodyState extends State<ProjectMatchesViewBody> {
               itemCount: widget.projects.length,
               itemBuilder: (context, index) {
                 final project = widget.projects[index];
-                return TopMatchCard(project: project);
+                return PtojectTopMatchCard(project: project);
               },
             ),
           ],

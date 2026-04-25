@@ -8,9 +8,7 @@ import 'package:super_career_ai/Features/Auth/reset_password/presention/views/re
 import 'package:super_career_ai/Features/Auth/sign_in/presention/views/sign_in_view.dart';
 import 'package:super_career_ai/Features/Auth/sign_up/presention/views/sign_up_view.dart';
 import 'package:super_career_ai/Features/Auth/welcome/presention/views/welcome_view.dart';
-import 'package:super_career_ai/Features/jobs/presentation/views/jops_matches_view.dart';
 import 'package:super_career_ai/Features/root/presentation/views/root_view.dart';
-import 'package:super_career_ai/Features/home/presentation/views/home_view.dart';
 import 'package:super_career_ai/Features/onboarding/presention/views/onboarding_view.dart';
 import 'package:super_career_ai/Features/splash/presention/views/splash_view.dart';
 import 'package:super_career_ai/Features/notifications/presentation/views/notifications_view.dart';
@@ -40,10 +38,8 @@ class AppRoutes {
     routes: [
       GoRoute(
         path: splashScreen,
-        pageBuilder: (context, state) => buildFadePage(
-          pageKey: state.pageKey,
-          child: const SplashView(),
-        ),
+        pageBuilder: (context, state) =>
+            buildFadePage(pageKey: state.pageKey, child: const SplashView()),
       ),
       GoRoute(
         path: onBoardingScreen,
@@ -114,19 +110,12 @@ class AppRoutes {
         ),
       ),
       GoRoute(path: rootScreen, builder: (context, state) => const RootView()),
-      GoRoute(path: homeScreen, builder: (context, state) => const HomeView()),
       GoRoute(
         path: notificationsScreen,
         builder: (context, state) => const NotificationsView(),
       ),
-      GoRoute(
-        path: jobMatchesScreen,
-        builder: (context, state) => const JopsMatchesView(),
-      ),
-      GoRoute(
-        path: projectMatchesScreen,
-        builder: (context, state) => const JopsMatchesView(),
-      ),
+    
+    
     ],
   );
 }

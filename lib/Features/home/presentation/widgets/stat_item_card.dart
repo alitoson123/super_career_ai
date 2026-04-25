@@ -6,18 +6,12 @@ class StatItemCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String value;
-  final String badgeText;
-  final bool isBadgePositive;
-  final bool isBadgeNeutral;
 
   const StatItemCard({
     super.key,
     required this.icon,
     required this.title,
     required this.value,
-    required this.badgeText,
-    this.isBadgePositive = false,
-    this.isBadgeNeutral = false,
   });
 
   @override
@@ -45,14 +39,6 @@ class StatItemCard extends StatelessWidget {
                 ),
                 child: Icon(icon, color: AppColors.primaryBlue, size: 20.sp),
               ),
-              // badge text
-              if (badgeText.isNotEmpty)
-                Text(
-                  badgeText,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.labelMedium?.copyWith(color: _getBadgeColor()),
-                ),
             ],
           ),
           SizedBox(height: 16.h),
@@ -64,12 +50,5 @@ class StatItemCard extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  // get badge color
-  Color _getBadgeColor() {
-    if (isBadgePositive) return AppColors.successGreen;
-    if (isBadgeNeutral) return AppColors.textSecondary;
-    return AppColors.primaryBlue;
   }
 }

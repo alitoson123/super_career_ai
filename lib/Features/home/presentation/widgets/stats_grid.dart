@@ -4,7 +4,14 @@ import 'package:super_career_ai/generated/l10n.dart';
 import 'stat_item_card.dart';
 
 class StatsGrid extends StatelessWidget {
-  const StatsGrid({super.key});
+  const StatsGrid({
+    super.key,
+    required this.jobMatchesCount,
+    required this.projectMatchesCount,
+  });
+
+  final int jobMatchesCount;
+  final int projectMatchesCount;
 
   @override
   Widget build(BuildContext context) {
@@ -19,31 +26,13 @@ class StatsGrid extends StatelessWidget {
         // matches today cards
         StatItemCard(
           icon: Icons.auto_awesome,
-          title: S.of(context).matchesToday,
-          value: '12',
-          badgeText: '+3 ${S.of(context).remote}',
-          isBadgePositive: true,
+          title: S.of(context).matchesInJobsToday,
+          value: jobMatchesCount.toString(),
         ),
         StatItemCard(
-          icon: Icons.analytics_outlined,
-          title: S.of(context).avgMatchScore,
-          value: '85%',
-          badgeText: '+2%',
-          isBadgePositive: true,
-        ),
-        StatItemCard(
-          icon: Icons.description_outlined,
-          title: S.of(context).activeProposals,
-          value: '8',
-          badgeText: S.of(context).remote, // Will adjust
-          isBadgeNeutral: true,
-        ),
-        StatItemCard(
-          icon: Icons.visibility_outlined,
-          title: S.of(context).profileViews,
-          value: '124',
-          badgeText: '+15%',
-          isBadgePositive: true,
+          icon: Icons.auto_awesome,
+          title: S.of(context).matchesInProjectsToday,
+          value: projectMatchesCount.toString(),
         ),
       ],
     );

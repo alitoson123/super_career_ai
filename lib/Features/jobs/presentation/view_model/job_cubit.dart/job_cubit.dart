@@ -7,7 +7,12 @@ class JobCubit extends Cubit<JobCubitStates> {
 
   final JobRepo jobRepo;
 
-  Future<void> fetchJobMatches() async {
+  Future<void> fetchJobMatches(
+    //{bool forceRefresh = false}
+  ) async {
+    // if (state is JobFetchSuccess && !forceRefresh) return;
+    //  if (state is JobFetchLoading) return;
+
     emit(JobFetchLoading());
     final result = await jobRepo.fetchJobMatches();
     result.fold(

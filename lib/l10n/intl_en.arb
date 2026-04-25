@@ -9,7 +9,8 @@
       }
     }
   },
-  "newJobMatches": "You have {count} new job matches today.",
+  "newOpportunities": "You have {count} new opportunities today.",
+  "noNewMatches": "You have no new matches today.",
   "@newJobMatches": {
     "placeholders": {
       "count": {
@@ -17,7 +18,8 @@
       }
     }
   },
-  "matchesToday": "Matches Today",
+  "matchesInJobsToday": "Matched Jobs ",
+  "matchesInProjectsToday": "Matched Projects ",
   "avgMatchScore": "Avg Match Score",
   "activeProposals": "Active Proposals",
   "profileViews": "Profile Views",

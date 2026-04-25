@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
 import 'package:super_career_ai/generated/l10n.dart';
-import 'top_match_card.dart';
+import 'job_top_match_card.dart';
 
 class JopsMatchesViewBody extends StatefulWidget {
   const JopsMatchesViewBody({super.key, required this.jobs});
@@ -120,7 +120,7 @@ class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
                 final job = widget.jobs[index];
                 return Padding(
                   padding: EdgeInsets.only(bottom: 16.h),
-                  child: TopMatchCard(job: job),
+                  child: JobTopMatchCard(job: job),
                 );
               },
             ),

@@ -30,15 +30,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(count) => "${count} minutes ago";
 
-  static String m5(count) => "You have ${count} new job matches today.";
+  static String m9(count) => "You have ${count} new opportunities today.";
 
-  static String m6(count) => "Selected skills (${count})";
+  static String m5(count) => "Selected skills (${count})";
 
-  static String m7(matched, total) => "${matched}/${total} Skills matched";
+  static String m6(matched, total) => "${matched}/${total} Skills matched";
 
-  static String m8(current, total) => "${current} of ${total}";
+  static String m7(current, total) => "${current} of ${total}";
 
-  static String m9(userName) => "Welcome Back, ${userName}!";
+  static String m8(userName) => "Welcome Back, ${userName}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -126,8 +126,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "markAllRead": MessageLookupByLibrary.simpleMessage("Mark all as read"),
     "matchBreakdown": MessageLookupByLibrary.simpleMessage("Match Breakdown"),
     "matchScore": m2,
+    "matchesInJobsToday": MessageLookupByLibrary.simpleMessage("Matched Jobs "),
+    "matchesInProjectsToday": MessageLookupByLibrary.simpleMessage(
+      "Matched Projects ",
+    ),
     "matchesOfTotal": m3,
-    "matchesToday": MessageLookupByLibrary.simpleMessage("Matches Today"),
     "minutesAgo": m4,
     "missingCoreSkill": MessageLookupByLibrary.simpleMessage(
       "Missing Core Skill",
@@ -136,10 +139,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "The job description mentions \'Agile Methodology\' frequently. Consider adding this to your skills.",
     ),
     "moderate": MessageLookupByLibrary.simpleMessage("Moderate"),
-    "newJobMatches": m5,
+    "newOpportunities": m9,
     "nextEducation": MessageLookupByLibrary.simpleMessage("Next: Education"),
     "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
     "noHistory": MessageLookupByLibrary.simpleMessage("No history yet"),
+    "noNewMatches": MessageLookupByLibrary.simpleMessage(
+      "You have no new matches today.",
+    ),
     "noNotifications": MessageLookupByLibrary.simpleMessage(
       "No notifications yet",
     ),
@@ -211,18 +217,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchMatchedJobs": MessageLookupByLibrary.simpleMessage(
       "Search matched jobs",
     ),
-    "selectedSkills": m6,
+    "selectedSkills": m5,
     "skills": MessageLookupByLibrary.simpleMessage("Skills"),
     "skillsInstruction": MessageLookupByLibrary.simpleMessage(
       "Add skills to help employers find you. You can type to add your own or pick from our suggestions.",
     ),
-    "skillsMatched": m7,
+    "skillsMatched": m6,
     "startDate": MessageLookupByLibrary.simpleMessage("Start Date"),
     "startWithMostRecent": MessageLookupByLibrary.simpleMessage(
       "Start with your most recent position.",
     ),
     "stepEducation": MessageLookupByLibrary.simpleMessage("Step 3: Education"),
-    "stepOf": m8,
+    "stepOf": m7,
     "stepPersonalInformation": MessageLookupByLibrary.simpleMessage(
       "Step 1: Personal Information",
     ),
@@ -243,7 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewNow": MessageLookupByLibrary.simpleMessage("View Now"),
     "viewTheJob": MessageLookupByLibrary.simpleMessage("View the Job"),
     "viewTheProject": MessageLookupByLibrary.simpleMessage("View the Project"),
-    "welcomeBack": m9,
+    "welcomeBack": m8,
     "welcomeToSuperCareer": MessageLookupByLibrary.simpleMessage(
       "Welcome to Super Career",
     ),

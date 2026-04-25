@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
-import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
-import 'package:super_career_ai/Features/jobs/presentation/views/job_details_view.dart';
+import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity.dart';
+import 'package:super_career_ai/Features/Projects/presentation/views/project_details_view.dart';
 import 'package:super_career_ai/Features/jobs/presentation/widgets/match_breakdown.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 
-class TopMatchCard extends StatelessWidget {
-  final JobEntity job;
+class PtojectTopMatchCard extends StatelessWidget {
+  final ProjectEntity project;
 
-  const TopMatchCard({
-    super.key,
-    required this.job,
-  });
+  const PtojectTopMatchCard({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    final int score = job.matchScore;
-    final String title = job.title;
-    final String subtitle = job.company;
-    
+    final String title = project.title;
+    final String subtitle = project.platformName;
+    final int score = project.matchScore;
+
     String matchState;
     if (score >= 90) {
       matchState = s.excellent;
@@ -59,8 +56,8 @@ class TopMatchCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      AppColors.primaryBlue,
-                      AppColors.primaryBlue.withOpacity(0.7),
+                      const Color(0xFF6366F1), // Indigo
+                      const Color(0xFF818CF8),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -69,7 +66,7 @@ class TopMatchCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Icon(
-                    Icons.work_outline,
+                    Icons.rocket_launch_outlined,
                     color: Colors.white,
                     size: 28.sp,
                   ),
@@ -108,55 +105,54 @@ class TopMatchCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20.h),
-          
+
           // Match Breakdown
           MatchBreakdown(
             matchBreakdownState: matchState,
             progressValue: score / 100.0,
           ),
-          
+
           SizedBox(height: 20.h),
-          
+
           // Buttons
           Row(
             children: [
-              // view the job button
+              // view project button
               Expanded(
                 child: OutlinedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => JobDetailsView(job: job),
+                        builder: (context) =>
+                            ProjectDetailsView(project: project),
                       ),
                     );
                   },
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: AppColors.primaryBlue),
+                    side: const BorderSide(color: Color(0xFF6366F1)),
                     padding: EdgeInsets.symmetric(vertical: 14.h),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                   ),
                   child: Text(
-                    s.viewTheJob,
+                    s.viewTheProject,
                     style: TextStyle(
-                      color: AppColors.primaryBlue,
+                      color: const Color(0xFF6366F1),
                       fontWeight: FontWeight.w600,
                       fontSize: 14.sp,
                     ),
                   ),
                 ),
               ),
-            
               SizedBox(width: 12.w),
-
-              // custom cv button
+              // custom proposal button
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryBlue,
+                    backgroundColor: const Color(0xFF6366F1),
                     foregroundColor: Colors.white,
                     elevation: 0,
                     padding: EdgeInsets.symmetric(vertical: 14.h),
@@ -165,7 +161,7 @@ class TopMatchCard extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    s.customCV,
+                    s.customProposal,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 14.sp,

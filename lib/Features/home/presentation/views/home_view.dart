@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
+import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
 import 'package:go_router/go_router.dart';
 import '../widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  const HomeView({
+    super.key,
+    required this.jobState,
+    required this.projectState,
+  });
+  final JobCubitStates jobState;
+  final ProjectCubitStates projectState;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: _buildAppBar(context),
-      body: const HomeViewBody(),
+      body:  HomeViewBody(jobState: jobState, projectState: projectState,),
     );
   }
 
@@ -25,15 +32,13 @@ class HomeView extends StatelessWidget {
       scrolledUnderElevation: 0,
       // menu icon
       leading: IconButton(
-        icon:  Icon(Icons.menu, color: AppColors.textPrimary,size: 22.sp),
-        onPressed: () {
-        },
+        icon: Icon(Icons.menu, color: AppColors.textPrimary, size: 22.sp),
+        onPressed: () {},
       ),
       // title of app
       title: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          
           Icon(Icons.bolt, color: AppColors.primaryBlue, size: 28.sp),
           SizedBox(width: 4.w),
           Text(
@@ -50,8 +55,11 @@ class HomeView extends StatelessWidget {
       // notification icon and profile image
       actions: [
         IconButton(
-          icon: Icon(Icons.notifications_none,
-              color: AppColors.textPrimary, size: 26.sp),
+          icon: Icon(
+            Icons.notifications_none,
+            color: AppColors.textPrimary,
+            size: 26.sp,
+          ),
           onPressed: () => context.push(AppRoutes.notificationsScreen),
         ),
         Padding(

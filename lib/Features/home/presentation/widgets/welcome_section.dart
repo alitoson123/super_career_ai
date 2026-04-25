@@ -25,7 +25,9 @@ class WelcomeSection extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          S.of(context).newJobMatches(newMatchesCount),
+          newMatchesCount == 0
+              ? S.of(context).noNewMatches
+              : S.of(context).newOpportunities(newMatchesCount),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

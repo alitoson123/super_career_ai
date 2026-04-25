@@ -7,7 +7,12 @@ class ProjectCubit extends Cubit<ProjectCubitStates> {
 
   final ProjectRepo projectRepo;
 
-  Future<void> fetchProjectMatches() async {
+  Future<void> fetchProjectMatches(
+   // {bool forceRefresh = false}
+    ) async {
+  //  if (state is ProjectFetchSuccess && !forceRefresh) return;
+  //  if (state is ProjectFetchLoading) return;
+
     emit(ProjectFetchLoading());
     final result = await projectRepo.fetchProjectMatches();
     result.fold(

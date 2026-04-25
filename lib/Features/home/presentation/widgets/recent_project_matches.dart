@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
-import 'package:super_career_ai/Core/navigator/app_routes.dart';
+import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity.dart';
+import 'package:super_career_ai/Features/Projects/presentation/widgets/project_top_match_card.dart';
+import 'package:super_career_ai/Features/root/presentation/view_model/navigation_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:super_career_ai/generated/l10n.dart';
-import 'project_match_card.dart';
 
 class RecentProjectMatches extends StatelessWidget {
-  const RecentProjectMatches({super.key});
+  const RecentProjectMatches({super.key, required this.projectEntity});
+  final List<ProjectEntity> projectEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,6 @@ class RecentProjectMatches extends StatelessWidget {
             // title and icon
             Row(
               children: [
-
                 Icon(
                   Icons.dashboard_customize_outlined,
                   color: AppColors.primaryBlue,
@@ -39,7 +40,7 @@ class RecentProjectMatches extends StatelessWidget {
             // view all button
             TextButton(
               onPressed: () {
-                context.push(AppRoutes.projectMatchesScreen);
+                context.read<NavigationCubit>().changeIndex(2);
               },
               child: Row(
                 children: [
@@ -64,18 +65,8 @@ class RecentProjectMatches extends StatelessWidget {
         ),
         // project match cards
         SizedBox(height: 10.h),
-        const ProjectMatchCard(
-          title: 'Senior UI Designer',
-          subtitle: 'Skyline Tech • Full-time',
-          priceRange: '\$85k - \$120k',
-          matchPercentage: '98% Match',
-        ),
-        const ProjectMatchCard(
-          title: 'Mobile Developer',
-          subtitle: 'Pixel Labs • Project',
-          priceRange: '\$50 - \$80/hr',
-          matchPercentage: '92% Match',
-        ),
+        PtojectTopMatchCard(project: projectEntity[0]),
+        PtojectTopMatchCard(project: projectEntity[1]),
       ],
     );
   }

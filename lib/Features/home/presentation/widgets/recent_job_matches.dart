@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:super_career_ai/Core/navigator/app_routes.dart';
-
+import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
+import 'package:super_career_ai/Features/root/presentation/view_model/navigation_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:super_career_ai/Features/jobs/presentation/widgets/job_top_match_card.dart';
 import 'package:super_career_ai/generated/l10n.dart';
-import 'job_match_card.dart';
 
 class RecentJobMatches extends StatelessWidget {
-  const RecentJobMatches({super.key});
-
+  const RecentJobMatches({super.key, required this.jobEntity});
+  final List<JobEntity> jobEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +20,11 @@ class RecentJobMatches extends StatelessWidget {
             // title and icon
             Row(
               children: [
-                Icon(Icons.auto_awesome, color: Theme.of(context).primaryColor, size: 24.sp),
+                Icon(
+                  Icons.auto_awesome,
+                  color: Theme.of(context).primaryColor,
+                  size: 24.sp,
+                ),
                 SizedBox(width: 8.w),
                 Text(
                   S.of(context).recentJobMatches,
@@ -31,7 +35,7 @@ class RecentJobMatches extends StatelessWidget {
             // view all button
             TextButton(
               onPressed: () {
-                context.push(AppRoutes.jobMatchesScreen);
+                context.read<NavigationCubit>().changeIndex(1);
               },
               child: Row(
                 children: [
@@ -42,7 +46,10 @@ class RecentJobMatches extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 4.w),
-                  Icon(Icons.arrow_forward, size: 16.sp, color: Theme.of(context).primaryColor,
+                  Icon(
+                    Icons.arrow_forward,
+                    size: 16.sp,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ],
               ),
@@ -51,16 +58,8 @@ class RecentJobMatches extends StatelessWidget {
         ),
         SizedBox(height: 16.h),
         // job match cards
-        const JobMatchCard(
-          title: 'Design a Mobile App UI for Fitness',
-          matchPercentage: '91% Match',
-          tags: ['Figma', 'Tailwind', 'Full-time'],
-        ),
-        const JobMatchCard(
-          title: 'Build a Task Management Web',
-          matchPercentage: '91% Match',
-          tags: ['React', 'TypeScript', 'Contract'],
-        ),
+        JobTopMatchCard(job: jobEntity[0]),
+        JobTopMatchCard(job: jobEntity[1]),
       ],
     );
   }

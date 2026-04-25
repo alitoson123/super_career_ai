@@ -30,15 +30,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(count) => "منذ ${count} دقيقة";
 
-  static String m5(count) => "لديك ${count} تطابقات وظائف جديدة اليوم.";
+  static String m5(count) => "المهارات المختارة (${count})";
 
-  static String m6(count) => "المهارات المختارة (${count})";
+  static String m6(matched, total) => "${matched}/${total} مهارات مطابقة";
 
-  static String m7(matched, total) => "${matched}/${total} مهارات مطابقة";
+  static String m7(current, total) => "${current} من ${total}";
 
-  static String m8(current, total) => "${current} من ${total}";
-
-  static String m9(userName) => "مرحباً بعودتك، ${userName}!";
+  static String m8(userName) => "مرحباً بعودتك، ${userName}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -135,7 +133,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "matchBreakdown": MessageLookupByLibrary.simpleMessage("تحليل التطابق"),
     "matchScore": m2,
     "matchesOfTotal": m3,
-    "matchesToday": MessageLookupByLibrary.simpleMessage("تطابقات اليوم"),
     "minutesAgo": m4,
     "missingCoreSkill": MessageLookupByLibrary.simpleMessage(
       "مهارة أساسية مفقودة",
@@ -144,7 +141,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "يذكر الوصف الوظيفي Agile Methodology بكثرة. فكر في إضافة هذا إلى مهاراتك.",
     ),
     "moderate": MessageLookupByLibrary.simpleMessage("متوسط"),
-    "newJobMatches": m5,
     "nextEducation": MessageLookupByLibrary.simpleMessage("التالي: التعليم"),
     "nextStep": MessageLookupByLibrary.simpleMessage("الخطوة التالية"),
     "noHistory": MessageLookupByLibrary.simpleMessage("لا يوجد سجل بعد"),
@@ -215,18 +211,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchMatchedJobs": MessageLookupByLibrary.simpleMessage(
       "البحث في الوظائف المطابقة...",
     ),
-    "selectedSkills": m6,
+    "selectedSkills": m5,
     "skills": MessageLookupByLibrary.simpleMessage("المهارات"),
     "skillsInstruction": MessageLookupByLibrary.simpleMessage(
       "أضف مهارات لمساعدة أصحاب العمل في العثور عليك. يمكنك الكتابة لإضافة مهاراتك الخاصة أو الاختيار من اقتراحاتنا.",
     ),
-    "skillsMatched": m7,
+    "skillsMatched": m6,
     "startDate": MessageLookupByLibrary.simpleMessage("تاريخ البدء"),
     "startWithMostRecent": MessageLookupByLibrary.simpleMessage(
       "ابدأ بأحدث منصب.",
     ),
     "stepEducation": MessageLookupByLibrary.simpleMessage("الخطوة 3: التعليم"),
-    "stepOf": m8,
+    "stepOf": m7,
     "stepPersonalInformation": MessageLookupByLibrary.simpleMessage(
       "الخطوة 1: المعلومات الشخصية",
     ),
@@ -245,7 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userName": MessageLookupByLibrary.simpleMessage("أليكس"),
     "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "viewNow": MessageLookupByLibrary.simpleMessage("عرض الآن"),
-    "welcomeBack": m9,
+    "welcomeBack": m8,
     "whatAreYourTopSkills": MessageLookupByLibrary.simpleMessage(
       "ما هي أفضل مهاراتك؟",
     ),

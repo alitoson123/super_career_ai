@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
-import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit.dart';
 import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import '../widgets/project_matches_view_body.dart';
 import '../widgets/proposal_history_body.dart';
 
 class ProjectMatchesView extends StatefulWidget {
-  const ProjectMatchesView({super.key});
+  const ProjectMatchesView({super.key, required this.projectState});
+  final ProjectCubitStates projectState;
 
   @override
   State<ProjectMatchesView> createState() => _ProjectMatchesViewState();
@@ -17,13 +16,11 @@ class ProjectMatchesView extends StatefulWidget {
 
 class _ProjectMatchesViewState extends State<ProjectMatchesView> {
   @override
-  void initState() {
-    context.read<ProjectCubit>().fetchProjectMatches();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final projectState = widget.projectState;
+    final isLoading = projectState is ProjectFetchLoading;
+    final isFailure = projectState is ProjectFetchFailure;
+    final isSuccess = projectState is ProjectFetchSuccess;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -31,19 +28,13 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
         appBar: projectMatchesAppBar(context),
         body: TabBarView(
           children: [
-            BlocBuilder<ProjectCubit, ProjectCubitStates>(
-              builder: (context, state) {
-                if (state is ProjectFetchLoading || state is ProjectInitial) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is ProjectFetchFailure) {
-                  return Center(child: Text(state.errorMessage));
-                } else if (state is ProjectFetchSuccess) {
-                  return ProjectMatchesViewBody(projects: state.projects);
-                } else {
-                  return const SizedBox.shrink();
-                }
-              },
-            ),
+            isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : isFailure
+                ? Center(child: Text(projectState.errorMessage))
+                : isSuccess
+                ? ProjectMatchesViewBody(projects: projectState.projects)
+                : const SizedBox.shrink(),
             const ProposalHistoryBody(),
           ],
         ),
@@ -81,10 +72,7 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
         unselectedLabelColor: AppColors.unselectedIcon,
         indicatorColor: AppColors.primaryBlue,
         indicatorWeight: 3.h,
-        labelStyle: TextStyle(
-          fontSize: 14.sp,
-          fontWeight: FontWeight.bold,
-        ),
+        labelStyle: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
         unselectedLabelStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.normal,

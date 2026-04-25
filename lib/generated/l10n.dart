@@ -74,21 +74,41 @@ class S {
     );
   }
 
-  /// `You have {count} new job matches today.`
-  String newJobMatches(int count) {
+  /// `You have {count} new opportunities today.`
+  String newOpportunities(Object count) {
     return Intl.message(
-      'You have $count new job matches today.',
-      name: 'newJobMatches',
+      'You have $count new opportunities today.',
+      name: 'newOpportunities',
       desc: '',
       args: [count],
     );
   }
 
-  /// `Matches Today`
-  String get matchesToday {
+  /// `You have no new matches today.`
+  String get noNewMatches {
     return Intl.message(
-      'Matches Today',
-      name: 'matchesToday',
+      'You have no new matches today.',
+      name: 'noNewMatches',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matched Jobs `
+  String get matchesInJobsToday {
+    return Intl.message(
+      'Matched Jobs ',
+      name: 'matchesInJobsToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matched Projects `
+  String get matchesInProjectsToday {
+    return Intl.message(
+      'Matched Projects ',
+      name: 'matchesInProjectsToday',
       desc: '',
       args: [],
     );
