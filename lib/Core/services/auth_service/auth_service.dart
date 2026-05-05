@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:super_career_ai/Core/network/backend_urls.dart';
+import 'package:super_career_ai/Core/services/auth_token_storage/auth_token_storage.dart';
 
 class AuthService {
-  AuthService({Dio? dio})
-      : _dio = dio ??
+  AuthService({Dio? dio, AuthTokenStorage? tokenStorage})
+      : _tokenStorage = tokenStorage ?? AuthTokenStorage(),
+        _dio = dio ??
             Dio(
               BaseOptions(
                 connectTimeout: const Duration(seconds: 20),
@@ -17,6 +19,23 @@ class AuthService {
             );
 
   final Dio _dio;
+  final AuthTokenStorage _tokenStorage;
+
+  AuthTokenStorage get _storage => _tokenStorage;
+
+  Future<void> _persistTokensFromResponse(dynamic data) async {
+    if (data is! Map) return;
+    final map = Map<String, dynamic>.from(data);
+
+    // Backend is expected to return access/refresh (JWT),
+    // but schema may not reflect it. Support common keys.
+    final access = (map['access'] ?? map['token'] ?? map['access_token'])?.toString();
+    final refresh = (map['refresh'] ?? map['refresh_token'])?.toString();
+    await _storage.saveTokens(
+      accessToken: access,
+      refreshToken: refresh,
+    );
+  }
 
   Never _rethrowAsReadable(DioException e) {
     final status = e.response?.statusCode;
@@ -64,6 +83,7 @@ class AuthService {
           'preferences': preferences ?? '',
         },
       );
+      await _persistTokensFromResponse(response.data);
       return response.data;
     } on DioException catch (e) {
       _rethrowAsReadable(e);
@@ -82,6 +102,7 @@ class AuthService {
           'password': password,
         },
       );
+      await _persistTokensFromResponse(response.data);
       return response.data;
     } on DioException catch (e) {
       _rethrowAsReadable(e);

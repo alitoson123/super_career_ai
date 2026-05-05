@@ -10,6 +10,9 @@ class BackendUrls {
   static const String login = '$baseUrl/api/login/';
   static const String register = '$baseUrl/api/register/';
 
+  // Profile
+  static const String profile = '$baseUrl/api/profile/';
+
 
   // 
   static const String jobMatches = '$baseUrl/api/opportunities/jobs/';

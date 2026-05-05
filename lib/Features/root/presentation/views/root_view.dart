@@ -15,6 +15,8 @@ import 'package:super_career_ai/Features/home/presentation/views/home_view.dart'
 import 'package:super_career_ai/Features/jobs/presentation/views/jops_matches_view.dart';
 import 'package:super_career_ai/Features/root/presentation/view_model/navigation_cubit.dart';
 import 'package:super_career_ai/Features/cv/presentation/views/cv_view.dart';
+import 'package:super_career_ai/Features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:super_career_ai/Features/profile/presentation/views/profile_view.dart';
 
 class RootView extends StatefulWidget {
   const RootView({super.key});
@@ -38,6 +40,7 @@ class _RootViewState extends State<RootView> {
               ProjectCubit(projectRepo: getIt<ProjectRepoImpl>())
                 ..fetchProjectMatches(),
         ),
+        BlocProvider(create: (context) => ProfileCubit()),
       ],
       child: BlocBuilder<NavigationCubit, int>(
         builder: (context, currentIndex) {
@@ -53,7 +56,7 @@ class _RootViewState extends State<RootView> {
                         JopsMatchesView(jobState: jobState),
                         ProjectMatchesView(projectState: projectState),
                         CvView(),
-                        Scaffold(body: Center(child: Text("Profile"))),
+                        const ProfileView(),
                       ],
                     );
                   },
