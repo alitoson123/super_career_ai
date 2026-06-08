@@ -10,7 +10,10 @@ class BackendUrls {
   static const String login = '$baseUrl/api/login/';
   static const String register = '$baseUrl/api/register/';
 
-  // Matching Endpoints
+  // Profile
+  static const String profile = '$baseUrl/api/profile/';
+
+  //
   static const String jobMatches = '$baseUrl/api/opportunities/jobs/';
   static const String projectMatches = '$baseUrl/api/opportunities/projects/';
 
