@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit.dart';
 import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import 'welcome_section.dart';
@@ -32,15 +35,29 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       return const Center(child: CircularProgressIndicator());
     } else if (jobState is JobFetchFailure ||
         projectState is ProjectFetchFailure) {
-      return Center(
-        child: Text(
-          'Error: ${jobState is JobFetchFailure
-              ? jobState.errorMessage
-              : projectState is ProjectFetchFailure
-              ? projectState.errorMessage
-              : 'Unknown Error'}',
-          style: TextStyle(color: Colors.red, fontSize: 20.sp),
-        ),
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              'Error: ${jobState is JobFetchFailure
+                  ? jobState.errorMessage
+                  : projectState is ProjectFetchFailure
+                  ? projectState.errorMessage
+                  : 'unknown error'}',
+
+              style: TextStyle(color: Colors.red, fontSize: 20.sp),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // retry
+              context.read<JobCubit>().fetchJobMatches();
+              context.read<ProjectCubit>().fetchProjectMatches();
+            },
+            child: Text('retry'),
+          ),
+        ],
       );
     } else {
       final jobSuccess = jobState as JobFetchSuccess;

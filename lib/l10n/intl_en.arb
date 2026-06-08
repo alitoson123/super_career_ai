@@ -203,5 +203,6 @@
   },
   "activeLead": "ACTIVE LEAD",
   "userName": "Alex",
-  "failedToOpenLink": "Could not open the link"
+  "failedToOpenLink": "Could not open the link",
+  "retry": "Retry"
 }

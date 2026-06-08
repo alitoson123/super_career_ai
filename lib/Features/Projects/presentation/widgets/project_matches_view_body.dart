@@ -28,7 +28,7 @@ class _ProjectMatchesViewBodyState extends State<ProjectMatchesViewBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Filter Chips
+            /*  // Filter Chips
             SizedBox(
               height: 38.h,
               child: ListView.builder(
@@ -75,7 +75,7 @@ class _ProjectMatchesViewBodyState extends State<ProjectMatchesViewBody> {
             ),
 
             SizedBox(height: 28.h),
-
+*/
             // Title and count
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

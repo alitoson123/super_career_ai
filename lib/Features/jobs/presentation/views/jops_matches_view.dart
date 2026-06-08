@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import '../widgets/cv_history_body.dart';
@@ -30,7 +32,20 @@ class _JopsMatchesViewState extends State<JopsMatchesView> {
             isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : isFailure
-                ? Center(child: Text(jobState.errorMessage))
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(jobState.errorMessage),
+                      // retry button
+                      ElevatedButton(
+                        onPressed: () {
+                          // retry
+                          context.read<JobCubit>().fetchJobMatches();
+                        },
+                        child: Text('retry'),
+                      ),
+                    ],
+                  )
                 : isSuccess
                 ? JopsMatchesViewBody(jobs: jobState.jobs)
                 : const SizedBox.shrink(),
@@ -57,16 +72,6 @@ class _JopsMatchesViewState extends State<JopsMatchesView> {
           fontSize: 18.sp,
         ),
       ),
-      actions: [
-        IconButton(
-          icon: Icon(
-            Icons.notifications_none,
-            color: AppColors.textPrimary,
-            size: 24.sp,
-          ),
-          onPressed: () {},
-        ),
-      ],
       bottom: TabBar(
         labelColor: AppColors.primaryBlue,
         unselectedLabelColor: AppColors.unselectedIcon,

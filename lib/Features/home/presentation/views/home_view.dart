@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: _buildAppBar(context),
-      body:  HomeViewBody(jobState: jobState, projectState: projectState,),
+      body: HomeViewBody(jobState: jobState, projectState: projectState),
     );
   }
 
@@ -30,11 +30,6 @@ class HomeView extends StatelessWidget {
       backgroundColor: AppColors.background,
       elevation: 0,
       scrolledUnderElevation: 0,
-      // menu icon
-      leading: IconButton(
-        icon: Icon(Icons.menu, color: AppColors.textPrimary, size: 22.sp),
-        onPressed: () {},
-      ),
       // title of app
       title: Row(
         mainAxisSize: MainAxisSize.min,
@@ -61,13 +56,6 @@ class HomeView extends StatelessWidget {
             size: 26.sp,
           ),
           onPressed: () => context.push(AppRoutes.notificationsScreen),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 16.w, left: 8.w),
-          child: const CircleAvatar(
-            backgroundColor: AppColors.primaryBlueLight,
-            child: Icon(Icons.person, color: AppColors.primaryBlue),
-          ),
         ),
       ],
     );

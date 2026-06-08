@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
 import 'package:super_career_ai/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobDetailsView extends StatelessWidget {
   final JobEntity job;
@@ -33,16 +34,6 @@ class JobDetailsView extends StatelessWidget {
             fontSize: 18.sp,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.share_outlined,
-              color: AppColors.primaryBlue,
-            ),
-            onPressed: () {},
-          ),
-          SizedBox(width: 8.w),
-        ],
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -203,7 +194,7 @@ class JobDetailsView extends StatelessWidget {
               SizedBox(height: 16.h),
               // view now button
               TextButton(
-                onPressed: () {},
+                onPressed: () => _launchUrl(context, job.sourceUrl),
                 style: TextButton.styleFrom(
                   minimumSize: Size(double.infinity, 56.h),
                   backgroundColor: const Color(0xFFF1F5F9),
@@ -226,6 +217,17 @@ class JobDetailsView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(BuildContext context, String url) async {
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(S.of(context).failedToOpenLink)));
+      }
+    }
   }
 
   //build section title

@@ -29,7 +29,7 @@ class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Filter Chips
+            /*           // Filter Chips
             SizedBox(
               height: 38.h,
               child: ListView.builder(
@@ -76,7 +76,7 @@ class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
             ),
 
             SizedBox(height: 28.h),
-
+*/
             // Title and count
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

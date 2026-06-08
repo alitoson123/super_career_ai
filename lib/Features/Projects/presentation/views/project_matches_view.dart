@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
+import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit.dart';
 import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import '../widgets/project_matches_view_body.dart';
@@ -31,7 +33,20 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
             isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : isFailure
-                ? Center(child: Text(projectState.errorMessage))
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(projectState.errorMessage),
+                      // retry button
+                      ElevatedButton(
+                        onPressed: () {
+                          // retry
+                          context.read<ProjectCubit>().fetchProjectMatches();
+                        },
+                        child: Text('retry'),
+                      ),
+                    ],
+                  )
                 : isSuccess
                 ? ProjectMatchesViewBody(projects: projectState.projects)
                 : const SizedBox.shrink(),
@@ -57,7 +72,7 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
           fontSize: 18.sp,
         ),
       ),
-      actions: [
+      /*    actions: [
         IconButton(
           icon: Icon(
             Icons.notifications_none,
@@ -66,7 +81,7 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
           ),
           onPressed: () {},
         ),
-      ],
+      ],*/
       bottom: TabBar(
         labelColor: AppColors.primaryBlue,
         unselectedLabelColor: AppColors.unselectedIcon,

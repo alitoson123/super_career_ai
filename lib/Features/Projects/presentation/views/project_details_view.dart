@@ -36,13 +36,6 @@ class ProjectDetailsView extends StatelessWidget {
             fontSize: 18.sp,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.share_outlined, color: projectColor),
-            onPressed: () {},
-          ),
-          SizedBox(width: 8.w),
-        ],
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
