@@ -171,10 +171,9 @@ class JobDetailsView extends StatelessWidget {
                 'Proven track record of delivering pixel-perfect interfaces.',
               ),
 
-
               SizedBox(height: 40.h),
 
-              // create custom cv 
+              // create custom cv
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
@@ -213,7 +212,7 @@ class JobDetailsView extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  s.viewNow,
+                  s.applyNow,
                   style: TextStyle(
                     color: AppColors.textPrimary,
                     fontSize: 16.sp,
@@ -267,5 +266,4 @@ class JobDetailsView extends StatelessWidget {
       ),
     );
   }
-
 }
