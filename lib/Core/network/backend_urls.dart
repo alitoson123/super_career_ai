@@ -13,7 +13,7 @@ class BackendUrls {
   // Profile
   static const String profile = '$baseUrl/api/profile/';
 
-  //
+  // Matching Endpoints
   static const String jobMatches = '$baseUrl/api/opportunities/jobs/';
   static const String projectMatches = '$baseUrl/api/opportunities/projects/';
 

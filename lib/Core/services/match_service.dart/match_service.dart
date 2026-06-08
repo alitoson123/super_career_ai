@@ -12,7 +12,7 @@ class MatchService {
   Future<List<JobEntity>> jobMatches() async {
     final result = await dioService.getMethod(url: BackendUrls.jobMatches);
 
-    final jobList = result.map((e) => JobsModel.fromJson(e)).toList();
+    final jobList = result.map((e) => JobsModel.fromJson(e)).take(5).toList();
 
     return jobList;
   }
@@ -20,7 +20,10 @@ class MatchService {
   Future<List<ProjectModel>> projectMatches() async {
     final result = await dioService.getMethod(url: BackendUrls.projectMatches);
 
-    final projectList = result.map((e) => ProjectModel.fromJson(e)).toList();
+    final projectList = result
+        .map((e) => ProjectModel.fromJson(e))
+        .take(5)
+        .toList();
 
     return projectList;
   }
