@@ -150,6 +150,22 @@
       }
     }
   },
-  "userName": "أليكس"
-   
+  "proposalTitle": "طلب التقديم",
+  "yourProposal": "طلب التقديم الخاص بك",
+  "optimizeAi": "تحسين بالذكاء الاصطناعي",
+  "copyProposal": "نسخ طلب التقديم",
+  "proposalCopied": "تم نسخ طلب التقديم إلى الحافظة",
+  "generatingProposal": "جاري إنشاء طلب التقديم...",
+  "failedToGenerateProposal": "فشل في إنشاء طلب التقديم",
+  "wordCount": "{count} كلمة",
+  "@wordCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "activeLead": "فرصة نشطة",
+  "userName": "أليكس",
+  "failedToOpenLink": "تعذّر فتح الرابط"
 }

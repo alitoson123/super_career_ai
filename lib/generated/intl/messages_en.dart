@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(count) => "${count} minutes ago";
 
-  static String m9(count) => "You have ${count} new opportunities today.";
+  static String m10(count) => "You have ${count} new opportunities today.";
 
   static String m5(count) => "Selected skills (${count})";
 
@@ -40,8 +40,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m8(userName) => "Welcome Back, ${userName}!";
 
+  static String m9(count) => "${count} words";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "activeLead": MessageLookupByLibrary.simpleMessage("ACTIVE LEAD"),
     "activeProposals": MessageLookupByLibrary.simpleMessage("Active Proposals"),
     "add": MessageLookupByLibrary.simpleMessage("add"),
     "addASkill": MessageLookupByLibrary.simpleMessage("Add a skill"),
@@ -70,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "companyHint": MessageLookupByLibrary.simpleMessage("e.g. Google"),
     "continueBtn": MessageLookupByLibrary.simpleMessage("Continue"),
     "copy": MessageLookupByLibrary.simpleMessage("Copy"),
+    "copyProposal": MessageLookupByLibrary.simpleMessage("Copy Proposal"),
     "createCustomCV": MessageLookupByLibrary.simpleMessage("Create Custom CV"),
     "currentlyWorkHere": MessageLookupByLibrary.simpleMessage(
       "I currently work here",
@@ -104,9 +108,18 @@ class MessageLookup extends MessageLookupByLibrary {
       "Excellent alignment with Freelance Hub standards",
     ),
     "exportCvPdf": MessageLookupByLibrary.simpleMessage("Export CV (PDF)"),
+    "failedToGenerateProposal": MessageLookupByLibrary.simpleMessage(
+      "Failed to generate proposal",
+    ),
+    "failedToOpenLink": MessageLookupByLibrary.simpleMessage(
+      "Could not open the link",
+    ),
     "foundCount": m0,
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "fullNameHint": MessageLookupByLibrary.simpleMessage("e.g. John Doe"),
+    "generatingProposal": MessageLookupByLibrary.simpleMessage(
+      "Generating proposal...",
+    ),
     "good": MessageLookupByLibrary.simpleMessage("Good"),
     "graduationYear": MessageLookupByLibrary.simpleMessage("Graduation Year"),
     "graduationYearHint": MessageLookupByLibrary.simpleMessage("e.g. 2022"),
@@ -139,7 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "The job description mentions \'Agile Methodology\' frequently. Consider adding this to your skills.",
     ),
     "moderate": MessageLookupByLibrary.simpleMessage("Moderate"),
-    "newOpportunities": m9,
+    "newOpportunities": m10,
     "nextEducation": MessageLookupByLibrary.simpleMessage("Next: Education"),
     "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
     "noHistory": MessageLookupByLibrary.simpleMessage("No history yet"),
@@ -153,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "You are all caught up! New matches and updates will appear here.",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "optimizeAi": MessageLookupByLibrary.simpleMessage("Optimize AI"),
     "perfectlyTailored": MessageLookupByLibrary.simpleMessage(
       "Perfectly tailored for Freelance Hub opportunities.",
     ),
@@ -184,7 +198,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Project Matches",
     ),
     "projects": MessageLookupByLibrary.simpleMessage("Projects"),
+    "proposalCopied": MessageLookupByLibrary.simpleMessage(
+      "Proposal copied to clipboard",
+    ),
     "proposalHistory": MessageLookupByLibrary.simpleMessage("Proposal History"),
+    "proposalTitle": MessageLookupByLibrary.simpleMessage("Proposal"),
     "quantifyAchievements": MessageLookupByLibrary.simpleMessage(
       "Quantify Achievements",
     ),
@@ -256,11 +274,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "whatAreYourTopSkills": MessageLookupByLibrary.simpleMessage(
       "What are your top skills?",
     ),
+    "wordCount": m9,
     "workDescriptionHint": MessageLookupByLibrary.simpleMessage(
       "Describe your responsibilities and achievements...",
     ),
     "workExperience": MessageLookupByLibrary.simpleMessage("Work Experience"),
     "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
     "yourCvIsReady": MessageLookupByLibrary.simpleMessage("Your CV is Ready!"),
+    "yourProposal": MessageLookupByLibrary.simpleMessage("YOUR PROPOSAL"),
   };
 }

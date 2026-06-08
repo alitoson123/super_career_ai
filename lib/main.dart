@@ -8,8 +8,9 @@ import 'package:super_career_ai/Core/services/locator_service/service_locator.da
 import 'generated/l10n.dart';
 import 'package:super_career_ai/Core/theme/app_theme.dart';
 
-void main() {
-  setup();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setup();
   Bloc.observer = MyBlocObserver(); // bloc observer
 
   runApp(const SuperCareerApp());

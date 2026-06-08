@@ -10,11 +10,19 @@ class DioService {
     return response.data;
   }
 
+  Future<List<dynamic>> postMethodList({
+    required String url,
+    required Map<String, dynamic> data,
+  }) async {
+    final response = await dio.post(url, data: data);
+    return response.data;
+  }
 
-
-
-  Future<List<dynamic>> postMethod({required String url,required Map<String, dynamic> data}) async {
-    final response = await dio.post(url,data: data);
+  Future<Map<String, dynamic>> postMethodMap({
+    required String url,
+    required Map<String, dynamic> data,
+  }) async {
+    final response = await dio.post(url, data: data);
     return response.data;
   }
 }

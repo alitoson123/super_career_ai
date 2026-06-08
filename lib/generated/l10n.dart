@@ -1174,9 +1174,94 @@ class S {
     );
   }
 
+  /// `Proposal`
+  String get proposalTitle {
+    return Intl.message('Proposal', name: 'proposalTitle', desc: '', args: []);
+  }
+
+  /// `YOUR PROPOSAL`
+  String get yourProposal {
+    return Intl.message(
+      'YOUR PROPOSAL',
+      name: 'yourProposal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optimize AI`
+  String get optimizeAi {
+    return Intl.message('Optimize AI', name: 'optimizeAi', desc: '', args: []);
+  }
+
+  /// `Copy Proposal`
+  String get copyProposal {
+    return Intl.message(
+      'Copy Proposal',
+      name: 'copyProposal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proposal copied to clipboard`
+  String get proposalCopied {
+    return Intl.message(
+      'Proposal copied to clipboard',
+      name: 'proposalCopied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Generating proposal...`
+  String get generatingProposal {
+    return Intl.message(
+      'Generating proposal...',
+      name: 'generatingProposal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to generate proposal`
+  String get failedToGenerateProposal {
+    return Intl.message(
+      'Failed to generate proposal',
+      name: 'failedToGenerateProposal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count} words`
+  String wordCount(int count) {
+    return Intl.message(
+      '$count words',
+      name: 'wordCount',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `ACTIVE LEAD`
+  String get activeLead {
+    return Intl.message('ACTIVE LEAD', name: 'activeLead', desc: '', args: []);
+  }
+
   /// `Alex`
   String get userName {
     return Intl.message('Alex', name: 'userName', desc: '', args: []);
+  }
+
+  /// `Could not open the link`
+  String get failedToOpenLink {
+    return Intl.message(
+      'Could not open the link',
+      name: 'failedToOpenLink',
+      desc: '',
+      args: [],
+    );
   }
 }
 

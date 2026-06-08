@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
+import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
+import 'package:super_career_ai/Features/Projects/Data/repo_impl/project_repo_impl.dart';
 import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity.dart';
+import 'package:super_career_ai/Features/Projects/presentation/view_model/custom_proposal_cubit/custom_proposal_cubit.dart';
 import 'package:super_career_ai/Features/Projects/presentation/views/project_details_view.dart';
+import 'package:super_career_ai/Features/Projects/presentation/widgets/custom_proposal_dialog.dart';
 import 'package:super_career_ai/Features/jobs/presentation/widgets/match_breakdown.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 
@@ -150,7 +155,7 @@ class PtojectTopMatchCard extends StatelessWidget {
               // custom proposal button
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => show(context, project),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF6366F1),
                     foregroundColor: Colors.white,
@@ -175,4 +180,21 @@ class PtojectTopMatchCard extends StatelessWidget {
       ),
     );
   }
+}
+
+void show(BuildContext context, ProjectEntity project) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (_) => BlocProvider(
+      create: (_) => CustomProposalCubit(projectRepo: getIt<ProjectRepoImpl>()),
+      child: Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: CustomProposalDialog(project: project),
+      ),
+    ),
+  );
 }

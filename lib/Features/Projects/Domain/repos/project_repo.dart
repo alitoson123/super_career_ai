@@ -3,5 +3,7 @@ import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity
 import 'package:dartz/dartz.dart';
 
 abstract class ProjectRepo {
-  Future<Either<Failure,List<ProjectEntity>>> fetchProjectMatches();
+  Future<Either<Failure, List<ProjectEntity>>> fetchProjectMatches();
+
+  Future<Either<Failure, String>> customProposal({required int project_id});
 }

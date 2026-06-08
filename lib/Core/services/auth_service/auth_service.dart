@@ -1,20 +1,22 @@
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_career_ai/Core/network/backend_urls.dart';
 
 class AuthService {
   AuthService({Dio? dio})
-      : _dio = dio ??
-            Dio(
-              BaseOptions(
-                connectTimeout: const Duration(seconds: 20),
-                receiveTimeout: const Duration(seconds: 20),
-                sendTimeout: const Duration(seconds: 20),
-                headers: const {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json',
-                },
-              ),
-            );
+    : _dio =
+          dio ??
+          Dio(
+            BaseOptions(
+              connectTimeout: const Duration(seconds: 20),
+              receiveTimeout: const Duration(seconds: 20),
+              sendTimeout: const Duration(seconds: 20),
+              headers: const {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+            ),
+          );
 
   final Dio _dio;
 
@@ -24,7 +26,8 @@ class AuthService {
     final msg = [
       if (status != null) 'HTTP $status',
       if (data != null) data is String ? data : data.toString(),
-      if ((data == null || data.toString().isEmpty) && (e.message?.isNotEmpty ?? false))
+      if ((data == null || data.toString().isEmpty) &&
+          (e.message?.isNotEmpty ?? false))
         e.message!,
     ].join(' - ');
     throw Exception(msg.isEmpty ? 'Request failed.' : msg);
@@ -77,18 +80,25 @@ class AuthService {
     try {
       final response = await _dio.post(
         BackendUrls.login,
-        data: {
-          'email': email,
-          'password': password,
-        },
+        data: {'email': email, 'password': password},
       );
-      return response.data;
+      final data = response.data;
+      if (data is Map<String, dynamic>) {
+        final tokens = data['tokens'];
+        final token =
+            tokens is Map ? tokens['access'] : (data['token'] ?? data['access']);
+        if (token != null) {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('auth_token', token.toString());
+        }
+      }
+      return data;
     } on DioException catch (e) {
       _rethrowAsReadable(e);
     }
   }
 
-/*
+  /*
   Future<dynamic> googleRegister({
     required String idToken,
     required String role,

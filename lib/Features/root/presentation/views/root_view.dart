@@ -49,7 +49,10 @@ class _RootViewState extends State<RootView> {
                     return IndexedStack(
                       index: currentIndex,
                       children: [
-                        HomeView(jobState: jobState, projectState: projectState),
+                        HomeView(
+                          jobState: jobState,
+                          projectState: projectState,
+                        ),
                         JopsMatchesView(jobState: jobState),
                         ProjectMatchesView(projectState: projectState),
                         CvView(),
@@ -60,8 +63,10 @@ class _RootViewState extends State<RootView> {
                 );
               },
             ),
-            bottomNavigationBar:
-                _buildBottomNavigationBar(context, currentIndex),
+            bottomNavigationBar: _buildBottomNavigationBar(
+              context,
+              currentIndex,
+            ),
           );
         },
       ),

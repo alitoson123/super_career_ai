@@ -43,7 +43,6 @@
   "requirements": "Requirements",
   "technicalStack": "Technical Stack",
   "createCustomCV": "Create Custom CV",
-  "viewNow": "View Now",
   "matchScore": "{score}% Match",
   "@matchScore": {
     "placeholders": {
@@ -187,6 +186,22 @@
       }
     }
   },
-  "userName": "Alex"
-  
+  "proposalTitle": "Proposal",
+  "yourProposal": "YOUR PROPOSAL",
+  "optimizeAi": "Optimize AI",
+  "copyProposal": "Copy Proposal",
+  "proposalCopied": "Proposal copied to clipboard",
+  "generatingProposal": "Generating proposal...",
+  "failedToGenerateProposal": "Failed to generate proposal",
+  "wordCount": "{count} words",
+  "@wordCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "activeLead": "ACTIVE LEAD",
+  "userName": "Alex",
+  "failedToOpenLink": "Could not open the link"
 }

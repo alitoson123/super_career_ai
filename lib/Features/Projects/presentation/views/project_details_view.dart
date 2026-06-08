@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity.dart';
+import 'package:super_career_ai/Features/Projects/presentation/widgets/project_top_match_card.dart';
 import 'package:super_career_ai/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectDetailsView extends StatelessWidget {
   final ProjectEntity project;
@@ -165,7 +167,8 @@ class ProjectDetailsView extends StatelessWidget {
 
               // Bottom Buttons
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => show(context, project),
+
                 style: ElevatedButton.styleFrom(
                   backgroundColor: projectColor,
                   foregroundColor: Colors.white,
@@ -192,7 +195,7 @@ class ProjectDetailsView extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               TextButton(
-                onPressed: () {},
+                onPressed: () => _launchUrl(context, project.sourceUrl),
                 style: TextButton.styleFrom(
                   minimumSize: Size(double.infinity, 56.h),
                   backgroundColor: const Color(0xFFF1F5F9),
@@ -201,7 +204,7 @@ class ProjectDetailsView extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  s.viewNow,
+                  s.applyNow,
                   style: TextStyle(
                     color: AppColors.textPrimary,
                     fontSize: 16.sp,
@@ -215,6 +218,17 @@ class ProjectDetailsView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _launchUrl(BuildContext context, String url) async {
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(S.of(context).failedToOpenLink)));
+      }
+    }
   }
 
   Widget _buildSectionTitle(BuildContext context, String title) {

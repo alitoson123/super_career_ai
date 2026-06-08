@@ -38,8 +38,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m8(userName) => "مرحباً بعودتك، ${userName}!";
 
+  static String m9(count) => "${count} كلمة";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "activeLead": MessageLookupByLibrary.simpleMessage("فرصة نشطة"),
     "activeProposals": MessageLookupByLibrary.simpleMessage("العروض النشطة"),
     "add": MessageLookupByLibrary.simpleMessage("إضافة"),
     "addASkill": MessageLookupByLibrary.simpleMessage("إضافة مهارة"),
@@ -66,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "companyHint": MessageLookupByLibrary.simpleMessage("مثال: جوجل"),
     "continueBtn": MessageLookupByLibrary.simpleMessage("متابعة"),
     "copy": MessageLookupByLibrary.simpleMessage("نسخ"),
+    "copyProposal": MessageLookupByLibrary.simpleMessage("نسخ طلب التقديم"),
     "createCustomCV": MessageLookupByLibrary.simpleMessage(
       "إنشاء سيرة ذاتية مخصصة",
     ),
@@ -104,9 +108,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "exportCvPdf": MessageLookupByLibrary.simpleMessage(
       "تصدير السيرة الذاتية (PDF)",
     ),
+    "failedToGenerateProposal": MessageLookupByLibrary.simpleMessage(
+      "فشل في إنشاء طلب التقديم",
+    ),
+    "failedToOpenLink": MessageLookupByLibrary.simpleMessage(
+      "تعذّر فتح الرابط",
+    ),
     "foundCount": m0,
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "fullNameHint": MessageLookupByLibrary.simpleMessage("مثال: جون دو"),
+    "generatingProposal": MessageLookupByLibrary.simpleMessage(
+      "جاري إنشاء طلب التقديم...",
+    ),
     "good": MessageLookupByLibrary.simpleMessage("جيد"),
     "graduationYear": MessageLookupByLibrary.simpleMessage("سنة التخرج"),
     "graduationYearHint": MessageLookupByLibrary.simpleMessage("مثال: 2022"),
@@ -151,6 +164,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "أنت محدث! ستظهر هنا مطابقات وتحديثات جديدة.",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "optimizeAi": MessageLookupByLibrary.simpleMessage(
+      "تحسين بالذكاء الاصطناعي",
+    ),
     "perfectlyTailored": MessageLookupByLibrary.simpleMessage(
       "مصممة بشكل مثالي لفرص Freelance Hub.",
     ),
@@ -182,7 +198,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "تطابقات المشاريع",
     ),
     "projects": MessageLookupByLibrary.simpleMessage("مشاريع"),
+    "proposalCopied": MessageLookupByLibrary.simpleMessage(
+      "تم نسخ طلب التقديم إلى الحافظة",
+    ),
     "proposalHistory": MessageLookupByLibrary.simpleMessage("سجل العروض"),
+    "proposalTitle": MessageLookupByLibrary.simpleMessage("طلب التقديم"),
     "quantifyAchievements": MessageLookupByLibrary.simpleMessage(
       "تحديد الإنجازات",
     ),
@@ -245,6 +265,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "whatAreYourTopSkills": MessageLookupByLibrary.simpleMessage(
       "ما هي أفضل مهاراتك؟",
     ),
+    "wordCount": m9,
     "workDescriptionHint": MessageLookupByLibrary.simpleMessage(
       "صف مسؤولياتك وإنجازاتك...",
     ),
@@ -252,6 +273,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
     "yourCvIsReady": MessageLookupByLibrary.simpleMessage(
       "سيرتك الذاتية جاهزة!",
+    ),
+    "yourProposal": MessageLookupByLibrary.simpleMessage(
+      "طلب التقديم الخاص بك",
     ),
   };
 }
