@@ -30,4 +30,12 @@ class DioService {
     final response = await dio.post(url, data: data);
     return response.data;
   }
+
+  Future<Map<String, dynamic>> putMethodMap({
+    required String url,
+    required Map<String, dynamic> data,
+  }) async {
+    final response = await dio.put(url, data: data);
+    return response.data;
+  }
 }

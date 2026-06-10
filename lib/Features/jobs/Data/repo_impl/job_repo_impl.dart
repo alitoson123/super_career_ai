@@ -85,4 +85,32 @@ class JobRepoImpl extends JobRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, BaseCvModel>> uploadBaseCVForTheFirstTime(Map<String, dynamic> data) async {
+    try {
+      final result = await baseCvService.uploadBaseCVForTheFirstTime(data);
+      return right(result);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errorMessage: e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, BaseCvModel>> changeTheBaseCV(Map<String, dynamic> data) async {
+    try {
+      final result = await baseCvService.changeTheBaseCV(data);
+      return right(result);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errorMessage: e.toString()));
+      }
+    }
+  }
 }

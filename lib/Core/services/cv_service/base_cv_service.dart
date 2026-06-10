@@ -8,8 +8,31 @@ class BaseCVService {
   BaseCVService({required this.dioService});
 
   Future<BaseCvModel> getBaseCV() async {
-    final result = await dioService.getMethodMap(
-      url: BackendUrls.getBaseCV,
+    final result = await dioService.getMethodMap(url: BackendUrls.getBaseCV);
+
+    final baseCvModel = BaseCvModel.fromJson(result);
+
+    return baseCvModel;
+  }
+
+  ///////////////////////////////////
+  Future<BaseCvModel> uploadBaseCVForTheFirstTime(
+    Map<String, dynamic> data,
+  ) async {
+    final result = await dioService.postMethodMap(
+      url: BackendUrls.uploadBaseCV,
+      data: data,
+    );
+
+    final baseCvModel = BaseCvModel.fromJson(result);
+
+    return baseCvModel;
+  }
+
+  Future<BaseCvModel> changeTheBaseCV(Map<String, dynamic> data) async {
+    final result = await dioService.putMethodMap(
+      url: BackendUrls.changeBaseCV,
+      data: data,
     );
 
     final baseCvModel = BaseCvModel.fromJson(result);

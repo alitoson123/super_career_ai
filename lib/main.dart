@@ -7,6 +7,7 @@ import 'package:super_career_ai/Core/services/Bloc_observes_service/my_Bloc_obse
 import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
 import 'package:super_career_ai/Features/jobs/Data/repo_impl/job_repo_impl.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/base_cv_cubit.dart/get_base_cv_cubit.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/base_cv_cubit.dart/uplaod_base_cv_cubit.dart';
 import 'generated/l10n.dart';
 import 'package:super_career_ai/Core/theme/app_theme.dart';
 
@@ -23,10 +24,16 @@ class SuperCareerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          BaseCvCubit(jobRepo: getIt<JobRepoImpl>())
-            ..fetchBaseCV(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              BaseCvCubit(jobRepo: getIt<JobRepoImpl>())..fetchBaseCV(),
+        ),
+        BlocProvider(
+          create: (context) => UploadBaseCvCubit(jobRepo: getIt<JobRepoImpl>()),
+        ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(375, 844),
         minTextAdapt: true,

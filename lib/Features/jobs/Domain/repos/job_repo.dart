@@ -11,4 +11,8 @@ abstract class JobRepo {
   Future<Either<Failure, BaseCvModel>> getBaseCV();
 
   Future<Either<Failure, BaseCvModel>> customCVJob({required int jobId});
+
+  Future<Either<Failure, BaseCvModel>> uploadBaseCVForTheFirstTime(Map<String, dynamic> data);
+
+  Future<Either<Failure, BaseCvModel>> changeTheBaseCV(Map<String, dynamic> data);
 }
