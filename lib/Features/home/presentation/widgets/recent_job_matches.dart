@@ -57,9 +57,17 @@ class RecentJobMatches extends StatelessWidget {
           ],
         ),
         SizedBox(height: 16.h),
-        // job match cards
-        JobTopMatchCard(job: jobEntity[0]),
-        JobTopMatchCard(job: jobEntity[1]),
+        //job match cards
+        if (jobEntity.isNotEmpty) ...[
+          JobTopMatchCard(job: jobEntity[0]),
+          if (jobEntity.length > 1) JobTopMatchCard(job: jobEntity[1]),
+        ] else
+          Center(
+            child: Text(
+              S.of(context).noJobMatchesFound,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
       ],
     );
   }

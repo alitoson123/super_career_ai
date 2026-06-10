@@ -38,7 +38,7 @@ class ServerFailure extends Failure {
         );
       case DioExceptionType.unknown:
         return ServerFailure(
-          errorMessage: "Unexpected error occurred: ${dioException.message}",
+          errorMessage: "Unexpected error: ${dioException.error ?? dioException.message}",
         );
     }
   }

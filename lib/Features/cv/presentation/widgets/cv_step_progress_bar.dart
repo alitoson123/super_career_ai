@@ -35,10 +35,7 @@ class CvStepProgressBar extends StatelessWidget {
             ),
             Text(
               stepCounter,
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary),
             ),
           ],
         ),

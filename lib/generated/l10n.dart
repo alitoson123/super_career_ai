@@ -1509,6 +1509,126 @@ class S {
       args: [],
     );
   }
+
+  /// `No job matches found`
+  String get noJobMatchesFound {
+    return Intl.message(
+      'No job matches found',
+      name: 'noJobMatchesFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No project matches found`
+  String get noProjectMatchesFound {
+    return Intl.message(
+      'No project matches found',
+      name: 'noProjectMatchesFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CV Editor`
+  String get cvEditor {
+    return Intl.message(
+      'CV Editor',
+      name: 'cvEditor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Your CV`
+  String get uploadYourCv {
+    return Intl.message(
+      'Upload Your CV',
+      name: 'uploadYourCv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Drag and drop or click to upload`
+  String get dragAndDropOrClick {
+    return Intl.message(
+      'Drag and drop or click to upload',
+      name: 'dragAndDropOrClick',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PDF or DOCX files up to 5MB`
+  String get fileLimitText {
+    return Intl.message(
+      'PDF or DOCX files up to 5MB',
+      name: 'fileLimitText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recent Document`
+  String get recentDocument {
+    return Intl.message(
+      'Recent Document',
+      name: 'recentDocument',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use this CV`
+  String get useThisCv {
+    return Intl.message(
+      'Use this CV',
+      name: 'useThisCv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CV uploaded successfully!`
+  String get cvUploaded {
+    return Intl.message(
+      'CV uploaded successfully!',
+      name: 'cvUploaded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selecting CV...`
+  String get selectingCv {
+    return Intl.message(
+      'Selecting CV...',
+      name: 'selectingCv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CV selected successfully!`
+  String get cvSelected {
+    return Intl.message(
+      'CV selected successfully!',
+      name: 'cvSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No base cv found try to upload one`
+  String get noBaseCvTryToUploadOne {
+    return Intl.message(
+      'No base cv found try to upload one',
+      name: 'noBaseCvTryToUploadOne',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,9 +55,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
       context.go(AppRoutes.rootScreen);
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Login failed: $e')));
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
     }
@@ -82,15 +82,15 @@ class _SignInViewBodyState extends State<SignInViewBody> {
         return;
       }
 
-     // await _authService.googleLogin(idToken: idToken, role: 'job_seeker');
+      // await _authService.googleLogin(idToken: idToken, role: 'job_seeker');
 
       if (!mounted) return;
       context.go(AppRoutes.rootScreen);
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Google sign-in failed: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Google sign-in failed: $e')));
     }
   }
 
@@ -132,14 +132,12 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: 20.h),
-                PasswordLabeledField(
-                  label: 'Password',
-                  controller: _password,
-                ),
+                PasswordLabeledField(label: 'Password', controller: _password),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () => context.push(AppRoutes.forgetPasswordScreen),
+                    onPressed: () =>
+                        context.push(AppRoutes.forgetPasswordScreen),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.only(top: 4.h),
                       foregroundColor: AppColors.primaryBlue,

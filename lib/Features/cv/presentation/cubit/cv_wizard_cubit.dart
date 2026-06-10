@@ -15,10 +15,12 @@ class CvWizardCubit extends Cubit<CvWizardState> {
   // ────────────────────────── Personal Info ───────────────────────────
 
   void savePersonalInfo(PersonalInfoEntity info) {
-    emit(state.copyWith(
-      cv: state.cv.copyWith(personalInfo: info),
-      step: CvWizardStep.workExperience,
-    ));
+    emit(
+      state.copyWith(
+        cv: state.cv.copyWith(personalInfo: info),
+        step: CvWizardStep.workExperience,
+      ),
+    );
   }
 
   // ───────────────────────── Work Experience ──────────────────────────
@@ -43,8 +45,7 @@ class CvWizardCubit extends Cubit<CvWizardState> {
   }
 
   void saveWorkExperience() =>
-      emit(state.copyWith(step: CvWizardStep.education)
-      ,  );
+      emit(state.copyWith(step: CvWizardStep.education));
 
   // ──────────────────────────── Education ─────────────────────────────
 
@@ -110,11 +111,13 @@ class CvWizardCubit extends Cubit<CvWizardState> {
       ],
     );
 
-    emit(state.copyWith(
-      isLoading: false,
-      atsAnalysis: analysis,
-      step: CvWizardStep.atsResult,
-    ));
+    emit(
+      state.copyWith(
+        isLoading: false,
+        atsAnalysis: analysis,
+        step: CvWizardStep.atsResult,
+      ),
+    );
   }
 
   void restart() => emit(CvWizardState.initial());

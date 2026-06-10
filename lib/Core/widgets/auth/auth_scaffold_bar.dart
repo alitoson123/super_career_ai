@@ -4,11 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:super_career_ai/Core/theme/app_colors.dart';
 
 class AuthScaffoldBar extends StatelessWidget implements PreferredSizeWidget {
-  const AuthScaffoldBar({
-    super.key,
-    required this.title,
-    this.onBack,
-  });
+  const AuthScaffoldBar({super.key, required this.title, this.onBack});
 
   final String title;
   final VoidCallback? onBack;

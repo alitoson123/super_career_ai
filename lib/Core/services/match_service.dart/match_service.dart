@@ -10,15 +10,19 @@ class MatchService {
   MatchService({required this.dioService});
 
   Future<List<JobEntity>> jobMatches() async {
-    final result = await dioService.getMethod(url: BackendUrls.jobMatches);
+    final result = await dioService.getMethodList(url: BackendUrls.jobMatches);
 
     final jobList = result.map((e) => JobsModel.fromJson(e)).take(5).toList();
 
+   //  final filteredList = jobList.where((job) => job.matchScore >= 85   ).toList();
+   
     return jobList;
   }
 
   Future<List<ProjectModel>> projectMatches() async {
-    final result = await dioService.getMethod(url: BackendUrls.projectMatches);
+    final result = await dioService.getMethodList(
+      url: BackendUrls.projectMatches,
+    );
 
     final projectList = result
         .map((e) => ProjectModel.fromJson(e))

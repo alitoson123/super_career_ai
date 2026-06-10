@@ -59,6 +59,21 @@ lib/
 - Use `ListView.builder` or `SliverList` for long lists.
 - Use `Expanded` to fill space; `Flexible` to shrink-to-fit. Never mix both in the same Row/Column.
 - Use `LayoutBuilder` for responsive layouts based on available space.
+- Keep each file under 150 lines. If a file exceeds this, it is a signal to split.
+- Every widget that is logically distinct or reusable must live in its own file.
+  Do not nest multiple top-level widget classes in one file.
+- Screen files (e.g., `home_screen.dart`) must only contain the screen class and
+  its direct scaffold/layout structure. All sections, cards, rows, and sub-widgets
+  must be extracted to separate files inside a `widgets/` subfolder:
+presentation/
+├── screens/
+│   └── home_screen.dart        # layout only — delegates to widgets
+└── widgets/
+├── home_header.dart
+├── home_stats_card.dart
+└── home_action_buttons.dart
+- Private widget classes (`_MyWidget`) are only acceptable for truly trivial,
+  single-use wrappers (≤ 20 lines). Anything larger gets its own file.
 
 ---
 

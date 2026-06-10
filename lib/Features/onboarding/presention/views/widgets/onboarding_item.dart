@@ -100,7 +100,7 @@ class OnboardingItem extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: 52.h,
-            child: ElevatedButton(
+          child: ElevatedButton(
             onPressed: () {
               if (isLastPage) {
                 context.go(AppRoutes.welcomeScreen);

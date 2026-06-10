@@ -12,16 +12,18 @@ class OtpVerificationViewBody extends StatefulWidget {
   final String email;
 
   @override
-  State<OtpVerificationViewBody> createState() => _OtpVerificationViewBodyState();
+  State<OtpVerificationViewBody> createState() =>
+      _OtpVerificationViewBodyState();
 }
 
 class _OtpVerificationViewBodyState extends State<OtpVerificationViewBody> {
-  final List<TextEditingController> _controllers =
-      List.generate(4, (_) => TextEditingController());
+  final List<TextEditingController> _controllers = List.generate(
+    4,
+    (_) => TextEditingController(),
+  );
   final List<FocusNode> _focusNodes = List.generate(4, (_) => FocusNode());
 
-  bool get _complete =>
-      _controllers.every((c) => c.text.trim().length == 1);
+  bool get _complete => _controllers.every((c) => c.text.trim().length == 1);
 
   @override
   void dispose() {
@@ -149,14 +151,14 @@ class _OtpVerificationViewBodyState extends State<OtpVerificationViewBody> {
                     height: 54.h,
                     child: ElevatedButton(
                       onPressed: _complete
-                          ? () =>
-                              context.push(AppRoutes.resetPasswordScreen)
+                          ? () => context.push(AppRoutes.resetPasswordScreen)
                           : null,
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
                         backgroundColor: const Color(0xFF1861F2),
-                        disabledBackgroundColor: const Color(0xFF1861F2)
-                            .withValues(alpha: 0.45),
+                        disabledBackgroundColor: const Color(
+                          0xFF1861F2,
+                        ).withValues(alpha: 0.45),
                         foregroundColor: AppColors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r),
@@ -181,9 +183,7 @@ class _OtpVerificationViewBodyState extends State<OtpVerificationViewBody> {
                           color: AppColors.black,
                         ),
                         children: [
-                          const TextSpan(
-                            text: 'Didn\'t receive the code? ',
-                          ),
+                          const TextSpan(text: 'Didn\'t receive the code? '),
                           TextSpan(
                             text: 'Send Again',
                             style: TextStyle(

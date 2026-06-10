@@ -40,10 +40,7 @@ class EducationStep extends StatelessWidget {
             SizedBox(height: 4.h),
             Text(
               s.educationDetailsHint,
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: AppColors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 13.sp, color: AppColors.textSecondary),
             ),
             SizedBox(height: 16.h),
             Expanded(
@@ -68,8 +65,7 @@ class EducationStep extends StatelessWidget {
               children: [
                 CvOutlinedButton(
                   label: s.back,
-                  onPressed: () =>
-                      cubit.goToStep(CvWizardStep.workExperience),
+                  onPressed: () => cubit.goToStep(CvWizardStep.workExperience),
                 ),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -129,12 +125,14 @@ class _EducationCardState extends State<_EducationCard> {
   }
 
   void _notify() {
-    widget.onChanged(EducationEntity(
-      school: _schoolCtrl.text,
-      degree: _degreeCtrl.text,
-      graduationYear: _yearCtrl.text,
-      description: _descCtrl.text,
-    ));
+    widget.onChanged(
+      EducationEntity(
+        school: _schoolCtrl.text,
+        degree: _degreeCtrl.text,
+        graduationYear: _yearCtrl.text,
+        description: _descCtrl.text,
+      ),
+    );
   }
 
   @override

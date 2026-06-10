@@ -72,10 +72,7 @@ class _SkillsStepState extends State<SkillsStep> {
             SizedBox(height: 4.h),
             Text(
               s.skillsInstruction,
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: AppColors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 13.sp, color: AppColors.textSecondary),
             ),
             SizedBox(height: 16.h),
             // Search + add row
@@ -118,10 +115,12 @@ class _SkillsStepState extends State<SkillsStep> {
                         spacing: 8.w,
                         runSpacing: 8.h,
                         children: selectedSkills
-                            .map((sk) => _SelectedSkillChip(
-                                  label: sk,
-                                  onRemove: () => cubit.removeSkill(sk),
-                                ))
+                            .map(
+                              (sk) => _SelectedSkillChip(
+                                label: sk,
+                                onRemove: () => cubit.removeSkill(sk),
+                              ),
+                            )
                             .toList(),
                       ),
                       SizedBox(height: 24.h),
@@ -142,10 +141,12 @@ class _SkillsStepState extends State<SkillsStep> {
                         spacing: 8.w,
                         runSpacing: 8.h,
                         children: recommended
-                            .map((sk) => _RecommendedChip(
-                                  label: sk,
-                                  onTap: () => cubit.addSkill(sk),
-                                ))
+                            .map(
+                              (sk) => _RecommendedChip(
+                                label: sk,
+                                onTap: () => cubit.addSkill(sk),
+                              ),
+                            )
                             .toList(),
                       ),
                     ],
@@ -297,10 +298,7 @@ class _RecommendedChip extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyle(
-            color: AppColors.textSecondary,
-            fontSize: 13.sp,
-          ),
+          style: TextStyle(color: AppColors.textSecondary, fontSize: 13.sp),
         ),
       ),
     );

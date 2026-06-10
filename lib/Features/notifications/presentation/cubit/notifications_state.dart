@@ -9,9 +9,8 @@ class NotificationsState {
   final List<NotificationEntity> notifications;
   final bool isLoading;
 
-  static NotificationsState initial() => const NotificationsState(
-    notifications: [],
-  );
+  static NotificationsState initial() =>
+      const NotificationsState(notifications: []);
 
   NotificationsState copyWith({
     List<NotificationEntity>? notifications,

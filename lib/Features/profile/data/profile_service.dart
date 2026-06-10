@@ -5,19 +5,20 @@ import 'package:super_career_ai/Features/profile/data/models/profile_model.dart'
 
 class ProfileService {
   ProfileService({Dio? dio, AuthTokenStorage? tokenStorage})
-      : _dio = dio ??
-            Dio(
-              BaseOptions(
-                connectTimeout: const Duration(seconds: 20),
-                receiveTimeout: const Duration(seconds: 20),
-                sendTimeout: const Duration(seconds: 20),
-                headers: const {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json',
-                },
-              ),
+    : _dio =
+          dio ??
+          Dio(
+            BaseOptions(
+              connectTimeout: const Duration(seconds: 20),
+              receiveTimeout: const Duration(seconds: 20),
+              sendTimeout: const Duration(seconds: 20),
+              headers: const {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
             ),
-        _tokenStorage = tokenStorage ?? AuthTokenStorage();
+          ),
+      _tokenStorage = tokenStorage ?? AuthTokenStorage();
 
   final Dio _dio;
   final AuthTokenStorage _tokenStorage;
@@ -28,7 +29,8 @@ class ProfileService {
     final msg = [
       if (status != null) 'HTTP $status',
       if (data != null) data is String ? data : data.toString(),
-      if ((data == null || data.toString().isEmpty) && (e.message?.isNotEmpty ?? false))
+      if ((data == null || data.toString().isEmpty) &&
+          (e.message?.isNotEmpty ?? false))
         e.message!,
     ].join(' - ');
     throw Exception(msg.isEmpty ? 'Request failed.' : msg);
@@ -79,4 +81,3 @@ class ProfileService {
     }
   }
 }
-

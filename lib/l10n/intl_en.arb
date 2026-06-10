@@ -204,5 +204,17 @@
   "activeLead": "ACTIVE LEAD",
   "userName": "Alex",
   "failedToOpenLink": "Could not open the link",
-  "retry": "Retry"
+  "retry": "Retry",
+  "noJobMatchesFound": "No job matches found",
+  "noProjectMatchesFound": "No project matches found",
+  "cvEditor": "CV Editor",
+  "uploadYourCv": "Upload Your CV",
+  "dragAndDropOrClick": "Drag and drop or click to upload",
+  "fileLimitText": "PDF or DOCX files up to 5MB",
+  "recentDocument": "Recent Document",
+  "useThisCv": "Use this CV",
+  "cvUploaded": "CV uploaded successfully!",
+  "selectingCv": "Selecting CV...",
+  "cvSelected": "CV selected successfully!",
+  "noBaseCvTryToUploadOne": "No base cv found try to upload one"
 }

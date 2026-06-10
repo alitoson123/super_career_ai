@@ -3,12 +3,13 @@ import 'package:flutter/services.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
- // GoogleAuthService({GoogleSignIn? googleSignIn})
- //     : _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
+  // GoogleAuthService({GoogleSignIn? googleSignIn})
+  //     : _googleSignIn = googleSignIn ?? GoogleSignIn.instance;
 
- // final GoogleSignIn _googleSignIn;
-  static const MethodChannel _channel =
-      MethodChannel('super_career_ai/google_sign_in_config');
+  // final GoogleSignIn _googleSignIn;
+  static const MethodChannel _channel = MethodChannel(
+    'super_career_ai/google_sign_in_config',
+  );
 
   bool get isSupported {
     if (kIsWeb) return true;
@@ -26,22 +27,24 @@ class GoogleAuthService {
   }
 
   Future<String?> getIdToken() async {
-    var trimmedServerClientId =
-        const String.fromEnvironment('GOOGLE_SERVER_CLIENT_ID').trim();
+    var trimmedServerClientId = const String.fromEnvironment(
+      'GOOGLE_SERVER_CLIENT_ID',
+    ).trim();
 
     if (!kIsWeb &&
         defaultTargetPlatform == TargetPlatform.android &&
         trimmedServerClientId.isEmpty) {
       try {
-        final fromRes =
-            await _channel.invokeMethod<String>('getDefaultWebClientId');
+        final fromRes = await _channel.invokeMethod<String>(
+          'getDefaultWebClientId',
+        );
         trimmedServerClientId = (fromRes ?? '').trim();
       } catch (_) {
         // Ignore and keep empty. We'll provide a clear error if idToken is missing.
       }
     }
 
-  /*  await _googleSignIn.initialize(
+    /*  await _googleSignIn.initialize(
       serverClientId: trimmedServerClientId.isEmpty ? null : trimmedServerClientId,
       clientId: kIsWeb ? const String.fromEnvironment('GOOGLE_WEB_CLIENT_ID') : null,
     );*/
@@ -51,7 +54,7 @@ class GoogleAuthService {
       //await _googleSignIn.signOut();
     } catch (_) {}
 
- /*   if (!_googleSignIn.supportsAuthenticate()) {
+    /*   if (!_googleSignIn.supportsAuthenticate()) {
       throw UnsupportedError('Google authenticate() is not supported here.');
     }*/
 
@@ -60,7 +63,7 @@ class GoogleAuthService {
     );*/
 
     //final auth = account.authentication;
-   // final idToken = auth.idToken;
+    // final idToken = auth.idToken;
     /*if (idToken == null || idToken.isEmpty) {
       // On Android/iOS, an ID token often requires a *server* client id (Web client id).
       // We don't hard-fail before showing the Google UI; instead we surface a clear fix.
@@ -74,4 +77,3 @@ class GoogleAuthService {
     return idToken;*/
   }
 }
-

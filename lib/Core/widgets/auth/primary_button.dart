@@ -36,7 +36,9 @@ class PrimaryButton extends StatelessWidget {
             elevation: 0,
             shadowColor: Colors.transparent,
             backgroundColor: AppColors.primaryBlue,
-            disabledBackgroundColor: AppColors.primaryBlue.withValues(alpha: 0.45),
+            disabledBackgroundColor: AppColors.primaryBlue.withValues(
+              alpha: 0.45,
+            ),
             foregroundColor: AppColors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14.r),
@@ -44,10 +46,7 @@ class PrimaryButton extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w700,
-            ),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
           ),
         ),
       ),

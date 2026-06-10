@@ -25,4 +25,3 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     super.dispose();
   }
 }
-

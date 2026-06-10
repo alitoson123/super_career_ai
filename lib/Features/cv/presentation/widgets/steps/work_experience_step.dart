@@ -40,10 +40,7 @@ class WorkExperienceStep extends StatelessWidget {
             SizedBox(height: 4.h),
             Text(
               s.startWithMostRecent,
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: AppColors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 13.sp, color: AppColors.textSecondary),
             ),
             SizedBox(height: 16.h),
             Expanded(
@@ -126,14 +123,16 @@ class _WorkExperienceCardState extends State<_WorkExperienceCard> {
   }
 
   void _notify() {
-    widget.onChanged(WorkExperienceEntity(
-      jobTitle: _jobCtrl.text,
-      company: _companyCtrl.text,
-      startDate: _startCtrl.text,
-      endDate: _endCtrl.text,
-      isCurrentJob: _currentJob,
-      description: _descCtrl.text,
-    ));
+    widget.onChanged(
+      WorkExperienceEntity(
+        jobTitle: _jobCtrl.text,
+        company: _companyCtrl.text,
+        startDate: _startCtrl.text,
+        endDate: _endCtrl.text,
+        isCurrentJob: _currentJob,
+        description: _descCtrl.text,
+      ),
+    );
   }
 
   @override
@@ -220,10 +219,7 @@ class _WorkExperienceCardState extends State<_WorkExperienceCard> {
               SizedBox(width: 8.w),
               Text(
                 s.currentlyWorkHere,
-                style: TextStyle(
-                  fontSize: 13.sp,
-                  color: AppColors.textPrimary,
-                ),
+                style: TextStyle(fontSize: 13.sp, color: AppColors.textPrimary),
               ),
             ],
           ),

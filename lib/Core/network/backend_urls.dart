@@ -20,4 +20,20 @@ class BackendUrls {
   // Custom Proposal Endpoint
   static const String customProposal =
       '$baseUrl/api/matching/generate-proposal/';
+
+  // Custom CV Endpoints
+  static const String customCVJob = '$baseUrl/api/documents/cv/job/';
+
+  // History Endpoints
+  static const String customCVHistory = '$baseUrl/api/documents/cv/';
+
+  /// base cv
+  // get base cv
+  static const String getBaseCV = '$baseUrl/api/documents/cv/base/update/';
+
+  // upload base cv for the first time
+  static const String uploadBaseCV = '$baseUrl/api/documents/cv/base/';
+
+  // change base cv
+  static const String changeBaseCV = '$baseUrl/api/documents/cv/base/update/';
 }

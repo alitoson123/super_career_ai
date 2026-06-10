@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:super_career_ai/Core/navigator/app_routes.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
 import 'package:super_career_ai/Features/jobs/presentation/views/job_details_view.dart';
@@ -151,7 +153,9 @@ class JobTopMatchCard extends StatelessWidget {
               // custom cv button
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRoutes.cvEditorScreen, extra: job.id);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlue,
                     foregroundColor: Colors.white,

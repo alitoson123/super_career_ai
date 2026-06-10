@@ -32,4 +32,3 @@ class AuthTokenStorage {
     await prefs.remove(_kRefreshTokenKey);
   }
 }
-

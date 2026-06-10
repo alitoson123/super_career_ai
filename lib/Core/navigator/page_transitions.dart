@@ -22,19 +22,13 @@ Page<void> buildSlideFadePage({
           begin: const Offset(0.06, 0),
           end: Offset.zero,
         ).animate(curved),
-        child: FadeTransition(
-          opacity: curved,
-          child: child,
-        ),
+        child: FadeTransition(opacity: curved, child: child),
       );
     },
   );
 }
 
-Page<void> buildFadePage({
-  required LocalKey pageKey,
-  required Widget child,
-}) {
+Page<void> buildFadePage({required LocalKey pageKey, required Widget child}) {
   return CustomTransitionPage<void>(
     key: pageKey,
     child: child,
@@ -42,10 +36,7 @@ Page<void> buildFadePage({
     reverseTransitionDuration: const Duration(milliseconds: 240),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       return FadeTransition(
-        opacity: CurvedAnimation(
-          parent: animation,
-          curve: Curves.easeOut,
-        ),
+        opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
         child: child,
       );
     },

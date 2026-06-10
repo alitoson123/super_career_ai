@@ -167,5 +167,17 @@
   },
   "activeLead": "فرصة نشطة",
   "userName": "أليكس",
-  "failedToOpenLink": "تعذّر فتح الرابط"
+  "failedToOpenLink": "تعذّر فتح الرابط",
+  "noJobMatchesFound": "لا توجد تطابقات وظائف",
+  "noProjectMatchesFound": "لا توجد تطابقات مشاريع",
+  "cvEditor": "محرر السيرة الذاتية",
+  "uploadYourCv": "تحميل سيرتك الذاتية",
+  "dragAndDropOrClick": "اسحب وأسقط الملف أو انقر للتحميل",
+  "fileLimitText": "ملفات PDF أو DOCX حتى 5 ميجابايت",
+  "recentDocument": "المستندات الأخيرة",
+  "useThisCv": "استخدم هذه السيرة الذاتية",
+  "cvUploaded": "تم رفع السيرة الذاتية بنجاح!",
+  "selectingCv": "جاري تحديد السيرة الذاتية...",
+  "cvSelected": "تم تحديد السيرة الذاتية بنجاح!",
+  "noBaseCvTryToUploadOne": "لا يوجد سيرة ذاتية اساسية حاول رفع واحدة"
 }

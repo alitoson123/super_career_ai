@@ -67,15 +67,15 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         return;
       }
 
-     // await _authService.googleRegister(idToken: idToken, role: role);
+      // await _authService.googleRegister(idToken: idToken, role: role);
 
       if (!mounted) return;
       context.push(AppRoutes.accountCreatedScreen);
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Google sign-in failed: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Google sign-in failed: $e')));
     }
   }
 
@@ -125,9 +125,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         context.push(AppRoutes.accountCreatedScreen);
       } catch (_) {
         if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Register failed: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Register failed: $e')));
       }
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
@@ -220,7 +220,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             fontWeight: FontWeight.w700,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () => context.push(AppRoutes.signInScreen),
+                            ..onTap = () =>
+                                context.push(AppRoutes.signInScreen),
                         ),
                       ],
                     ),

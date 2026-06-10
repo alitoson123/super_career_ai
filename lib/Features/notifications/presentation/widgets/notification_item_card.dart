@@ -45,8 +45,9 @@ class NotificationItemCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 14.sp,
-                      fontWeight:
-                          notification.isRead ? FontWeight.w500 : FontWeight.w700,
+                      fontWeight: notification.isRead
+                          ? FontWeight.w500
+                          : FontWeight.w700,
                       color: AppColors.textPrimary,
                     ),
                   ),

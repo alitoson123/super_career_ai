@@ -51,10 +51,7 @@ class ProjectMatchCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
+                    Text(title, style: Theme.of(context).textTheme.titleMedium),
                     SizedBox(height: 4.h),
                     Text(
                       subtitle,
@@ -72,8 +69,8 @@ class ProjectMatchCard extends StatelessWidget {
                 child: Text(
                   matchPercentage,
                   style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                        color: AppColors.primaryBlue,
-                      ),
+                    color: AppColors.primaryBlue,
+                  ),
                 ),
               ),
             ],
@@ -85,9 +82,9 @@ class ProjectMatchCard extends StatelessWidget {
             children: [
               Text(
                 priceRange,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textPrimary,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: AppColors.textPrimary),
               ),
               ElevatedButton(
                 onPressed: () {},
@@ -95,14 +92,20 @@ class ProjectMatchCard extends StatelessWidget {
                   backgroundColor: AppColors.primaryBlue,
                   foregroundColor: Colors.white,
                   elevation: 0,
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.w,
+                    vertical: 8.h,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6.r),
                   ),
                 ),
                 child: Text(
                   S.of(context).applyNow,
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 12.sp),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12.sp,
+                  ),
                 ),
               ),
             ],

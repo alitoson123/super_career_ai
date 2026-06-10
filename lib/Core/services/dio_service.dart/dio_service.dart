@@ -5,7 +5,12 @@ class DioService {
 
   DioService({required this.dio});
 
-  Future<List<dynamic>> getMethod({required String url}) async {
+  Future<List<dynamic>> getMethodList({required String url}) async {
+    final response = await dio.get(url);
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> getMethodMap({required String url}) async {
     final response = await dio.get(url);
     return response.data;
   }
@@ -20,7 +25,7 @@ class DioService {
 
   Future<Map<String, dynamic>> postMethodMap({
     required String url,
-    required Map<String, dynamic> data,
+     Map<String, dynamic>? data,
   }) async {
     final response = await dio.post(url, data: data);
     return response.data;

@@ -80,7 +80,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "customProposal":
             MessageLookupByLibrary.simpleMessage("Custom Proposal"),
         "cv": MessageLookupByLibrary.simpleMessage("CV"),
+        "cvEditor": MessageLookupByLibrary.simpleMessage("CV Editor"),
         "cvHistory": MessageLookupByLibrary.simpleMessage("CV History"),
+        "cvSelected":
+            MessageLookupByLibrary.simpleMessage("CV selected successfully!"),
+        "cvUploaded":
+            MessageLookupByLibrary.simpleMessage("CV uploaded successfully!"),
         "degree": MessageLookupByLibrary.simpleMessage("Degree"),
         "degreeHint": MessageLookupByLibrary.simpleMessage(
             "e.g. Bachelor of Science in Computer Science"),
@@ -88,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionOptional":
             MessageLookupByLibrary.simpleMessage("Description (Optional)"),
         "download": MessageLookupByLibrary.simpleMessage("Download"),
+        "dragAndDropOrClick": MessageLookupByLibrary.simpleMessage(
+            "Drag and drop or click to upload"),
         "education": MessageLookupByLibrary.simpleMessage("Education"),
         "educationDescriptionHint": MessageLookupByLibrary.simpleMessage(
             "Relevant coursework, honors, or activities..."),
@@ -105,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Failed to generate proposal"),
         "failedToOpenLink":
             MessageLookupByLibrary.simpleMessage("Could not open the link"),
+        "fileLimitText":
+            MessageLookupByLibrary.simpleMessage("PDF or DOCX files up to 5MB"),
         "foundCount": m0,
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "fullNameHint": MessageLookupByLibrary.simpleMessage("e.g. John Doe"),
@@ -147,13 +156,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "nextEducation":
             MessageLookupByLibrary.simpleMessage("Next: Education"),
         "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
+        "noBaseCvTryToUploadOne": MessageLookupByLibrary.simpleMessage(
+            "No base cv found try to upload one"),
         "noHistory": MessageLookupByLibrary.simpleMessage("No history yet"),
+        "noJobMatchesFound":
+            MessageLookupByLibrary.simpleMessage("No job matches found"),
         "noNewMatches": MessageLookupByLibrary.simpleMessage(
             "You have no new matches today."),
         "noNotifications":
             MessageLookupByLibrary.simpleMessage("No notifications yet"),
         "noNotificationsDesc": MessageLookupByLibrary.simpleMessage(
             "You are all caught up! New matches and updates will appear here."),
+        "noProjectMatchesFound":
+            MessageLookupByLibrary.simpleMessage("No project matches found"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "optimizeAi": MessageLookupByLibrary.simpleMessage("Optimize AI"),
         "perfectlyTailored": MessageLookupByLibrary.simpleMessage(
@@ -191,6 +206,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantify Achievements"),
         "quantifyAchievementsDesc": MessageLookupByLibrary.simpleMessage(
             "Add more metrics like \'Increased conversion by 20%\' to strengthen impact."),
+        "recentDocument":
+            MessageLookupByLibrary.simpleMessage("Recent Document"),
         "recentJobMatches":
             MessageLookupByLibrary.simpleMessage("Recent Job Matches"),
         "recentProjectMatches":
@@ -213,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchMatchedJobs":
             MessageLookupByLibrary.simpleMessage("Search matched jobs"),
         "selectedSkills": m5,
+        "selectingCv": MessageLookupByLibrary.simpleMessage("Selecting CV..."),
         "skills": MessageLookupByLibrary.simpleMessage("Skills"),
         "skillsInstruction": MessageLookupByLibrary.simpleMessage(
             "Add skills to help employers find you. You can type to add your own or pick from our suggestions."),
@@ -236,6 +254,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "topMatchesForYou":
             MessageLookupByLibrary.simpleMessage("Top Matches for You"),
+        "uploadYourCv": MessageLookupByLibrary.simpleMessage("Upload Your CV"),
+        "useThisCv": MessageLookupByLibrary.simpleMessage("Use this CV"),
         "userName": MessageLookupByLibrary.simpleMessage("Alex"),
         "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
         "viewTheJob": MessageLookupByLibrary.simpleMessage("View the Job"),

@@ -4,8 +4,8 @@ import 'package:super_career_ai/Features/profile/presentation/cubit/profile_stat
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit({ProfileService? service})
-      : _service = service ?? ProfileService(),
-        super(const ProfileInitial());
+    : _service = service ?? ProfileService(),
+      super(const ProfileInitial());
 
   final ProfileService _service;
 
@@ -40,4 +40,3 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 }
-

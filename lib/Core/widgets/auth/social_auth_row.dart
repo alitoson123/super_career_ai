@@ -4,11 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:super_career_ai/Core/theme/app_colors.dart';
 
 class SocialAuthRow extends StatelessWidget {
-  const SocialAuthRow({
-    super.key,
-    this.onGoogle,
-    this.onLinkedIn,
-  });
+  const SocialAuthRow({super.key, this.onGoogle, this.onLinkedIn});
 
   final VoidCallback? onGoogle;
   final VoidCallback? onLinkedIn;
@@ -33,10 +29,7 @@ class SocialAuthRow extends StatelessWidget {
 }
 
 class _CircleSocialButton extends StatelessWidget {
-  const _CircleSocialButton({
-    required this.asset,
-    this.onTap,
-  });
+  const _CircleSocialButton({required this.asset, this.onTap});
 
   final String asset;
   final VoidCallback? onTap;
@@ -58,11 +51,7 @@ class _CircleSocialButton extends StatelessWidget {
             color: AppColors.white,
           ),
           child: Center(
-            child: SvgPicture.asset(
-              asset,
-              width: 26.w,
-              height: 26.w,
-            ),
+            child: SvgPicture.asset(asset, width: 26.w, height: 26.w),
           ),
         ),
       ),

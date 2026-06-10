@@ -8,6 +8,7 @@ import 'package:super_career_ai/Features/Projects/presentation/view_model/projec
 import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
 import 'package:super_career_ai/Features/Projects/presentation/views/project_matches_view.dart';
 import 'package:super_career_ai/Features/jobs/Data/repo_impl/job_repo_impl.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/custom_cv_history_cubit/custom_cv_history_cubit.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
@@ -39,6 +40,11 @@ class _RootViewState extends State<RootView> {
           create: (context) =>
               ProjectCubit(projectRepo: getIt<ProjectRepoImpl>())
                 ..fetchProjectMatches(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CustomCvHistoryCubit(jobRepo: getIt<JobRepoImpl>())
+                ..fetchCustomCvHistory(),
         ),
         BlocProvider(create: (context) => ProfileCubit()),
       ],

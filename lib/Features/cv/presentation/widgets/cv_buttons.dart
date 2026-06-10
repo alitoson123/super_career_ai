@@ -90,10 +90,7 @@ class CvOutlinedButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Text(
             label,
-            style: TextStyle(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
           ),
         ),
       ),

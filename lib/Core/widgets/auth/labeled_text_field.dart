@@ -64,14 +64,20 @@ class LabeledTextField extends StatelessWidget {
               vertical: 16.h,
             ),
             suffixIcon: suffix,
-            suffixIconConstraints: BoxConstraints(minWidth: 48.w, minHeight: 48.h),
+            suffixIconConstraints: BoxConstraints(
+              minWidth: 48.w,
+              minHeight: 48.h,
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: const BorderSide(color: AppColors.inputBorder),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: AppColors.primaryBlue, width: 1.2),
+              borderSide: const BorderSide(
+                color: AppColors.primaryBlue,
+                width: 1.2,
+              ),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),

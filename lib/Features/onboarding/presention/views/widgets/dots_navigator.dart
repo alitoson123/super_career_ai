@@ -3,10 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class DotsNavigator extends StatelessWidget {
-  const DotsNavigator({
-    super.key,
-    required this.controller,
-  });
+  const DotsNavigator({super.key, required this.controller});
 
   final PageController controller;
 

@@ -29,10 +29,13 @@ class AtsResultStep extends StatelessWidget {
               SizedBox(height: 20.h),
 
               // Keywords found
-              _SectionTitle(title: s.keywordsFound, trailing: s.matchesOfTotal(
-                analysis.keywordsFound,
-                analysis.totalKeywords,
-              )),
+              _SectionTitle(
+                title: s.keywordsFound,
+                trailing: s.matchesOfTotal(
+                  analysis.keywordsFound,
+                  analysis.totalKeywords,
+                ),
+              ),
               SizedBox(height: 12.h),
               _KeywordsGrid(analysis: analysis),
               SizedBox(height: 20.h),
@@ -119,10 +122,7 @@ class _AtsHeaderCard extends StatelessWidget {
           Text(
             s.perfectlyTailored,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 13.sp,
-              color: AppColors.textSecondary,
-            ),
+            style: TextStyle(fontSize: 13.sp, color: AppColors.textSecondary),
           ),
           SizedBox(height: 20.h),
           // Circular score indicator
@@ -141,10 +141,7 @@ class _AtsHeaderCard extends StatelessWidget {
           Text(
             s.excellentAlignment,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12.sp,
-              color: AppColors.textSecondary,
-            ),
+            style: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary),
           ),
         ],
       ),
@@ -170,8 +167,7 @@ class _ScoreRing extends StatelessWidget {
               value: score / 100,
               strokeWidth: 8,
               backgroundColor: AppColors.border,
-              valueColor:
-                  AlwaysStoppedAnimation<Color>(AppColors.primaryBlue),
+              valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryBlue),
             ),
           ),
           Column(
@@ -245,9 +241,7 @@ class _KeywordsGrid extends StatelessWidget {
     return Wrap(
       spacing: 8.w,
       runSpacing: 8.h,
-      children: _keywords
-          .map((kw) => _KeywordChip(keyword: kw))
-          .toList(),
+      children: _keywords.map((kw) => _KeywordChip(keyword: kw)).toList(),
     );
   }
 }
@@ -273,10 +267,7 @@ class _KeywordChip extends StatelessWidget {
           SizedBox(width: 4.w),
           Text(
             keyword,
-            style: TextStyle(
-              fontSize: 12.sp,
-              color: AppColors.textPrimary,
-            ),
+            style: TextStyle(fontSize: 12.sp, color: AppColors.textPrimary),
           ),
         ],
       ),
@@ -291,7 +282,9 @@ class _TipCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = tip.isWarning ? const Color(0xFFF59E0B) : AppColors.primaryBlue;
+    final color = tip.isWarning
+        ? const Color(0xFFF59E0B)
+        : AppColors.primaryBlue;
     final bgColor = tip.isWarning
         ? const Color(0xFFFFFBEB)
         : AppColors.primaryBlueLight;

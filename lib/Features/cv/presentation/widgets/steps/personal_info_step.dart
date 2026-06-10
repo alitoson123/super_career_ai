@@ -30,8 +30,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
   void initState() {
     super.initState();
     _nameCtrl = TextEditingController(text: widget.initial.fullName);
-    _titleCtrl =
-        TextEditingController(text: widget.initial.professionalTitle);
+    _titleCtrl = TextEditingController(text: widget.initial.professionalTitle);
     _emailCtrl = TextEditingController(text: widget.initial.email);
     _phoneCtrl = TextEditingController(text: widget.initial.phone);
     _locationCtrl = TextEditingController(text: widget.initial.location);
@@ -174,8 +173,11 @@ class _SummaryField extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.auto_awesome,
-                      size: 12.sp, color: AppColors.primaryBlue),
+                  Icon(
+                    Icons.auto_awesome,
+                    size: 12.sp,
+                    color: AppColors.primaryBlue,
+                  ),
                   SizedBox(width: 4.w),
                   Text(
                     aiLabel,

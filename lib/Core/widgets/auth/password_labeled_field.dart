@@ -63,7 +63,9 @@ class _PasswordLabeledFieldState extends State<PasswordLabeledField> {
             suffixIcon: IconButton(
               onPressed: () => setState(() => _obscure = !_obscure),
               icon: Icon(
-                _obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                _obscure
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
                 color: AppColors.bodyMutedBlue,
                 size: 22.sp,
               ),
@@ -74,7 +76,10 @@ class _PasswordLabeledFieldState extends State<PasswordLabeledField> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: const BorderSide(color: AppColors.primaryBlue, width: 1.2),
+              borderSide: const BorderSide(
+                color: AppColors.primaryBlue,
+                width: 1.2,
+              ),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),

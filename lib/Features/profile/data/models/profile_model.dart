@@ -39,7 +39,8 @@ class ProfileModel {
   }) {
     final map = <String, dynamic>{};
     if (fullName != null) map['full_name'] = fullName;
-    if (professionalTitle != null) map['professional_title'] = professionalTitle;
+    if (professionalTitle != null)
+      map['professional_title'] = professionalTitle;
     if (email != null) map['email'] = email;
     return map;
   }
@@ -61,4 +62,3 @@ class ProfileModel {
     );
   }
 }
-

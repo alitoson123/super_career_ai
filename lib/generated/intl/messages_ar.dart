@@ -75,7 +75,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentlyWorkHere":
             MessageLookupByLibrary.simpleMessage("أعمل هنا حالياً"),
         "cv": MessageLookupByLibrary.simpleMessage("السيرة الذاتية"),
+        "cvEditor": MessageLookupByLibrary.simpleMessage("محرر السيرة الذاتية"),
         "cvHistory": MessageLookupByLibrary.simpleMessage("سجل السير الذاتية"),
+        "cvSelected": MessageLookupByLibrary.simpleMessage(
+            "تم تحديد السيرة الذاتية بنجاح!"),
+        "cvUploaded": MessageLookupByLibrary.simpleMessage(
+            "تم رفع السيرة الذاتية بنجاح!"),
         "degree": MessageLookupByLibrary.simpleMessage("الدرجة العلمية"),
         "degreeHint": MessageLookupByLibrary.simpleMessage(
             "مثال: بكالوريوس علوم الكمبيوتر"),
@@ -83,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionOptional":
             MessageLookupByLibrary.simpleMessage("الوصف (اختياري)"),
         "download": MessageLookupByLibrary.simpleMessage("تحميل"),
+        "dragAndDropOrClick": MessageLookupByLibrary.simpleMessage(
+            "اسحب وأسقط الملف أو انقر للتحميل"),
         "education": MessageLookupByLibrary.simpleMessage("التعليم"),
         "educationDescriptionHint": MessageLookupByLibrary.simpleMessage(
             "المقررات ذات الصلة أو التكريمات أو الأنشطة..."),
@@ -102,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("فشل في إنشاء طلب التقديم"),
         "failedToOpenLink":
             MessageLookupByLibrary.simpleMessage("تعذّر فتح الرابط"),
+        "fileLimitText": MessageLookupByLibrary.simpleMessage(
+            "ملفات PDF أو DOCX حتى 5 ميجابايت"),
         "foundCount": m0,
         "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "fullNameHint": MessageLookupByLibrary.simpleMessage("مثال: جون دو"),
@@ -142,11 +151,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "nextEducation":
             MessageLookupByLibrary.simpleMessage("التالي: التعليم"),
         "nextStep": MessageLookupByLibrary.simpleMessage("الخطوة التالية"),
+        "noBaseCvTryToUploadOne": MessageLookupByLibrary.simpleMessage(
+            "لا يوجد سيرة ذاتية اساسية حاول رفع واحدة"),
         "noHistory": MessageLookupByLibrary.simpleMessage("لا يوجد سجل بعد"),
+        "noJobMatchesFound":
+            MessageLookupByLibrary.simpleMessage("لا توجد تطابقات وظائف"),
         "noNotifications":
             MessageLookupByLibrary.simpleMessage("لا توجد إشعارات بعد"),
         "noNotificationsDesc": MessageLookupByLibrary.simpleMessage(
             "أنت محدث! ستظهر هنا مطابقات وتحديثات جديدة."),
+        "noProjectMatchesFound":
+            MessageLookupByLibrary.simpleMessage("لا توجد تطابقات مشاريع"),
         "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "optimizeAi":
             MessageLookupByLibrary.simpleMessage("تحسين بالذكاء الاصطناعي"),
@@ -185,6 +200,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحديد الإنجازات"),
         "quantifyAchievementsDesc": MessageLookupByLibrary.simpleMessage(
             "أضف المزيد من المقاييس مثل زيادة التحويل بنسبة 20% لتعزيز التأثير."),
+        "recentDocument":
+            MessageLookupByLibrary.simpleMessage("المستندات الأخيرة"),
         "recentJobMatches":
             MessageLookupByLibrary.simpleMessage("أحدث تطابقات الوظائف"),
         "recentProjectMatches":
@@ -204,6 +221,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchMatchedJobs": MessageLookupByLibrary.simpleMessage(
             "البحث في الوظائف المطابقة..."),
         "selectedSkills": m5,
+        "selectingCv": MessageLookupByLibrary.simpleMessage(
+            "جاري تحديد السيرة الذاتية..."),
         "skills": MessageLookupByLibrary.simpleMessage("المهارات"),
         "skillsInstruction": MessageLookupByLibrary.simpleMessage(
             "أضف مهارات لمساعدة أصحاب العمل في العثور عليك. يمكنك الكتابة لإضافة مهاراتك الخاصة أو الاختيار من اقتراحاتنا."),
@@ -228,6 +247,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "today": MessageLookupByLibrary.simpleMessage("اليوم"),
         "topMatchesForYou":
             MessageLookupByLibrary.simpleMessage("أفضل التطابقات لك"),
+        "uploadYourCv":
+            MessageLookupByLibrary.simpleMessage("تحميل سيرتك الذاتية"),
+        "useThisCv":
+            MessageLookupByLibrary.simpleMessage("استخدم هذه السيرة الذاتية"),
         "userName": MessageLookupByLibrary.simpleMessage("أليكس"),
         "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
         "welcomeBack": m8,

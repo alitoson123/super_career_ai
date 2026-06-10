@@ -4,6 +4,8 @@ import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
+import 'package:super_career_ai/Core/navigator/app_routes.dart';
 
 class JobDetailsView extends StatelessWidget {
   final JobEntity job;
@@ -166,7 +168,9 @@ class JobDetailsView extends StatelessWidget {
 
               // create custom cv
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).push(AppRoutes.cvEditorScreen, extra: job.id);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primaryBlue,
                   foregroundColor: Colors.white,

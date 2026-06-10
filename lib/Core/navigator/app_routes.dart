@@ -8,6 +8,10 @@ import 'package:super_career_ai/Features/Auth/reset_password/presention/views/re
 import 'package:super_career_ai/Features/Auth/sign_in/presention/views/sign_in_view.dart';
 import 'package:super_career_ai/Features/Auth/sign_up/presention/views/sign_up_view.dart';
 import 'package:super_career_ai/Features/Auth/welcome/presention/views/welcome_view.dart';
+import 'package:super_career_ai/Features/cv/presentation/views/cv_view.dart';
+import 'package:super_career_ai/Features/jobs/Data/models/base_cv_model/base_cv_model.dart';
+import 'package:super_career_ai/Features/jobs/presentation/views/cv_editor_view.dart';
+import 'package:super_career_ai/Features/jobs/presentation/views/generated_cv_preview_view.dart';
 import 'package:super_career_ai/Features/root/presentation/views/root_view.dart';
 import 'package:super_career_ai/Features/onboarding/presention/views/onboarding_view.dart';
 import 'package:super_career_ai/Features/splash/presention/views/splash_view.dart';
@@ -29,6 +33,10 @@ class AppRoutes {
   static const String notificationsScreen = '/notifications';
   static const String jobMatchesScreen = '/jobMatches';
   static const String projectMatchesScreen = '/projectMatches';
+  static const String cvEditorScreen = '/cvEditor';
+  static const String cvWizardScreen = '/cvWizard';
+
+  static const String generatedCvPreviewScreen = '/generatedCvPreview';
 
   /// Backwards-compatible alias used in older navigation code.
   static String get spalshScreen => splashScreen;
@@ -114,8 +122,24 @@ class AppRoutes {
         path: notificationsScreen,
         builder: (context, state) => const NotificationsView(),
       ),
-    
-    
+      GoRoute(
+        path: cvEditorScreen,
+        builder: (context, state) {
+          final jobId = state.extra as int?;
+          return CvEditorView(jobId: jobId ?? 0);
+        },
+      ),
+      GoRoute(
+        path: generatedCvPreviewScreen,
+        builder: (context, state) {
+          final cvModel = state.extra;
+          return GeneratedCvPreviewView(cvModel: cvModel as BaseCvModel ); // cvModel will be casted inside the view
+        },
+      ),
+      GoRoute(
+        path: cvWizardScreen,
+        builder: (context, state) => const CvView(),
+      ),
     ],
   );
 }

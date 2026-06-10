@@ -108,28 +108,35 @@ class _NotificationsViewBody extends StatelessWidget {
             );
           }
 
-          final todayItems = state.notifications.where((n) => n.isToday).toList();
-          final yesterdayItems =
-              state.notifications.where((n) => !n.isToday).toList();
+          final todayItems = state.notifications
+              .where((n) => n.isToday)
+              .toList();
+          final yesterdayItems = state.notifications
+              .where((n) => !n.isToday)
+              .toList();
 
           return ListView(
             children: [
               if (todayItems.isNotEmpty) ...[
                 _SectionHeader(title: s.today),
-                ...todayItems.map((n) => NotificationItemCard(
-                      notification: n,
-                      onTap: () =>
-                          context.read<NotificationsCubit>().markRead(n.id),
-                    )),
+                ...todayItems.map(
+                  (n) => NotificationItemCard(
+                    notification: n,
+                    onTap: () =>
+                        context.read<NotificationsCubit>().markRead(n.id),
+                  ),
+                ),
                 SizedBox(height: 24.h),
               ],
               if (yesterdayItems.isNotEmpty) ...[
                 _SectionHeader(title: s.yesterday),
-                ...yesterdayItems.map((n) => NotificationItemCard(
-                      notification: n,
-                      onTap: () =>
-                          context.read<NotificationsCubit>().markRead(n.id),
-                    )),
+                ...yesterdayItems.map(
+                  (n) => NotificationItemCard(
+                    notification: n,
+                    onTap: () =>
+                        context.read<NotificationsCubit>().markRead(n.id),
+                  ),
+                ),
               ],
               SizedBox(height: 24.h),
             ],

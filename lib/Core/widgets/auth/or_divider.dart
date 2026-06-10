@@ -9,7 +9,9 @@ class OrContinueDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: Divider(color: AppColors.dividerLine, thickness: 1, height: 1)),
+        Expanded(
+          child: Divider(color: AppColors.dividerLine, thickness: 1, height: 1),
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: Text(
@@ -21,7 +23,9 @@ class OrContinueDivider extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(child: Divider(color: AppColors.dividerLine, thickness: 1, height: 1)),
+        Expanded(
+          child: Divider(color: AppColors.dividerLine, thickness: 1, height: 1),
+        ),
       ],
     );
   }
@@ -35,7 +39,11 @@ class OrDivider extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: Divider(color: AppColors.black.withValues(alpha: 0.35), thickness: 1, height: 1),
+          child: Divider(
+            color: AppColors.black.withValues(alpha: 0.35),
+            thickness: 1,
+            height: 1,
+          ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 14.w),
@@ -49,7 +57,11 @@ class OrDivider extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Divider(color: AppColors.black.withValues(alpha: 0.35), thickness: 1, height: 1),
+          child: Divider(
+            color: AppColors.black.withValues(alpha: 0.35),
+            thickness: 1,
+            height: 1,
+          ),
         ),
       ],
     );

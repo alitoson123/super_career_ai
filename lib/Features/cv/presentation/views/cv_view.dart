@@ -43,11 +43,7 @@ class _CvViewBody extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar(
-    BuildContext context,
-    CvWizardState state,
-    S s,
-  ) {
+  AppBar _buildAppBar(BuildContext context, CvWizardState state, S s) {
     final title = switch (state.step) {
       CvWizardStep.personalInfo => s.personalDetails,
       CvWizardStep.workExperience => s.workExperience,
@@ -70,15 +66,20 @@ class _CvViewBody extends StatelessWidget {
       ),
       leading: state.step != CvWizardStep.personalInfo
           ? IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new,
-                  color: AppColors.textPrimary),
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: AppColors.textPrimary,
+              ),
               onPressed: () => _onBack(context, state),
             )
           : null,
       actions: [
         if (state.step == CvWizardStep.atsResult)
           IconButton(
-            icon: const Icon(Icons.share_outlined, color: AppColors.textPrimary),
+            icon: const Icon(
+              Icons.share_outlined,
+              color: AppColors.textPrimary,
+            ),
             onPressed: () {},
           ),
       ],
@@ -107,7 +108,9 @@ class _CvViewBody extends StatelessWidget {
 
   Widget _buildCurrentStep(BuildContext context, CvWizardState state) {
     return switch (state.step) {
-      CvWizardStep.personalInfo => PersonalInfoStep(initial: state.cv.personalInfo),
+      CvWizardStep.personalInfo => PersonalInfoStep(
+        initial: state.cv.personalInfo,
+      ),
       CvWizardStep.workExperience => const WorkExperienceStep(),
       CvWizardStep.education => const EducationStep(),
       CvWizardStep.skills => const SkillsStep(),

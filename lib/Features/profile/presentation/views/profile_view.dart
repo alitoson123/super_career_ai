@@ -51,13 +51,13 @@ class _ProfileViewState extends State<ProfileView> {
     if (!mounted) return;
     final s = cubit.state;
     if (s is ProfileLoaded) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Saved')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Saved')));
     } else if (s is ProfileError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(s.message)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(s.message)));
     }
   }
 
@@ -143,15 +143,9 @@ class _ProfileViewState extends State<ProfileView> {
                     title: loaded.profile.professionalTitle ?? '',
                   ),
                   SizedBox(height: 20.h),
-                  _ProfilePillField(
-                    label: 'FULL NAME',
-                    controller: _fullName,
-                  ),
+                  _ProfilePillField(label: 'FULL NAME', controller: _fullName),
                   SizedBox(height: 14.h),
-                  _ProfilePillField(
-                    label: 'TITLE',
-                    controller: _title,
-                  ),
+                  _ProfilePillField(label: 'TITLE', controller: _title),
                   SizedBox(height: 14.h),
                   _ProfilePillField(
                     label: 'EMAIL',
@@ -344,4 +338,3 @@ class _SaveButton extends StatelessWidget {
     );
   }
 }
-
