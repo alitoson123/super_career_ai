@@ -215,6 +215,7 @@ class _CustomProposalDialogState extends State<CustomProposalDialog> {
                                 }).toList(),
                               ),
                             ],
+                            SizedBox(height: 8.h),
                             // budget
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,

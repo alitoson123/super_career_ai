@@ -84,7 +84,7 @@ class _JopsMatchesViewState extends State<JopsMatchesView> {
         ),
         tabs: [
           Tab(text: s.jobMatches),
-          Tab(text: s.history),
+          Tab(text: s.CVsHistory),
         ],
       ),
     );

@@ -15,27 +15,6 @@ class RecentDocumentCard extends StatefulWidget {
 }
 
 class _RecentDocumentCardState extends State<RecentDocumentCard> {
-  bool _isLoading = false;
-
-  void _handleUseCv() async {
-    if (_isLoading) return;
-    setState(() => _isLoading = true);
-
-    // Simulate backend selection
-    await Future.delayed(const Duration(seconds: 1));
-
-    if (mounted) {
-      setState(() => _isLoading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(S.of(context).cvSelected),
-          backgroundColor: Colors.green,
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
@@ -118,39 +97,33 @@ class _RecentDocumentCardState extends State<RecentDocumentCard> {
 
           // Action Button
           ElevatedButton(
-            onPressed: _handleUseCv,
+            onPressed: () => null, 
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryBlue,
               foregroundColor: Colors.white,
+              disabledBackgroundColor: Colors.green, // Keep green when disabled
+              disabledForegroundColor: Colors.white,
               elevation: 0,
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.r),
               ),
             ),
-            child: _isLoading
-                ? SizedBox(
-                    width: 16.sp,
-                    height: 16.sp,
-                    child: const CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 2,
-                    ),
-                  )
-                : Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.check_circle_outline, size: 16.sp),
-                      SizedBox(width: 6.w),
-                      Text(
-                        s.useThisCv,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.check_circle, size: 16.sp),
+                SizedBox(width: 6.w),
+                Text(
+                  s.selected,
+
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w600,
                   ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

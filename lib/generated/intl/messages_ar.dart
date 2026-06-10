@@ -75,7 +75,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentlyWorkHere":
             MessageLookupByLibrary.simpleMessage("أعمل هنا حالياً"),
         "cv": MessageLookupByLibrary.simpleMessage("السيرة الذاتية"),
-        "cvEditor": MessageLookupByLibrary.simpleMessage("محرر السيرة الذاتية"),
         "cvHistory": MessageLookupByLibrary.simpleMessage("سجل السير الذاتية"),
         "cvSelected": MessageLookupByLibrary.simpleMessage(
             "تم تحديد السيرة الذاتية بنجاح!"),
@@ -121,7 +120,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "graduationYearHint":
             MessageLookupByLibrary.simpleMessage("مثال: 2022"),
         "highScore": MessageLookupByLibrary.simpleMessage("درجة عالية"),
-        "history": MessageLookupByLibrary.simpleMessage("السجل"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
         "hoursAgo": m1,
         "improvementTips":
@@ -196,12 +194,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "تم نسخ طلب التقديم إلى الحافظة"),
         "proposalHistory": MessageLookupByLibrary.simpleMessage("سجل العروض"),
         "proposalTitle": MessageLookupByLibrary.simpleMessage("طلب التقديم"),
+        "proposalsHistory":
+            MessageLookupByLibrary.simpleMessage("تاريخ تقديم الطلبات"),
         "quantifyAchievements":
             MessageLookupByLibrary.simpleMessage("تحديد الإنجازات"),
         "quantifyAchievementsDesc": MessageLookupByLibrary.simpleMessage(
             "أضف المزيد من المقاييس مثل زيادة التحويل بنسبة 20% لتعزيز التأثير."),
-        "recentDocument":
-            MessageLookupByLibrary.simpleMessage("المستندات الأخيرة"),
         "recentJobMatches":
             MessageLookupByLibrary.simpleMessage("أحدث تطابقات الوظائف"),
         "recentProjectMatches":
@@ -220,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "searchMatchedJobs": MessageLookupByLibrary.simpleMessage(
             "البحث في الوظائف المطابقة..."),
+        "selected": MessageLookupByLibrary.simpleMessage("تم الاختيار"),
         "selectedSkills": m5,
         "selectingCv": MessageLookupByLibrary.simpleMessage(
             "جاري تحديد السيرة الذاتية..."),

@@ -22,7 +22,7 @@ class RecentDocumentList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              s.recentDocument,
+              s.orUseYourLastCV,
               style: TextStyle(
                 color: AppColors.textPrimary,
                 fontSize: 16.sp,

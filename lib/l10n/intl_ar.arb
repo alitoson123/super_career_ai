@@ -179,5 +179,7 @@
   "cvUploaded": "تم رفع السيرة الذاتية بنجاح!",
   "selectingCv": "جاري تحديد السيرة الذاتية...",
   "cvSelected": "تم تحديد السيرة الذاتية بنجاح!",
-  "noBaseCvTryToUploadOne": "لا يوجد سيرة ذاتية اساسية حاول رفع واحدة"
+  "noBaseCvTryToUploadOne": "لا يوجد سيرة ذاتية اساسية حاول رفع واحدة",
+  "proposalsHistory": "تاريخ تقديم الطلبات",
+  "selected": "تم الاختيار"  
 }

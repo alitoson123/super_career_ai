@@ -94,7 +94,7 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
         ),
         tabs: [
           Tab(text: s.projectMatches),
-          Tab(text: s.history),
+          Tab(text: s.proposalsHistory),
         ],
       ),
     );

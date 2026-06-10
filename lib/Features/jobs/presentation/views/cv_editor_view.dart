@@ -14,19 +14,22 @@ import 'package:super_career_ai/generated/l10n.dart';
 
 class CvEditorView extends StatelessWidget {
   final int jobId;
-  
+
   const CvEditorView({super.key, required this.jobId});
 
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    
+
     return BlocProvider(
       create: (context) => CreateCustomCvCubit(jobRepo: getIt<JobRepoImpl>()),
       child: BlocConsumer<CreateCustomCvCubit, CreateCustomCvStates>(
         listener: (context, state) {
           if (state is CreateCustomCvSuccess) {
-            context.push(AppRoutes.generatedCvPreviewScreen, extra: state.cvModel);
+            context.push(
+              AppRoutes.generatedCvPreviewScreen,
+              extra: state.cvModel,
+            );
           } else if (state is CreateCustomCvFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -40,19 +43,24 @@ class CvEditorView extends StatelessWidget {
           final isLoading = state is CreateCustomCvLoading;
 
           return Scaffold(
-            backgroundColor: const Color(0xFFF8FAFC), // Light slate background for premium feel
-            // app bar 
+            backgroundColor: const Color(
+              0xFFF8FAFC,
+            ), // Light slate background for premium feel
+            // app bar
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 0,
               scrolledUnderElevation: 0,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: AppColors.textPrimary,
+                ),
                 onPressed: () => context.pop(),
               ),
               centerTitle: true,
               title: Text(
-                s.cvEditor,
+                s.customCV,
                 style: TextStyle(
                   color: AppColors.textPrimary,
                   fontWeight: FontWeight.bold,
@@ -68,6 +76,8 @@ class CvEditorView extends StatelessWidget {
               ),
             ),
             body: Stack(
+              fit: StackFit
+                  .expand, // 👈 this forces the Stack to fill the full screen
               children: [
                 // Scrollable Content
                 SingleChildScrollView(
@@ -76,7 +86,8 @@ class CvEditorView extends StatelessWidget {
                     left: 20.w,
                     right: 20.w,
                     top: 24.h,
-                    bottom: 100.h, // padding for the fixed bottom button
+                    bottom: 120
+                        .h, // 👈 slightly more to clear the button + safe area
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,61 +102,81 @@ class CvEditorView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 16.h),
-                      
+
                       // Upload Box Widget
                       const CvUploadBox(),
-                      
+
                       SizedBox(height: 32.h),
-                      
+
                       // Recent Documents Section
                       const RecentDocumentList(),
                     ],
                   ),
                 ),
-                
+
                 // Fixed Bottom Button
                 Positioned(
                   left: 0,
                   right: 0,
-                  bottom: 0,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, -4),
-                        ),
-                      ],
-                    ),
-                    child: ElevatedButton(
-                      onPressed: isLoading ? null : () {
-                        context.read<CreateCustomCvCubit>().createCustomCV(jobId: jobId);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryBlue,
-                        foregroundColor: Colors.white,
-                        elevation: 0,
-                        minimumSize: Size(double.infinity, 56.h),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16.r),
-                        ),
+                  bottom: 20,
+                  child: SafeArea(
+                    top: false,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 20.h,
                       ),
-                      child: isLoading 
-                          ? SizedBox(
-                              width: 24.w, 
-                              height: 24.w, 
-                              child: const CircularProgressIndicator(color: Colors.white)
-                            )
-                          : Text(
-                              s.createCustomCV,
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 10,
+                            offset: const Offset(0, -4),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: isLoading
+                            ? null
+                            : () {
+                                context
+                                    .read<CreateCustomCvCubit>()
+                                    .createCustomCV(jobId: jobId);
+                              },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primaryBlue,
+                          foregroundColor: Colors.white,
+                          elevation: 0,
+                          minimumSize: Size(double.infinity, 56.h),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.r),
+                          ),
+                        ),
+                        child: isLoading
+                            ? SizedBox(
+                                width: 24.w,
+                                height: 24.w,
+                                child: const CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Row(
+                                // 👈 optional: add an icon for polish
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.auto_awesome, size: 20),
+                                  SizedBox(width: 8.w),
+                                  Text(
+                                    s.createCustomCV,
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
+                      ),
                     ),
                   ),
                 ),

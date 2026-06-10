@@ -75,7 +75,7 @@ class _CvHistoryCardState extends State<CvHistoryCard> {
             children: [
               Expanded(
                 child: Text(
-                  item.id.toString(),
+                  item.personalDetails?.fullName ?? "Untitled CV",
                   style: TextStyle(
                     color: AppColors.textPrimary,
                     fontSize: 16.sp,
@@ -85,7 +85,7 @@ class _CvHistoryCardState extends State<CvHistoryCard> {
               ),
             ],
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: 10.h),
           // date and download button
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +100,7 @@ class _CvHistoryCardState extends State<CvHistoryCard> {
                   ),
                   SizedBox(width: 8.w),
                   Text(
-                    item.createdAt.toString().split('T')[0],
+                    '${item.createdAt?.toString().substring(0, 10)}',
                     style: TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 12.sp,

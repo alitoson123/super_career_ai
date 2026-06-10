@@ -144,28 +144,7 @@ class JobDetailsView extends StatelessWidget {
 
               SizedBox(height: 32.h),
 
-              // Requirements Section
-              _buildSectionTitle(context, s.requirements),
-              SizedBox(height: 16.h),
-              _buildRequirementItem(
-                context,
-                '5+ years experience with React and modern frontend ecosystems.',
-              ),
-              _buildRequirementItem(
-                context,
-                'Expertise in TypeScript and state management patterns.',
-              ),
-              _buildRequirementItem(
-                context,
-                'Deep understanding of CSS-in-JS or Tailwind CSS utility patterns.',
-              ),
-              _buildRequirementItem(
-                context,
-                'Proven track record of delivering pixel-perfect interfaces.',
-              ),
-
-              SizedBox(height: 40.h),
-
+  
               // create custom cv
               ElevatedButton(
                 onPressed: () {

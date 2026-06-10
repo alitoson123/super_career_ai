@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "CVsHistory": MessageLookupByLibrary.simpleMessage("CVs history"),
+        "CustomCV": MessageLookupByLibrary.simpleMessage("Custom CV"),
         "activeLead": MessageLookupByLibrary.simpleMessage("ACTIVE LEAD"),
         "activeProposals":
             MessageLookupByLibrary.simpleMessage("Active Proposals"),
@@ -80,7 +82,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "customProposal":
             MessageLookupByLibrary.simpleMessage("Custom Proposal"),
         "cv": MessageLookupByLibrary.simpleMessage("CV"),
-        "cvEditor": MessageLookupByLibrary.simpleMessage("CV Editor"),
         "cvHistory": MessageLookupByLibrary.simpleMessage("CV History"),
         "cvSelected":
             MessageLookupByLibrary.simpleMessage("CV selected successfully!"),
@@ -124,7 +125,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Graduation Year"),
         "graduationYearHint": MessageLookupByLibrary.simpleMessage("e.g. 2022"),
         "highScore": MessageLookupByLibrary.simpleMessage("High Score"),
-        "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hoursAgo": m1,
         "improvementTips":
@@ -171,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No project matches found"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "optimizeAi": MessageLookupByLibrary.simpleMessage("Optimize AI"),
+        "orUseYourLastCV":
+            MessageLookupByLibrary.simpleMessage("Or Use Your Last CV"),
         "perfectlyTailored": MessageLookupByLibrary.simpleMessage(
             "Perfectly tailored for Freelance Hub opportunities."),
         "personalDetails":
@@ -202,12 +204,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "proposalHistory":
             MessageLookupByLibrary.simpleMessage("Proposal History"),
         "proposalTitle": MessageLookupByLibrary.simpleMessage("Proposal"),
+        "proposalsHistory":
+            MessageLookupByLibrary.simpleMessage("Proposals history"),
         "quantifyAchievements":
             MessageLookupByLibrary.simpleMessage("Quantify Achievements"),
         "quantifyAchievementsDesc": MessageLookupByLibrary.simpleMessage(
             "Add more metrics like \'Increased conversion by 20%\' to strengthen impact."),
-        "recentDocument":
-            MessageLookupByLibrary.simpleMessage("Recent Document"),
         "recentJobMatches":
             MessageLookupByLibrary.simpleMessage("Recent Job Matches"),
         "recentProjectMatches":
@@ -229,6 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("search"),
         "searchMatchedJobs":
             MessageLookupByLibrary.simpleMessage("Search matched jobs"),
+        "selected": MessageLookupByLibrary.simpleMessage("selected"),
         "selectedSkills": m5,
         "selectingCv": MessageLookupByLibrary.simpleMessage("Selecting CV..."),
         "skills": MessageLookupByLibrary.simpleMessage("Skills"),

@@ -60,7 +60,7 @@
   "projectMatchesTitle": "Project Matches",
   "jobMatches": "Job matches",
   "projectMatches": "Project matches",
-  "history": "History",
+  "CVsHistory": "CVs history",
   "searchMatchedJobs": "Search matched jobs",
   "allMatches": "All Matches",
   "highScore": "High Score",
@@ -207,14 +207,16 @@
   "retry": "Retry",
   "noJobMatchesFound": "No job matches found",
   "noProjectMatchesFound": "No project matches found",
-  "cvEditor": "CV Editor",
+  "CustomCV": "Custom CV",
   "uploadYourCv": "Upload Your CV",
   "dragAndDropOrClick": "Drag and drop or click to upload",
   "fileLimitText": "PDF or DOCX files up to 5MB",
-  "recentDocument": "Recent Document",
+  "orUseYourLastCV": "Or Use Your Last CV",
   "useThisCv": "Use this CV",
   "cvUploaded": "CV uploaded successfully!",
   "selectingCv": "Selecting CV...",
   "cvSelected": "CV selected successfully!",
-  "noBaseCvTryToUploadOne": "No base cv found try to upload one"
+  "noBaseCvTryToUploadOne": "No base cv found try to upload one",
+  "proposalsHistory": "Proposals history",
+  "selected":"selected"
 }

@@ -440,11 +440,11 @@ class S {
     );
   }
 
-  /// `History`
-  String get history {
+  /// `CVs history`
+  String get CVsHistory {
     return Intl.message(
-      'History',
-      name: 'history',
+      'CVs history',
+      name: 'CVsHistory',
       desc: '',
       args: [],
     );
@@ -1530,11 +1530,11 @@ class S {
     );
   }
 
-  /// `CV Editor`
-  String get cvEditor {
+  /// `Custom CV`
+  String get CustomCV {
     return Intl.message(
-      'CV Editor',
-      name: 'cvEditor',
+      'Custom CV',
+      name: 'CustomCV',
       desc: '',
       args: [],
     );
@@ -1570,11 +1570,11 @@ class S {
     );
   }
 
-  /// `Recent Document`
-  String get recentDocument {
+  /// `Or Use Your Last CV`
+  String get orUseYourLastCV {
     return Intl.message(
-      'Recent Document',
-      name: 'recentDocument',
+      'Or Use Your Last CV',
+      name: 'orUseYourLastCV',
       desc: '',
       args: [],
     );
@@ -1625,6 +1625,26 @@ class S {
     return Intl.message(
       'No base cv found try to upload one',
       name: 'noBaseCvTryToUploadOne',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proposals history`
+  String get proposalsHistory {
+    return Intl.message(
+      'Proposals history',
+      name: 'proposalsHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `selected`
+  String get selected {
+    return Intl.message(
+      'selected',
+      name: 'selected',
       desc: '',
       args: [],
     );
