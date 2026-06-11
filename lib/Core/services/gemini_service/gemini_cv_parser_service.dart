@@ -7,7 +7,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 class GeminiCvParserService {
   GeminiCvParserService._();
 
-  //static const String _apiKey =
+  // static const String _apiKey =
 
   static const String _prompt = '''
 Extract information from the CV text below and return a JSON object with EXACTLY this structure.

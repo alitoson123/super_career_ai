@@ -1,27 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:super_career_ai/Core/network/backend_urls.dart';
-import 'package:super_career_ai/Core/services/auth_token_storage/auth_token_storage.dart';
 import 'package:super_career_ai/Features/profile/data/models/profile_model.dart';
 
 class ProfileService {
-  ProfileService({Dio? dio, AuthTokenStorage? tokenStorage})
-    : _dio =
-          dio ??
-          Dio(
-            BaseOptions(
-              connectTimeout: const Duration(seconds: 20),
-              receiveTimeout: const Duration(seconds: 20),
-              sendTimeout: const Duration(seconds: 20),
-              headers: const {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-              },
-            ),
-          ),
-      _tokenStorage = tokenStorage ?? AuthTokenStorage();
-
   final Dio _dio;
-  final AuthTokenStorage _tokenStorage;
+
+  ProfileService({required Dio dio}) : _dio = dio;
 
   Never _rethrowAsReadable(DioException e) {
     final status = e.response?.statusCode;
@@ -37,16 +21,8 @@ class ProfileService {
   }
 
   Future<ProfileModel> fetchMyProfile() async {
-    final token = await _tokenStorage.getAccessToken();
-    if (token == null || token.isEmpty) {
-      throw Exception('Missing auth token. Please login again.');
-    }
-
     try {
-      final res = await _dio.get(
-        BackendUrls.profile,
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
-      );
+      final res = await _dio.get(BackendUrls.profile);
       final data = Map<String, dynamic>.from(res.data as Map);
       return ProfileModel.fromJson(data);
     } on DioException catch (e) {
@@ -59,11 +35,6 @@ class ProfileService {
     required String professionalTitle,
     required String email,
   }) async {
-    final token = await _tokenStorage.getAccessToken();
-    if (token == null || token.isEmpty) {
-      throw Exception('Missing auth token. Please login again.');
-    }
-
     try {
       final res = await _dio.patch(
         BackendUrls.profile,
@@ -72,7 +43,6 @@ class ProfileService {
           'professional_title': professionalTitle,
           'email': email,
         },
-        options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
       final data = Map<String, dynamic>.from(res.data as Map);
       return ProfileModel.fromJson(data);

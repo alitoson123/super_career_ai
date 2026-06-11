@@ -19,6 +19,8 @@ class WorkExperienceStep extends StatelessWidget {
     return BlocBuilder<CvWizardCubit, CvWizardState>(
       builder: (context, state) {
         final cubit = context.read<CvWizardCubit>();
+        final isAllValid = state.cv.workExperiences.every((e) => e.isValid);
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -65,7 +67,11 @@ class WorkExperienceStep extends StatelessWidget {
             CvPrimaryButton(
               label: s.nextEducation,
               icon: Icons.arrow_forward,
-              onPressed: cubit.saveWorkExperience,
+              onPressed: isAllValid ? cubit.saveWorkExperience : () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Please fill all experience fields')),
+                );
+              },
             ),
           ],
         );
@@ -125,12 +131,12 @@ class _WorkExperienceCardState extends State<_WorkExperienceCard> {
   void _notify() {
     widget.onChanged(
       WorkExperienceEntity(
-        jobTitle: _jobCtrl.text,
-        company: _companyCtrl.text,
-        startDate: _startCtrl.text,
-        endDate: _endCtrl.text,
+        jobTitle: _jobCtrl.text.trim(),
+        company: _companyCtrl.text.trim(),
+        startDate: _startCtrl.text.trim(),
+        endDate: _endCtrl.text.trim(),
         isCurrentJob: _currentJob,
-        description: _descCtrl.text,
+        description: _descCtrl.text.trim(),
       ),
     );
   }

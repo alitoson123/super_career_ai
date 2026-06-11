@@ -24,7 +24,10 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
   late final TextEditingController _emailCtrl;
   late final TextEditingController _phoneCtrl;
   late final TextEditingController _locationCtrl;
+  late final TextEditingController _portfolioCtrl;
   late final TextEditingController _summaryCtrl;
+
+  bool _isFormValid = false;
 
   @override
   void initState() {
@@ -34,7 +37,32 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
     _emailCtrl = TextEditingController(text: widget.initial.email);
     _phoneCtrl = TextEditingController(text: widget.initial.phone);
     _locationCtrl = TextEditingController(text: widget.initial.location);
+    _portfolioCtrl = TextEditingController(text: widget.initial.portfolioUrl);
     _summaryCtrl = TextEditingController(text: widget.initial.summary);
+
+    _nameCtrl.addListener(_validate);
+    _titleCtrl.addListener(_validate);
+    _emailCtrl.addListener(_validate);
+    _phoneCtrl.addListener(_validate);
+    _locationCtrl.addListener(_validate);
+    _portfolioCtrl.addListener(_validate);
+    _summaryCtrl.addListener(_validate);
+    
+    _validate();
+  }
+
+  void _validate() {
+    final isValid = _nameCtrl.text.trim().isNotEmpty &&
+        _titleCtrl.text.trim().isNotEmpty &&
+        _emailCtrl.text.trim().isNotEmpty &&
+        _phoneCtrl.text.trim().isNotEmpty &&
+        _locationCtrl.text.trim().isNotEmpty &&
+        _portfolioCtrl.text.trim().isNotEmpty &&
+        _summaryCtrl.text.trim().isNotEmpty;
+
+    if (isValid != _isFormValid) {
+      setState(() => _isFormValid = isValid);
+    }
   }
 
   @override
@@ -44,11 +72,18 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
     _emailCtrl.dispose();
     _phoneCtrl.dispose();
     _locationCtrl.dispose();
+    _portfolioCtrl.dispose();
     _summaryCtrl.dispose();
     super.dispose();
   }
 
   void _onNext() {
+    if (!_isFormValid) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill in all personal information fields.')),
+      );
+      return;
+    }
     context.read<CvWizardCubit>().savePersonalInfo(
       PersonalInfoEntity(
         fullName: _nameCtrl.text.trim(),
@@ -56,6 +91,7 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
         email: _emailCtrl.text.trim(),
         phone: _phoneCtrl.text.trim(),
         location: _locationCtrl.text.trim(),
+        portfolioUrl: _portfolioCtrl.text.trim(),
         summary: _summaryCtrl.text.trim(),
       ),
     );
@@ -113,6 +149,13 @@ class _PersonalInfoStepState extends State<PersonalInfoStep> {
                     color: AppColors.textSecondary,
                     size: 18.sp,
                   ),
+                ),
+                SizedBox(height: 16.h),
+                CvTextField(
+                  label: 'Portfolio / LinkedIn URL',
+                  hint: 'https://linkedin.com/in/username',
+                  controller: _portfolioCtrl,
+                  keyboardType: TextInputType.url,
                 ),
                 SizedBox(height: 16.h),
                 _SummaryField(

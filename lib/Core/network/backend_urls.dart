@@ -27,6 +27,9 @@ class BackendUrls {
   // History Endpoints
   static const String customCVHistory = '$baseUrl/api/documents/cv/';
 
+  // CV Analysis / Creation
+  static const String analyzeCV = '$baseUrl/api/documents/cv/';
+
   /// base cv
   // get base cv
   static const String getBaseCV = '$baseUrl/api/documents/cv/base/update/';
