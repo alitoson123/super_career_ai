@@ -19,6 +19,8 @@ class EducationStep extends StatelessWidget {
     return BlocBuilder<CvWizardCubit, CvWizardState>(
       builder: (context, state) {
         final cubit = context.read<CvWizardCubit>();
+        final isAllValid = state.cv.educations.every((e) => e.isValid);
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -71,7 +73,11 @@ class EducationStep extends StatelessWidget {
                 Expanded(
                   child: CvPrimaryButton(
                     label: s.saveAndContinue,
-                    onPressed: cubit.saveEducation,
+                    onPressed: isAllValid ? cubit.saveEducation : () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Please fill all education fields')),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -127,10 +133,10 @@ class _EducationCardState extends State<_EducationCard> {
   void _notify() {
     widget.onChanged(
       EducationEntity(
-        school: _schoolCtrl.text,
-        degree: _degreeCtrl.text,
-        graduationYear: _yearCtrl.text,
-        description: _descCtrl.text,
+        school: _schoolCtrl.text.trim(),
+        degree: _degreeCtrl.text.trim(),
+        graduationYear: _yearCtrl.text.trim(),
+        description: _descCtrl.text.trim(),
       ),
     );
   }

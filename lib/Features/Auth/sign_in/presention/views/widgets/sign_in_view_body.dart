@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
@@ -11,6 +12,7 @@ import 'package:super_career_ai/Core/widgets/auth/or_divider.dart';
 import 'package:super_career_ai/Core/widgets/auth/password_labeled_field.dart';
 import 'package:super_career_ai/Core/widgets/auth/primary_button.dart';
 import 'package:super_career_ai/Core/widgets/auth/social_auth_row.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/base_cv_cubit.dart/get_base_cv_cubit.dart';
 
 class SignInViewBody extends StatefulWidget {
   const SignInViewBody({super.key});
@@ -52,6 +54,10 @@ class _SignInViewBodyState extends State<SignInViewBody> {
     try {
       await _authService.loginUser(email: email, password: password);
       if (!mounted) return;
+      
+      // Refresh data that might have failed due to being unauthorized previously
+      context.read<BaseCvCubit>().fetchBaseCV();
+      
       context.go(AppRoutes.rootScreen);
     } catch (e) {
       if (!mounted) return;
@@ -81,8 +87,6 @@ class _SignInViewBodyState extends State<SignInViewBody> {
         );
         return;
       }
-
-      // await _authService.googleLogin(idToken: idToken, role: 'job_seeker');
 
       if (!mounted) return;
       context.go(AppRoutes.rootScreen);

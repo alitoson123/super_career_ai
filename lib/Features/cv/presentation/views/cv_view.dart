@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
+import 'package:super_career_ai/Core/services/dio_service.dart/dio_service.dart';
+import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
 import 'package:super_career_ai/Features/cv/presentation/cubit/cv_wizard_cubit.dart';
 import 'package:super_career_ai/Features/cv/presentation/cubit/cv_wizard_state.dart';
 import 'package:super_career_ai/Features/cv/presentation/widgets/steps/ats_result_step.dart';
@@ -17,7 +20,7 @@ class CvView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => CvWizardCubit(),
+      create: (_) => CvWizardCubit(dioService: getIt<DioService>()),
       child: const _CvViewBody(),
     );
   }

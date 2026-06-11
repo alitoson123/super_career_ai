@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
+import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -28,9 +30,19 @@ class _SplashViewBodyState extends State<SplashViewBody>
     _controller.forward();
     _navTimer = Timer(const Duration(seconds: 4), () {
       if (mounted) {
-        context.go(AppRoutes.onBoardingScreen);
+        _navigate();
       }
     });
+  }
+
+  void _navigate() {
+    final prefs = getIt<SharedPreferences>();
+    final token = prefs.getString('auth_token');
+    if (token != null && token.isNotEmpty) {
+      context.go(AppRoutes.rootScreen);
+    } else {
+      context.go(AppRoutes.onBoardingScreen);
+    }
   }
 
   @override

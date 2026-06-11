@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart' as app_colors;
+import 'package:super_career_ai/Core/navigator/app_routes.dart';
+import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
 import 'package:super_career_ai/Features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:super_career_ai/Features/profile/presentation/cubit/profile_state.dart';
 
@@ -59,6 +63,14 @@ class _ProfileViewState extends State<ProfileView> {
         context,
       ).showSnackBar(SnackBar(content: Text(s.message)));
     }
+  }
+
+  Future<void> _onLogoutPressed() async {
+    final prefs = getIt<SharedPreferences>();
+    await prefs.remove('auth_token');
+    await prefs.remove('auth_refresh_token');
+    if (!mounted) return;
+    context.go(AppRoutes.signInScreen);
   }
 
   @override
@@ -158,12 +170,7 @@ class _ProfileViewState extends State<ProfileView> {
                     onPressed: loaded.isSaving ? null : _onSavePressed,
                   ),
                   SizedBox(height: 14.h),
-                  // The screenshot shows two identical "Save Changes" buttons.
-                  _SaveButton(
-                    isLoading: loaded.isSaving,
-                    onPressed: loaded.isSaving ? null : _onSavePressed,
-                  ),
-                  SizedBox(height: 18.h),
+                  _LogoutButton(onPressed: _onLogoutPressed),
                 ],
               ),
             ),
@@ -334,6 +341,37 @@ class _SaveButton extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+      ),
+    );
+  }
+}
+
+class _LogoutButton extends StatelessWidget {
+  const _LogoutButton({required this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 54.h,
+      child: OutlinedButton(
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          side: const BorderSide(color: Colors.redAccent, width: 1.5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.r),
+          ),
+        ),
+        child: Text(
+          'Log Out',
+          style: TextStyle(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w700,
+            color: Colors.redAccent,
+          ),
+        ),
       ),
     );
   }

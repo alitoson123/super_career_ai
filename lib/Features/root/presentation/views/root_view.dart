@@ -46,8 +46,7 @@ class _RootViewState extends State<RootView> {
               CustomCvHistoryCubit(jobRepo: getIt<JobRepoImpl>())
                 ..fetchCustomCvHistory(),
         ),
-        BlocProvider(create: (context) => ProfileCubit()),
-        
+        BlocProvider(create: (context) => getIt<ProfileCubit>()),
       ],
       child: BlocBuilder<NavigationCubit, int>(
         builder: (context, currentIndex) {
@@ -65,7 +64,7 @@ class _RootViewState extends State<RootView> {
                         ),
                         JopsMatchesView(jobState: jobState),
                         ProjectMatchesView(projectState: projectState),
-                        CvView(),
+                        const CvView(),
                         const ProfileView(),
                       ],
                     );

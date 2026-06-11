@@ -1,29 +1,24 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:super_career_ai/Core/network/backend_urls.dart';
+import 'package:super_career_ai/Core/services/dio_service.dart/dio_service.dart';
 import 'package:super_career_ai/Features/cv/domain/entities/ats_analysis_entity.dart';
 import 'package:super_career_ai/Features/cv/domain/entities/cv_entity.dart';
 import 'cv_wizard_state.dart';
 
-/// Drives the multi-step CV wizard. Each public method corresponds to a
-/// user action (saving a step, adding/removing items, toggling skills, etc.).
 class CvWizardCubit extends Cubit<CvWizardState> {
-  CvWizardCubit() : super(CvWizardState.initial());
+  final DioService dioService;
 
-  // ──────────────────────────── Navigation ────────────────────────────
+  CvWizardCubit({required this.dioService}) : super(CvWizardState.initial());
 
   void goToStep(CvWizardStep step) => emit(state.copyWith(step: step));
 
-  // ────────────────────────── Personal Info ───────────────────────────
-
   void savePersonalInfo(PersonalInfoEntity info) {
-    emit(
-      state.copyWith(
-        cv: state.cv.copyWith(personalInfo: info),
-        step: CvWizardStep.workExperience,
-      ),
-    );
+    emit(state.copyWith(
+      cv: state.cv.copyWith(personalInfo: info),
+      step: CvWizardStep.workExperience,
+    ));
   }
-
-  // ───────────────────────── Work Experience ──────────────────────────
 
   void updateWorkExperience(int index, WorkExperienceEntity experience) {
     final updated = List<WorkExperienceEntity>.from(state.cv.workExperiences);
@@ -44,10 +39,7 @@ class CvWizardCubit extends Cubit<CvWizardState> {
     emit(state.copyWith(cv: state.cv.copyWith(workExperiences: updated)));
   }
 
-  void saveWorkExperience() =>
-      emit(state.copyWith(step: CvWizardStep.education));
-
-  // ──────────────────────────── Education ─────────────────────────────
+  void saveWorkExperience() => emit(state.copyWith(step: CvWizardStep.education));
 
   void updateEducation(int index, EducationEntity education) {
     final updated = List<EducationEntity>.from(state.cv.educations);
@@ -70,8 +62,6 @@ class CvWizardCubit extends Cubit<CvWizardState> {
 
   void saveEducation() => emit(state.copyWith(step: CvWizardStep.skills));
 
-  // ──────────────────────────── Skills ────────────────────────────────
-
   void addSkill(String skill) {
     final trimmed = skill.trim();
     if (trimmed.isEmpty || state.cv.skills.contains(trimmed)) return;
@@ -84,40 +74,48 @@ class CvWizardCubit extends Cubit<CvWizardState> {
     emit(state.copyWith(cv: state.cv.copyWith(skills: updated)));
   }
 
-  /// Simulate ATS analysis (would hit a real API in production).
   Future<void> submitSkillsAndAnalyze() async {
-    emit(state.copyWith(isLoading: true));
-    await Future.delayed(const Duration(milliseconds: 800));
+    emit(state.copyWith(isLoading: true, errorMessage: null));
+    try {
+      final requestData = state.cv.toJson();
+      debugPrint('CV API Request: $requestData');
 
-    final analysis = AtsAnalysisEntity(
-      matchScore: 85,
-      keywordsFound: 12,
-      totalKeywords: 15,
-      improvementTips: [
-        const ImprovementTipEntity(
-          title: 'Quantify Achievements',
-          description:
-              "Add more metrics like 'Increased conversion by 20%' "
-              'to strengthen impact.',
+      final response = await dioService.postMethodMap(
+        url: BackendUrls.analyzeCV,
+        data: requestData,
+      );
+
+      debugPrint('CV API Response: $response');
+
+      // Robustly parse the ATS score
+      final dynamic rawScore = response['ats_score'] ?? response['score'] ?? 0;
+      final int score = (rawScore is num) 
+          ? rawScore.toInt() 
+          : int.tryParse(rawScore.toString()) ?? 0;
+      
+      final analysis = AtsAnalysisEntity(
+        matchScore: score,
+        keywordsFound: response['keywords_found'] ?? 0,
+        totalKeywords: response['total_keywords'] ?? 0,
+        improvementTips: (response['feedback'] as List? ?? []).map((e) => ImprovementTipEntity(
+          title: 'Feedback',
+          description: e.toString(),
           isWarning: true,
-        ),
-        const ImprovementTipEntity(
-          title: 'Missing Core Skill',
-          description:
-              "The job description mentions 'Agile Methodology' frequently. "
-              'Consider adding this to your skills.',
-          isWarning: false,
-        ),
-      ],
-    );
+        )).toList(),
+      );
 
-    emit(
-      state.copyWith(
+      emit(state.copyWith(
         isLoading: false,
         atsAnalysis: analysis,
         step: CvWizardStep.atsResult,
-      ),
-    );
+      ));
+    } catch (e) {
+      debugPrint('CV API Error: $e');
+      emit(state.copyWith(
+        isLoading: false,
+        errorMessage: "Failed to analyze CV. Please try again.",
+      ));
+    }
   }
 
   void restart() => emit(CvWizardState.initial());

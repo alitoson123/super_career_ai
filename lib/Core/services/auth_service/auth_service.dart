@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_career_ai/Core/network/backend_urls.dart';
 import 'package:super_career_ai/Core/services/auth_token_storage/auth_token_storage.dart';
 
@@ -12,7 +11,6 @@ class AuthService {
             BaseOptions(
               connectTimeout: const Duration(seconds: 20),
               receiveTimeout: const Duration(seconds: 20),
-              sendTimeout: const Duration(seconds: 20),
               headers: const {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -23,18 +21,23 @@ class AuthService {
   final Dio _dio;
   final AuthTokenStorage _tokenStorage;
 
-  AuthTokenStorage get _storage => _tokenStorage;
-
+  /// Specifically handles the response structure: {"tokens": {"access": "...", "refresh": "..."}}
   Future<void> _persistTokensFromResponse(dynamic data) async {
     if (data is! Map) return;
     final map = Map<String, dynamic>.from(data);
 
-    // Backend is expected to return access/refresh (JWT),
-    // but schema may not reflect it. Support common keys.
-    final access = (map['access'] ?? map['token'] ?? map['access_token'])
+    Map<String, dynamic> tokenSource = map;
+    if (map.containsKey('tokens') && map['tokens'] is Map) {
+      tokenSource = Map<String, dynamic>.from(map['tokens']);
+    }
+
+    final access = (tokenSource['access'] ?? tokenSource['token'] ?? tokenSource['access_token'])
         ?.toString();
-    final refresh = (map['refresh'] ?? map['refresh_token'])?.toString();
-    await _storage.saveTokens(accessToken: access, refreshToken: refresh);
+    final refresh = (tokenSource['refresh'] ?? tokenSource['refresh_token'])?.toString();
+    
+    if (access != null) {
+      await _tokenStorage.saveTokens(accessToken: access, refreshToken: refresh);
+    }
   }
 
   Never _rethrowAsReadable(DioException e) {
@@ -73,8 +76,6 @@ class AuthService {
           'password': password,
           'role': role,
           'full_name': fullName,
-          // Backend currently throws 500 if profile fields are missing/null.
-          // Until backend is fixed, always send safe defaults.
           'skills': skills ?? const <String>[],
           'hourly_rate': hourlyRate ?? '0.00',
           'specialization': specialization ?? '',
@@ -100,58 +101,10 @@ class AuthService {
         BackendUrls.login,
         data: {'email': email, 'password': password},
       );
-      final data = response.data;
-      if (data is Map<String, dynamic>) {
-        final tokens = data['tokens'];
-        final token = tokens is Map
-            ? tokens['access']
-            : (data['token'] ?? data['access']);
-        if (token != null) {
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setString('auth_token', token.toString());
-        }
-      }
-      return data;
-    } on DioException catch (e) {
-      _rethrowAsReadable(e);
-    }
-  }
-
-  /*
-  Future<dynamic> googleRegister({
-    required String idToken,
-    required String role,
-  }) async {
-    try {
-      final response = await _dio.post(
-        BackendUrls.authGoogleRegister,
-        data: {
-          'id_token': idToken,
-          'role': role,
-        },
-      );
+      await _persistTokensFromResponse(response.data);
       return response.data;
     } on DioException catch (e) {
       _rethrowAsReadable(e);
     }
   }
-
-  Future<dynamic> googleLogin({
-    required String idToken,
-    required String role,
-  }) async {
-    try {
-      final response = await _dio.post(
-        BackendUrls.authGoogleLogin,
-        data: {
-          'id_token': idToken,
-          'role': role,
-        },
-      );
-      return response.data;
-    } on DioException catch (e) {
-      _rethrowAsReadable(e);
-    }
-  }
-  */
 }
