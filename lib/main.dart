@@ -10,14 +10,15 @@ import 'package:super_career_ai/Features/jobs/presentation/view_model/base_cv_cu
 import 'package:super_career_ai/Features/jobs/presentation/view_model/base_cv_cubit.dart/uplaod_base_cv_cubit.dart';
 import 'generated/l10n.dart';
 import 'package:super_career_ai/Core/theme/app_theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setup();
   Bloc.observer = MyBlocObserver(); // bloc observer
-
+  await dotenv.load(fileName: ".env");
   runApp(const SuperCareerApp());
-}
+} 
 
 class SuperCareerApp extends StatelessWidget {
   const SuperCareerApp({super.key});

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 /// Uses the Gemini API to parse raw CV text into the structured JSON format
@@ -7,7 +8,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 class GeminiCvParserService {
   GeminiCvParserService._();
 
-  // static const String _apiKey =
+  static final String _apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
 
   static const String _prompt = '''
 Extract information from the CV text below and return a JSON object with EXACTLY this structure.
