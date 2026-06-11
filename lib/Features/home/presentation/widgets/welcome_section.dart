@@ -4,12 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 
 class WelcomeSection extends StatelessWidget {
-  final String userName;
   final int newMatchesCount;
 
   const WelcomeSection({
     super.key,
-    required this.userName,
     required this.newMatchesCount,
   });
 
@@ -20,7 +18,7 @@ class WelcomeSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          S.of(context).welcomeBack(userName),
+          S.of(context).welcomeBack,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         SizedBox(height: 4.h),

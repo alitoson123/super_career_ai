@@ -110,7 +110,7 @@ class PtojectTopMatchCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20.h),
-
+/*
           // Match Breakdown
           MatchBreakdown(
             matchBreakdownState: matchState,
@@ -118,7 +118,7 @@ class PtojectTopMatchCard extends StatelessWidget {
           ),
 
           SizedBox(height: 20.h),
-
+*/
           // Buttons
           Row(
             children: [
@@ -136,7 +136,7 @@ class PtojectTopMatchCard extends StatelessWidget {
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Color(0xFF6366F1)),
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
+                    padding: EdgeInsets.symmetric(vertical: 11.h),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
@@ -160,7 +160,7 @@ class PtojectTopMatchCard extends StatelessWidget {
                     backgroundColor: const Color(0xFF6366F1),
                     foregroundColor: Colors.white,
                     elevation: 0,
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
+                    padding: EdgeInsets.symmetric(vertical: 11.h),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),

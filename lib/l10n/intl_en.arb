@@ -1,14 +1,7 @@
 {
   "@@locale": "en",
   "superCareer": "Super Career",
-  "welcomeBack": "Welcome Back, {userName}!",
-  "@welcomeBack": {
-    "placeholders": {
-      "userName": {
-        "type": "String"
-      }
-    }
-  },
+  "welcomeBack": "Welcome Back",
   "newOpportunities": "You have {count} new opportunities today.",
   "noNewMatches": "You have no new matches today.",
   "@newJobMatches": {

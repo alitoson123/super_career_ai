@@ -65,8 +65,17 @@ class RecentProjectMatches extends StatelessWidget {
         ),
         // project match cards
         SizedBox(height: 10.h),
-        PtojectTopMatchCard(project: projectEntity[0]),
-        PtojectTopMatchCard(project: projectEntity[1]),
+        if (projectEntity.isNotEmpty) ...[
+          PtojectTopMatchCard(project: projectEntity[0]),
+          if (projectEntity.length > 1)
+            PtojectTopMatchCard(project: projectEntity[1]),
+        ] else
+          Center(
+            child: Text(
+              S.of(context).noJobMatchesFound,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
       ],
     );
   }

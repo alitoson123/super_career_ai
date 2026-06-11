@@ -116,20 +116,27 @@ class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
                 ],
               ),
               SizedBox(height: 20.h),
-
-              // List
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: widget.jobs.length,
-                itemBuilder: (context, index) {
-                  final job = widget.jobs[index];
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: 16.h),
-                    child: JobTopMatchCard(job: job),
-                  );
-                },
-              ),
+              if (widget.jobs.isNotEmpty) ...[
+                // List
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: widget.jobs.length,
+                  itemBuilder: (context, index) {
+                    final job = widget.jobs[index];
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: 10.h),
+                      child: JobTopMatchCard(job: job),
+                    );
+                  },
+                ),
+              ] else
+                Center(
+                  child: Text(
+                    s.noJobMatchesFound,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
             ],
           ),
         ),

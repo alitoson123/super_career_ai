@@ -36,9 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m7(current, total) => "${current} من ${total}";
 
-  static String m8(userName) => "مرحباً بعودتك، ${userName}!";
-
-  static String m9(count) => "${count} كلمة";
+  static String m8(count) => "${count} كلمة";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -252,10 +250,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("استخدم هذه السيرة الذاتية"),
         "userName": MessageLookupByLibrary.simpleMessage("أليكس"),
         "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
-        "welcomeBack": m8,
+        "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحباً بعودتك"),
         "whatAreYourTopSkills":
             MessageLookupByLibrary.simpleMessage("ما هي أفضل مهاراتك؟"),
-        "wordCount": m9,
+        "wordCount": m8,
         "workDescriptionHint":
             MessageLookupByLibrary.simpleMessage("صف مسؤولياتك وإنجازاتك..."),
         "workExperience": MessageLookupByLibrary.simpleMessage("خبرة العمل"),

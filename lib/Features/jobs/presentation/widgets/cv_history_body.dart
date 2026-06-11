@@ -47,14 +47,21 @@ class CVHistoryBody extends StatelessWidget {
               ),
             );
           } else {
-            return ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              physics: const BouncingScrollPhysics(),
-              itemCount: historyItems.length,
-              itemBuilder: (context, index) {
-                final item = historyItems[index];
-                return CvHistoryCard(item: item);
+            return RefreshIndicator(
+              onRefresh: () async {
+                await context
+                    .read<CustomCvHistoryCubit>()
+                    .fetchCustomCvHistory();
               },
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                physics: const BouncingScrollPhysics(),
+                itemCount: historyItems.length,
+                itemBuilder: (context, index) {
+                  final item = historyItems[index];
+                  return CvHistoryCard(item: item);
+                },
+              ),
             );
           }
         } else if (state is CustomCvHistoryFailure) {
@@ -65,5 +72,3 @@ class CVHistoryBody extends StatelessWidget {
     );
   }
 }
-
-

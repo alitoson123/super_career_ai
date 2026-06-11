@@ -17,7 +17,7 @@ class StatItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.r),
+      padding: EdgeInsets.all(12.r),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16.r),
@@ -41,10 +41,10 @@ class StatItemCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 16.h),
+          SizedBox(height: 2.h),
           // title
           Text(title, style: Theme.of(context).textTheme.bodySmall),
-          SizedBox(height: 4.h),
+          SizedBox(height: 2.h),
           // value
           Text(value, style: Theme.of(context).textTheme.titleLarge),
         ],

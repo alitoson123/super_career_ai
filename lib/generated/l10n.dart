@@ -60,13 +60,13 @@ class S {
     );
   }
 
-  /// `Welcome Back, {userName}!`
-  String welcomeBack(String userName) {
+  /// `Welcome Back`
+  String get welcomeBack {
     return Intl.message(
-      'Welcome Back, $userName!',
+      'Welcome Back',
       name: 'welcomeBack',
       desc: '',
-      args: [userName],
+      args: [],
     );
   }
 

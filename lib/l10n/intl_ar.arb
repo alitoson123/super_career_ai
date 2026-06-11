@@ -1,7 +1,7 @@
 {
   "@@locale": "ar",
   "superCareer": "سوبر كارير",
-  "welcomeBack": "مرحباً بعودتك، {userName}!",
+  "welcomeBack": "مرحباً بعودتك",
   "newJobMatches": "لديك {count} تطابقات وظائف جديدة اليوم.",
   "matchesToday": "تطابقات اليوم",
   "avgMatchScore": "متوسط درجة التطابق",

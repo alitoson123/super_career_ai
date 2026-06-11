@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -13,11 +14,11 @@ class CvPdfGenerator {
   CvPdfGenerator._();
 
   // ── Brand colours ──────────────────────────────────────────────────────────
-  static final PdfColor _primaryBlue = PdfColor.fromHex('#2563EB');
-  static final PdfColor _lightBlue = PdfColor.fromHex('#EFF6FF');
+ // static final PdfColor _primaryBlue = PdfColor.fromHex('#1A3756');
+ // static final PdfColor _primaryBlue2 = PdfColor.fromHex('#2563EB');
   static final PdfColor _textPrimary = PdfColor.fromHex('#1F2937');
   static final PdfColor _textSecondary = PdfColor.fromHex('#6B7280');
-  static final PdfColor _dividerColor = PdfColor.fromHex('#E5E7EB');
+static final PdfColor _primaryBlue = PdfColor.fromHex('#000000');
 
   // ── Public API ─────────────────────────────────────────────────────────────
 
@@ -31,7 +32,7 @@ class CvPdfGenerator {
   static Future<String> generate(BaseCvModel cv) async {
     final doc = await _createPdfDocument(cv);
     final bytes = await doc.save();
-    
+
     final dir = await getTemporaryDirectory();
     final file = File('${dir.path}/cv_${cv.id ?? 'generated'}.pdf');
     await file.writeAsBytes(bytes, flush: true);
@@ -68,7 +69,7 @@ class CvPdfGenerator {
             pw.Text(
               details!.professionalSummary!,
               style: pw.TextStyle(
-                font: italicFont,
+                font: regularFont,
                 fontSize: 10,
                 color: _textPrimary,
                 lineSpacing: 4,
@@ -80,7 +81,12 @@ class CvPdfGenerator {
             _buildSectionHeader('Work Experience', boldFont),
             pw.SizedBox(height: 8),
             ...experiences.map(
-              (e) => _buildExperienceItem(e.toJson(), boldFont, regularFont, italicFont),
+              (e) => _buildExperienceItem(
+                e.toJson(),
+                boldFont,
+                regularFont,
+                italicFont,
+              ),
             ),
             pw.SizedBox(height: 8),
           ],
@@ -88,7 +94,12 @@ class CvPdfGenerator {
             _buildSectionHeader('Education', boldFont),
             pw.SizedBox(height: 8),
             ...educations.map(
-              (e) => _buildEducationItem(e.toJson(), boldFont, regularFont, italicFont),
+              (e) => _buildEducationItem(
+                e.toJson(),
+                boldFont,
+                regularFont,
+                italicFont,
+              ),
             ),
             pw.SizedBox(height: 8),
           ],
@@ -111,62 +122,70 @@ class CvPdfGenerator {
     pw.Font bold,
     pw.Font regular,
   ) {
+    final contactItems = [
+      if (_hasText(d?.emailAddress)) d!.emailAddress!,
+      if (_hasText(d?.phoneNumber)) d!.phoneNumber!,
+      if (_hasText(d?.location)) d!.location!,
+      if (_hasText(d?.portfolioLinkedInUrl)) d!.portfolioLinkedInUrl!,
+    ];
+
     return pw.Container(
       width: double.infinity,
-      padding: const pw.EdgeInsets.all(20),
-      decoration: pw.BoxDecoration(
-        color: _primaryBlue,
-        borderRadius: const pw.BorderRadius.all(pw.Radius.circular(8)),
-      ),
+      alignment: pw.Alignment.center,
       child: pw.Column(
-        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        crossAxisAlignment: pw.CrossAxisAlignment.center,
         children: [
           pw.Text(
-            _hasText(d?.fullName) ? d!.fullName! : 'Unnamed',
-            style: pw.TextStyle(
-              font: bold,
-              fontSize: 22,
-              color: PdfColors.white,
-            ),
+            _hasText(d?.fullName) ? d!.fullName!.toUpperCase() : 'UNNAMED',
+            style: pw.TextStyle(font: bold, fontSize: 22, color: _primaryBlue),
           ),
           if (_hasText(d?.professionalTitle)) ...[
-            pw.SizedBox(height: 3),
+            pw.SizedBox(height: 2),
             pw.Text(
               d!.professionalTitle!,
               style: pw.TextStyle(
                 font: regular,
-                fontSize: 12,
-                color: PdfColor(1, 1, 1, 0.8),
+                fontSize: 11,
+                color: _textSecondary,
               ),
             ),
           ],
-          pw.SizedBox(height: 12),
-          pw.Wrap(
-            spacing: 20,
-            runSpacing: 5,
-            children: [
-              if (_hasText(d?.emailAddress))
-                _contactChip('Email: ${d!.emailAddress!}', regular),
-              if (_hasText(d?.phoneNumber))
-                _contactChip('Phone: ${d!.phoneNumber!}', regular),
-              if (_hasText(d?.location))
-                _contactChip('Location: ${d!.location!}', regular),
-              if (_hasText(d?.portfolioLinkedInUrl))
-                _contactChip(d!.portfolioLinkedInUrl!, regular),
-            ],
-          ),
+          if (contactItems.isNotEmpty) ...[
+            pw.SizedBox(height: 6),
+            pw.Wrap(
+              alignment: pw.WrapAlignment.center,
+              spacing: 8,
+              runSpacing: 4,
+              children: List.generate(contactItems.length, (index) {
+                return pw.Row(
+                  mainAxisSize: pw.MainAxisSize.min,
+                  children: [
+                    pw.Text(
+                      contactItems[index],
+                      style: pw.TextStyle(
+                        font: regular,
+                        fontSize: 9,
+                        color: _textPrimary,
+                      ),
+                    ),
+                    if (index < contactItems.length - 1)
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.only(left: 8),
+                        child: pw.Text(
+                          '|',
+                          style: pw.TextStyle(
+                            font: regular,
+                            fontSize: 9,
+                            color: _textSecondary,
+                          ),
+                        ),
+                      ),
+                  ],
+                );
+              }),
+            ),
+          ],
         ],
-      ),
-    );
-  }
-
-  static pw.Widget _contactChip(String text, pw.Font font) {
-    return pw.Text(
-      text,
-      style: pw.TextStyle(
-        font: font,
-        fontSize: 9,
-        color: PdfColor(1, 1, 1, 0.8),
       ),
     );
   }
@@ -179,13 +198,13 @@ class CvPdfGenerator {
           title.toUpperCase(),
           style: pw.TextStyle(
             font: bold,
-            fontSize: 9,
-            letterSpacing: 1.5,
+            fontSize: 10,
+            letterSpacing: 1.0,
             color: _primaryBlue,
           ),
         ),
-        pw.SizedBox(height: 3),
-        pw.Divider(color: _dividerColor, thickness: 1),
+        pw.SizedBox(height: 2),
+        pw.Divider(color: _primaryBlue, thickness: 1.5),
       ],
     );
   }
@@ -210,10 +229,6 @@ class CvPdfGenerator {
 
     return pw.Container(
       margin: const pw.EdgeInsets.only(bottom: 12),
-      padding: const pw.EdgeInsets.only(left: 10),
-      decoration: pw.BoxDecoration(
-        border: pw.Border(left: pw.BorderSide(color: _primaryBlue, width: 2)),
-      ),
       child: pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
@@ -246,7 +261,7 @@ class CvPdfGenerator {
               style: pw.TextStyle(
                 font: regular,
                 fontSize: 10,
-                color: _primaryBlue,
+                color: _textSecondary,
               ),
             ),
           ],
@@ -274,16 +289,17 @@ class CvPdfGenerator {
     pw.Font italic,
   ) {
     final school = e['School / University'] as String? ?? '';
-    final degree = e['Degree / Qualification'] as String? ?? e['Degree'] as String? ?? '';
-    final year = e['Year of Graduation'] as String? ?? e['Graduation Year'] as String? ?? '';
-    final description = e['Additional Details'] as String? ?? e['Description'] as String? ?? '';
+    final degree =
+        e['Degree / Qualification'] as String? ?? e['Degree'] as String? ?? '';
+    final year =
+        e['Year of Graduation'] as String? ??
+        e['Graduation Year'] as String? ??
+        '';
+    final description =
+        e['Additional Details'] as String? ?? e['Description'] as String? ?? '';
 
     return pw.Container(
       margin: const pw.EdgeInsets.only(bottom: 12),
-      padding: const pw.EdgeInsets.only(left: 10),
-      decoration: pw.BoxDecoration(
-        border: pw.Border(left: pw.BorderSide(color: _primaryBlue, width: 2)),
-      ),
       child: pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
@@ -316,7 +332,7 @@ class CvPdfGenerator {
               style: pw.TextStyle(
                 font: regular,
                 fontSize: 10,
-                color: _primaryBlue,
+                color: _textSecondary,
               ),
             ),
           ],
@@ -338,24 +354,13 @@ class CvPdfGenerator {
   }
 
   static pw.Widget _buildSkillsSection(List<String> skills, pw.Font font) {
-    return pw.Wrap(
-      spacing: 6,
-      runSpacing: 6,
-      children: skills.map((skill) => _buildSkillChip(skill, font)).toList(),
-    );
-  }
-
-  static pw.Widget _buildSkillChip(String skill, pw.Font font) {
-    return pw.Container(
-      padding: const pw.EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: pw.BoxDecoration(
-        color: _lightBlue,
-        borderRadius: const pw.BorderRadius.all(pw.Radius.circular(12)),
-        border: pw.Border.all(color: _primaryBlue, width: 0.5),
-      ),
-      child: pw.Text(
-        skill,
-        style: pw.TextStyle(font: font, fontSize: 9, color: _primaryBlue),
+    return pw.Text(
+      skills.join(' • '),
+      style: pw.TextStyle(
+        font: font,
+        fontSize: 10,
+        color: _textPrimary,
+        lineSpacing: 4,
       ),
     );
   }

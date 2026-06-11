@@ -18,7 +18,7 @@ class JobTopMatchCard extends StatelessWidget {
     final s = S.of(context);
     final int score = job.matchScore;
     final String title = job.title;
-    final String subtitle = job.company;
+    final String subtitle = job.sourcePlatform;
 
     String matchState;
     if (score >= 90) {
@@ -109,13 +109,13 @@ class JobTopMatchCard extends StatelessWidget {
           SizedBox(height: 20.h),
 
           // Match Breakdown
-          MatchBreakdown(
+          /*  MatchBreakdown(
             matchBreakdownState: matchState,
             progressValue: score / 100.0,
           ),
 
           SizedBox(height: 20.h),
-
+*/
           // Buttons
           Row(
             children: [
@@ -132,7 +132,7 @@ class JobTopMatchCard extends StatelessWidget {
                   },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: AppColors.primaryBlue),
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
+                    padding: EdgeInsets.symmetric(vertical: 11.h),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
@@ -154,13 +154,15 @@ class JobTopMatchCard extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    GoRouter.of(context).push(AppRoutes.cvEditorScreen, extra: job.id);
+                    GoRouter.of(
+                      context,
+                    ).push(AppRoutes.cvEditorScreen, extra: job.id);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlue,
                     foregroundColor: Colors.white,
                     elevation: 0,
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
+                    padding: EdgeInsets.symmetric(vertical: 11.h),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),

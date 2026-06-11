@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m4(count) => "${count} minutes ago";
 
-  static String m10(count) => "You have ${count} new opportunities today.";
+  static String m9(count) => "You have ${count} new opportunities today.";
 
   static String m5(count) => "Selected skills (${count})";
 
@@ -38,9 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m7(current, total) => "${current} of ${total}";
 
-  static String m8(userName) => "Welcome Back, ${userName}!";
-
-  static String m9(count) => "${count} words";
+  static String m8(count) => "${count} words";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -152,7 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "missingCoreSkillDesc": MessageLookupByLibrary.simpleMessage(
             "The job description mentions \'Agile Methodology\' frequently. Consider adding this to your skills."),
         "moderate": MessageLookupByLibrary.simpleMessage("Moderate"),
-        "newOpportunities": m10,
+        "newOpportunities": m9,
         "nextEducation":
             MessageLookupByLibrary.simpleMessage("Next: Education"),
         "nextStep": MessageLookupByLibrary.simpleMessage("Next Step"),
@@ -264,12 +262,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "viewTheJob": MessageLookupByLibrary.simpleMessage("View the Job"),
         "viewTheProject":
             MessageLookupByLibrary.simpleMessage("View the Project"),
-        "welcomeBack": m8,
+        "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),
         "welcomeToSuperCareer":
             MessageLookupByLibrary.simpleMessage("Welcome to Super Career"),
         "whatAreYourTopSkills":
             MessageLookupByLibrary.simpleMessage("What are your top skills?"),
-        "wordCount": m9,
+        "wordCount": m8,
         "workDescriptionHint": MessageLookupByLibrary.simpleMessage(
             "Describe your responsibilities and achievements..."),
         "workExperience":

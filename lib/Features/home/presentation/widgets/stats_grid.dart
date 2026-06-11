@@ -19,9 +19,9 @@ class StatsGrid extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       crossAxisCount: 2,
-      mainAxisSpacing: 16.h,
-      crossAxisSpacing: 16.w,
-      childAspectRatio: 1.2,
+      mainAxisSpacing: 25.h,
+      crossAxisSpacing: 20.w,
+      childAspectRatio: 1.3.h,
       children: [
         // matches today cards
         StatItemCard(

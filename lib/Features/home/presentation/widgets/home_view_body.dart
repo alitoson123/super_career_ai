@@ -62,32 +62,39 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     } else {
       final jobSuccess = jobState as JobFetchSuccess;
       final projectSuccess = projectState as ProjectFetchSuccess;
-      return SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // welcome section
-              WelcomeSection(
-                userName: s.userName,
-                newMatchesCount:
-                    jobSuccess.jobs.length + projectSuccess.projects.length,
-              ),
-              SizedBox(height: 24.h),
-              // stats grid
-              StatsGrid(
-                jobMatchesCount: jobSuccess.jobs.length,
-                projectMatchesCount: projectSuccess.projects.length,
-              ),
-              SizedBox(height: 32.h),
-              // recent job matches
-              RecentJobMatches(jobEntity: jobSuccess.jobs),
-              SizedBox(height: 32.h),
-              // recent project matches
-              RecentProjectMatches(projectEntity: projectSuccess.projects),
-              SizedBox(height: 24.h),
-            ],
+      return RefreshIndicator(
+        onRefresh: () async {
+          await context.read<JobCubit>().fetchJobMatches();
+          if (!mounted) return;
+          // ignore: use_build_context_synchronously
+          await context.read<ProjectCubit>().fetchProjectMatches();
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // welcome section
+                WelcomeSection(
+                  newMatchesCount:
+                      jobSuccess.jobs.length + projectSuccess.projects.length,
+                ),
+                SizedBox(height: 18.h),
+                // stats grid
+                StatsGrid(
+                  jobMatchesCount: jobSuccess.jobs.length,
+                  projectMatchesCount: projectSuccess.projects.length,
+                ),
+                SizedBox(height: 20.h),
+                // recent job matches
+                RecentJobMatches(jobEntity: jobSuccess.jobs),
+                SizedBox(height: 32.h),
+                // recent project matches
+                RecentProjectMatches(projectEntity: projectSuccess.projects),
+                SizedBox(height: 24.h),
+              ],
+            ),
           ),
         ),
       );

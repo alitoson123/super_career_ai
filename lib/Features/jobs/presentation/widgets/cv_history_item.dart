@@ -4,6 +4,11 @@ import 'package:open_filex/open_filex.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Core/utils/cv_pdf_generator.dart';
 import 'package:super_career_ai/Features/jobs/Data/models/base_cv_model/base_cv_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit_states.dart';
+import 'package:super_career_ai/Features/jobs/presentation/views/job_details_view.dart';
 
 class CvHistoryCard extends StatefulWidget {
   const CvHistoryCard({super.key, required this.item});
@@ -16,6 +21,7 @@ class CvHistoryCard extends StatefulWidget {
 
 class _CvHistoryCardState extends State<CvHistoryCard> {
   bool _isDownloading = false;
+  JobEntity? jobEntity;
 
   Future<void> _downloadAndOpen() async {
     if (_isDownloading) return;
@@ -53,94 +59,161 @@ class _CvHistoryCardState extends State<CvHistoryCard> {
   @override
   Widget build(BuildContext context) {
     final item = widget.item;
-    return Container(
-      margin: EdgeInsets.only(bottom: 16.h),
-      padding: EdgeInsets.all(20.r),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 15,
-            offset: const Offset(0, 4),
-          ),
-        ],
-        border: Border.all(color: AppColors.border.withValues(alpha: 0.5)),
-      ),
-      child: Column(
-        children: [
-          // title
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  item.personalDetails?.fullName ?? "Untitled CV",
-                  style: TextStyle(
-                    color: AppColors.textPrimary,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 10.h),
-          // date and download button
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // date
-              Row(
-                children: [
-                  Icon(
-                    Icons.calendar_today_outlined,
-                    size: 14.sp,
-                    color: AppColors.textSecondary,
-                  ),
-                  SizedBox(width: 8.w),
-                  Text(
-                    '${item.createdAt?.toString().substring(0, 10)}',
+    String jobTitle = "Unknown Job";
+    if (item.isBase == false && item.job != null) {
+      final jobState = context.read<JobCubit>().state;
+      if (jobState is JobFetchSuccess) {
+        try {
+          jobEntity = jobState.jobs.firstWhere(
+            (element) => element.id.toString() == item.job.toString(),
+          );
+          jobTitle = jobEntity?.title ?? "Untitled Job";
+        } catch (e) {
+          jobTitle = "Untitled Job";
+        }
+      } else {
+        jobTitle = "Untitled Job";
+      }
+    }
+
+    return GestureDetector(
+      onTap: () {
+        if (jobTitle == "Untitled Job" ||  item.isBase == true ) {
+          return null;
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => JobDetailsView(job: jobEntity!),
+            ),
+          );
+        }
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 16.h),
+        padding: EdgeInsets.all(20.r),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 15,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          border: Border.all(color: AppColors.border.withValues(alpha: 0.5)),
+        ),
+        child: Column(
+          children: [
+            // title
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    item.isBase == true
+                        ? (item.personalDetails?.fullName ?? "Untitled CV")
+                        : jobTitle,
                     style: TextStyle(
-                      color: AppColors.textSecondary,
-                      fontSize: 12.sp,
+                      color: AppColors.textPrimary,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
-              ),
-              // download button
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColors.primaryBlue,
-                  borderRadius: BorderRadius.circular(8.r),
                 ),
-                width: 40.w,
-                height: 40.w,
-                child: _isDownloading
-                    ? Padding(
-                        padding: EdgeInsets.all(10.r),
-                        child: const CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 2,
-                        ),
-                      )
-                    : IconButton(
-                        onPressed: _downloadAndOpen,
-                        icon: Icon(
-                          Icons.download_rounded,
-                          color: Colors.white,
-                          size: 18.sp,
-                        ),
-                        constraints: BoxConstraints.tightFor(
-                          width: 40.w,
-                          height: 40.w,
-                        ),
-                        padding: EdgeInsets.zero,
+                if (item.isBase == true)
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 12.w,
+                      vertical: 6.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryBlue.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(20.r),
+                      border: Border.all(
+                        color: AppColors.primaryBlue.withValues(alpha: 0.3),
                       ),
-              ),
-            ],
-          ),
-        ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.star_rounded,
+                          color: AppColors.primaryBlue,
+                          size: 16.sp,
+                        ),
+                        SizedBox(width: 4.w),
+                        Text(
+                          "Base CV",
+                          style: TextStyle(
+                            color: AppColors.primaryBlue,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+            SizedBox(height: 18.h),
+            // date and download button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // date
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_today_outlined,
+                      size: 14.sp,
+                      color: AppColors.textSecondary,
+                    ),
+                    SizedBox(width: 8.w),
+                    Text(
+                      '${item.createdAt?.toString().substring(0, 10)}',
+                      style: TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                  ],
+                ),
+                // download button
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryBlue,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  width: 40.w,
+                  height: 40.w,
+                  child: _isDownloading
+                      ? Padding(
+                          padding: EdgeInsets.all(10.r),
+                          child: const CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : IconButton(
+                          onPressed: _downloadAndOpen,
+                          icon: Icon(
+                            Icons.download_rounded,
+                            color: Colors.white,
+                            size: 18.sp,
+                          ),
+                          constraints: BoxConstraints.tightFor(
+                            width: 40.w,
+                            height: 40.w,
+                          ),
+                          padding: EdgeInsets.zero,
+                        ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
