@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
+import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
 import 'package:super_career_ai/Features/root/presentation/view_model/navigation_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:super_career_ai/Features/jobs/presentation/widgets/job_top_match_card.dart';
@@ -62,11 +63,22 @@ class RecentJobMatches extends StatelessWidget {
           JobTopMatchCard(job: jobEntity[0]),
           if (jobEntity.length > 1) JobTopMatchCard(job: jobEntity[1]),
         ] else
-          Center(
-            child: Text(
-              S.of(context).noJobMatchesFound,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+          Column(
+            children: [
+              Center(
+                child: Text(
+                  S.of(context).noJobMatchesFound,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // retry
+                  context.read<JobCubit>().fetchJobMatches();
+                },
+                child: Text('retry'),
+              ),
+            ],
           ),
       ],
     );

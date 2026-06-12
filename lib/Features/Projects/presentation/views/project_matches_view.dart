@@ -6,7 +6,6 @@ import 'package:super_career_ai/Features/Projects/presentation/view_model/projec
 import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 import '../widgets/project_matches_view_body.dart';
-import '../widgets/proposal_history_body.dart';
 
 class ProjectMatchesView extends StatefulWidget {
   const ProjectMatchesView({super.key, required this.projectState});
@@ -23,37 +22,31 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
     final isLoading = projectState is ProjectFetchLoading;
     final isFailure = projectState is ProjectFetchFailure;
     final isSuccess = projectState is ProjectFetchSuccess;
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: projectMatchesAppBar(context),
-        body: TabBarView(
-          children: [
-            isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : isFailure
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(projectState.errorMessage),
-                      // retry button
-                      ElevatedButton(
-                        onPressed: () {
-                          // retry
-                          context.read<ProjectCubit>().fetchProjectMatches();
-                        },
-                        child: Text('retry'),
-                      ),
-                    ],
-                  )
-                : isSuccess
-                ? ProjectMatchesViewBody(projects: projectState.projects)
-                : const SizedBox.shrink(),
-            const ProposalHistoryBody(),
-          ],
-        ),
-      ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: projectMatchesAppBar(context),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : isFailure
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(projectState.errorMessage),
+                // retry button
+                ElevatedButton(
+                  onPressed: () {
+                    // retry
+                    context.read<ProjectCubit>().fetchProjectMatches();
+                  },
+                  child: Text('retry'),
+                ),
+              ],
+            )
+          : isSuccess
+          ? ProjectMatchesViewBody(projects: projectState.projects)
+          : const SizedBox.shrink(),
+    
+      //  const ProposalHistoryBody(),
     );
   }
 
@@ -82,7 +75,7 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
           onPressed: () {},
         ),
       ],*/
-      bottom: TabBar(
+      /*   bottom: TabBar(
         labelColor: AppColors.primaryBlue,
         unselectedLabelColor: AppColors.unselectedIcon,
         indicatorColor: AppColors.primaryBlue,
@@ -96,7 +89,7 @@ class _ProjectMatchesViewState extends State<ProjectMatchesView> {
           Tab(text: s.projectMatches),
           Tab(text: s.proposalsHistory),
         ],
-      ),
+      ),*/
     );
   }
 }

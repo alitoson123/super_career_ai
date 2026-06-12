@@ -12,11 +12,21 @@ class MatchService {
   Future<List<JobEntity>> jobMatches() async {
     final result = await dioService.getMethodList(url: BackendUrls.jobMatches);
 
-    final jobList = result.map((e) => JobsModel.fromJson(e)).take(10).toList();
+    final jobList = result.map((e) => JobsModel.fromJson(e)).toList();
+    jobList.sort((a, b) => b.matchScore.compareTo(a.matchScore));
 
-    final filteredList = jobList.where((job) => job.matchScore >= 30).toList();
+    final Set<String> seenJobs = {};
+    final uniqueJobs = jobList
+        .where((job) {
+          final key = '${job.title}_${job.company}'.toLowerCase();
+          if (seenJobs.contains(key)) return false;
+          seenJobs.add(key);
+          return true;
+        })
+        .take(12)
+        .toList();
 
-    return filteredList;
+    return uniqueJobs;
   }
 
   Future<List<ProjectModel>> projectMatches() async {
@@ -24,14 +34,20 @@ class MatchService {
       url: BackendUrls.projectMatches,
     );
 
-    final projectList = result
-        .map((e) => ProjectModel.fromJson(e))
-        .take(10)
+    final projectList = result.map((e) => ProjectModel.fromJson(e)).toList();
+    projectList.sort((a, b) => b.matchScore.compareTo(a.matchScore));
+
+    final Set<String> seenProjects = {};
+    final uniqueProjects = projectList
+        .where((project) {
+          final key = '${project.title}_${project.platformName}'.toLowerCase();
+          if (seenProjects.contains(key)) return false;
+          seenProjects.add(key);
+          return true;
+        })
+        .take(12)
         .toList();
 
-    final filteredList = projectList
-        .where((project) => project.matchScore >= 30)
-        .toList();
-    return filteredList;
+    return uniqueProjects;
   }
 }

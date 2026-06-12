@@ -6,8 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart' as app_colors;
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
 import 'package:super_career_ai/Core/services/locator_service/service_locator.dart';
+import 'package:super_career_ai/Features/jobs/presentation/widgets/cv_editor/cv_upload_box.dart';
+import 'package:super_career_ai/Features/jobs/presentation/widgets/cv_editor/recent_document_list.dart';
 import 'package:super_career_ai/Features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:super_career_ai/Features/profile/presentation/cubit/profile_state.dart';
+import 'package:super_career_ai/generated/l10n.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -75,16 +78,14 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Scaffold(
       backgroundColor: app_colors.AppColors.background,
       appBar: AppBar(
         backgroundColor: app_colors.AppColors.background,
         elevation: 0,
         scrolledUnderElevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: app_colors.AppColors.primaryBlue),
-          onPressed: () => Navigator.of(context).maybePop(),
-        ),
+        centerTitle: true,
         title: Text(
           'Profile',
           style: TextStyle(
@@ -130,6 +131,8 @@ class _ProfileViewState extends State<ProfileView> {
                         child: const Text('Retry'),
                       ),
                     ),
+                    SizedBox(height: 14.h),
+                    _LogoutButton(onPressed: _onLogoutPressed),
                   ],
                 ),
               ),
@@ -164,7 +167,23 @@ class _ProfileViewState extends State<ProfileView> {
                     controller: _email,
                     keyboardType: TextInputType.emailAddress,
                   ),
-                  SizedBox(height: 18.h),
+                  SizedBox(height: 32.h),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      s.uploadYourCv,
+                      style: TextStyle(
+                        color: app_colors.AppColors.textPrimary,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  const CvUploadBox(),
+                  SizedBox(height: 32.h),
+                  const RecentDocumentList(),
+                  SizedBox(height: 32.h),
                   _SaveButton(
                     isLoading: loaded.isSaving,
                     onPressed: loaded.isSaving ? null : _onSavePressed,

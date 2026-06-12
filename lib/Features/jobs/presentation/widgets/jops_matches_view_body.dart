@@ -17,12 +17,10 @@ class JopsMatchesViewBody extends StatefulWidget {
 }
 
 class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
-  int _selectedChipIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    final List<String> chips = [s.allMatches, s.highScore];
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -35,54 +33,6 @@ class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*           // Filter Chips
-              SizedBox(
-                height: 38.h,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: chips.length,
-                  itemBuilder: (context, index) {
-                    final isSelected = _selectedChipIndex == index;
-                    return Padding(
-                      padding: EdgeInsets.only(right: 10.w),
-                      child: GestureDetector(
-                        onTap: () => setState(() => _selectedChipIndex = index),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? AppColors.primaryBlue
-                                : Colors.white,
-                            borderRadius: BorderRadius.circular(10.r),
-                            border: Border.all(
-                              color: isSelected
-                                  ? AppColors.primaryBlue
-                                  : AppColors.border.withOpacity(0.5),
-                            ),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            chips[index],
-                            style: TextStyle(
-                              color: isSelected
-                                  ? Colors.white
-                                  : AppColors.textSecondary,
-                              fontSize: 13.sp,
-                              fontWeight: isSelected
-                                  ? FontWeight.w600
-                                  : FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-      
-              SizedBox(height: 28.h),
-      */
               // Title and count
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,11 +81,22 @@ class _JopsMatchesViewBodyState extends State<JopsMatchesViewBody> {
                   },
                 ),
               ] else
-                Center(
-                  child: Text(
-                    s.noJobMatchesFound,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
+                Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        s.noJobMatchesFound,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // retry
+                        context.read<JobCubit>().fetchJobMatches();
+                      },
+                      child: Text('retry'),
+                    ),
+                  ],
                 ),
             ],
           ),

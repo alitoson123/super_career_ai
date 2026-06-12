@@ -5,7 +5,6 @@ import 'package:super_career_ai/Features/Projects/presentation/view_model/projec
 import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit_states.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit.dart';
 import 'package:super_career_ai/Features/jobs/presentation/view_model/job_cubit.dart/job_cubit_states.dart';
-import 'package:super_career_ai/generated/l10n.dart';
 import 'welcome_section.dart';
 import 'stats_grid.dart';
 import 'recent_job_matches.dart';
@@ -26,7 +25,6 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
-    final s = S.of(context);
 
     final jobState = widget.jobState;
     final projectState = widget.projectState;

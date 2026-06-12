@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity.dart';
+import 'package:super_career_ai/Features/Projects/presentation/view_model/project_cubit.dart/project_cubit.dart';
 import 'package:super_career_ai/Features/Projects/presentation/widgets/project_top_match_card.dart';
 import 'package:super_career_ai/Features/root/presentation/view_model/navigation_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,11 +71,22 @@ class RecentProjectMatches extends StatelessWidget {
           if (projectEntity.length > 1)
             PtojectTopMatchCard(project: projectEntity[1]),
         ] else
-          Center(
-            child: Text(
-              S.of(context).noJobMatchesFound,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+          Column(
+            children: [
+              Center(
+                child: Text(
+                  S.of(context).noProjectMatchesFound,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // retry
+                  context.read<ProjectCubit>().fetchProjectMatches();
+                },
+                child: Text('retry'),
+              ),
+            ],
           ),
       ],
     );

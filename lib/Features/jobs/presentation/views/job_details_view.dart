@@ -225,30 +225,4 @@ class JobDetailsView extends StatelessWidget {
     );
   }
 
-  Widget _buildRequirementItem(BuildContext context, String text) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            Icons.check_circle_outline,
-            color: AppColors.primaryBlue,
-            size: 20.sp,
-          ),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: AppColors.textPrimary.withOpacity(0.8),
-                fontSize: 14.sp,
-                height: 1.4,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }

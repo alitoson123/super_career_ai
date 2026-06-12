@@ -5,7 +5,6 @@ import 'package:super_career_ai/Core/navigator/app_routes.dart';
 import 'package:super_career_ai/Core/constant/app_colors.dart';
 import 'package:super_career_ai/Features/jobs/Domain/entities/jobs_entity.dart';
 import 'package:super_career_ai/Features/jobs/presentation/views/job_details_view.dart';
-import 'package:super_career_ai/Features/jobs/presentation/widgets/match_breakdown.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 
 class JobTopMatchCard extends StatelessWidget {
@@ -16,18 +15,10 @@ class JobTopMatchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = S.of(context);
-    final int score = job.matchScore;
     final String title = job.title;
     final String subtitle = job.sourcePlatform;
 
-    String matchState;
-    if (score >= 90) {
-      matchState = s.excellent;
-    } else if (score >= 70) {
-      matchState = s.good;
-    } else {
-      matchState = s.moderate;
-    }
+
 
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
@@ -108,14 +99,6 @@ class JobTopMatchCard extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
 
-          // Match Breakdown
-          /*  MatchBreakdown(
-            matchBreakdownState: matchState,
-            progressValue: score / 100.0,
-          ),
-
-          SizedBox(height: 20.h),
-*/
           // Buttons
           Row(
             children: [

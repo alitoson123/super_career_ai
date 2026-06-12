@@ -8,7 +8,6 @@ import 'package:super_career_ai/Features/Projects/Domain/entities/project_entity
 import 'package:super_career_ai/Features/Projects/presentation/view_model/custom_proposal_cubit/custom_proposal_cubit.dart';
 import 'package:super_career_ai/Features/Projects/presentation/views/project_details_view.dart';
 import 'package:super_career_ai/Features/Projects/presentation/widgets/custom_proposal_dialog.dart';
-import 'package:super_career_ai/Features/jobs/presentation/widgets/match_breakdown.dart';
 import 'package:super_career_ai/generated/l10n.dart';
 
 class PtojectTopMatchCard extends StatelessWidget {
@@ -21,16 +20,6 @@ class PtojectTopMatchCard extends StatelessWidget {
     final s = S.of(context);
     final String title = project.title;
     final String subtitle = project.platformName;
-    final int score = project.matchScore;
-
-    String matchState;
-    if (score >= 90) {
-      matchState = s.excellent;
-    } else if (score >= 70) {
-      matchState = s.good;
-    } else {
-      matchState = s.moderate;
-    }
 
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
@@ -110,15 +99,7 @@ class PtojectTopMatchCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20.h),
-/*
-          // Match Breakdown
-          MatchBreakdown(
-            matchBreakdownState: matchState,
-            progressValue: score / 100.0,
-          ),
 
-          SizedBox(height: 20.h),
-*/
           // Buttons
           Row(
             children: [

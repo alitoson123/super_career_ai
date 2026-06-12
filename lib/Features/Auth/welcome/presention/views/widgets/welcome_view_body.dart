@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:super_career_ai/Core/navigator/app_routes.dart';
-import 'package:super_career_ai/Core/services/auth_service/auth_service.dart';
+//import 'package:super_career_ai/Core/services/auth_service/auth_service.dart';
 import 'package:super_career_ai/Core/services/auth_service/google_auth_service.dart';
 import 'package:super_career_ai/Core/theme/app_colors.dart';
 import 'package:super_career_ai/Core/widgets/auth/or_divider.dart';
@@ -13,7 +13,7 @@ class WelcomeViewBody extends StatelessWidget {
 
   Future<void> _onGoogleRegisterPressed(BuildContext context) async {
     final googleAuth = GoogleAuthService();
-    final authService = AuthService();
+   // final authService = AuthService();
 
     if (!googleAuth.isSupported) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -99,7 +99,7 @@ class WelcomeViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 14.h),
+            SizedBox(height: 20.h),
             SizedBox(
               width: double.infinity,
               height: 54.h,
@@ -121,7 +121,7 @@ class WelcomeViewBody extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 28.h),
+           SizedBox(height: 28.h),
             const OrDivider(),
             SizedBox(height: 22.h),
             SocialAuthRow(

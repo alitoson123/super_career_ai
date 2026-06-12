@@ -18,11 +18,11 @@ class SocialAuthRow extends StatelessWidget {
           asset: 'assests/images/google_logo.svg',
           onTap: onGoogle,
         ),
-        SizedBox(width: 28.w),
-        _CircleSocialButton(
+       // SizedBox(width: 28.w),
+     /*   _CircleSocialButton(
           asset: 'assests/images/linkedin_logo.svg',
           onTap: onLinkedIn,
-        ),
+        ),*/
       ],
     );
   }
